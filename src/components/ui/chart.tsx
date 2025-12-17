@@ -19,6 +19,10 @@ interface ChartContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ChartContext = React.createContext<ChartConfig | null>(null);
 
+type ChartCSSVars = React.CSSProperties & {
+  [key: `--color-${string}`]: string;
+};
+
 export function useChartConfig() {
   const ctx = React.useContext(ChartContext);
   if (!ctx) {
@@ -34,13 +38,13 @@ export function ChartContainer({
   children,
   ...props
 }: ChartContainerProps) {
-  const colorVars = Object.entries(config).reduce<React.CSSProperties>(
+  const colorVars = Object.entries(config).reduce<ChartCSSVars>(
     (acc, [key, value], index) => {
-      const cssVar = `--color-${key}` as const;
+      const cssVar = `--color-${key}` as `--color-${string}`;
       acc[cssVar] = value.color ?? `var(--chart-${index + 1})`;
       return acc;
     },
-    {} as React.CSSProperties
+    {} as ChartCSSVars
   );
 
   return (
