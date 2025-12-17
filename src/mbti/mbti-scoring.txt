@@ -1,0 +1,298 @@
+likes action / likes drama -	0.14I	0.18N	0.49F	0.21P
+realistic / imaginative -	0.12E	0.63N	0.71F	0.71P
+criticism leads to feelings of guilt / criticism leads to feelings of anger -	0.16E	0.08S	0.56T	0.09J
+loses track of time / good sense of time -	0.19E	0.40S	0.32T	0.83J
+angry / resentful -	0.21I	0.02N	0.00F	0.04J
+wishes their life was more interesting / finds their life interesting enough -	0.18E	0.14S	0.13T	0.25J
+talks over a decision with other people / makes it alone -	0.89I	0.48N	0.84T	0.04J
+when judging others, considers intent / only considers outcome -	0.02E	0.25S	0.64T	0.07J
+makes things / breaks things -	0.19E	0.12S	0.02T	0.36P
+likes knowing all the facts / likes filling in the blanks -	0.13E	0.52N	0.38F	0.58P
+learns before doing / learns while doing -	0.72E	0.03N	0.26F	0.65P
+careful / extreme -	0.73E	0.18N	0.02T	0.65P
+uses reason / uses instinct -	0.37E	0.33N	1.17F	0.45P
+learns by doing / learns by watching -	0.34I	0.24N	0.13T	0.10J
+trusts personal experience / trusts theory -	0.26I	0.37N	0.67T	0.04P
+prepares / improvises -	0.43E	0.28N	0.15F	1.43P
+often thinks about what they should have done differently / does not second guess -	0.46E	0.03S	0.09T	0.09P
+likes small talk / hates small talk -	0.98I	0.25N	0.28T	0.15J
+organized / chaotic -	0.16E	0.21N	0.25F	1.15P
+thinks role models are important / thinks the importance of role models is exaggerated -	0.45I	0.02N	0.62T	0.20P
+interested in realities / interested in possibilities -	0.14E	0.75N	0.36F	0.42P
+afraid of the dark / likes the dark -	0.26I	0.27N	0.54T	0.01P
+focused on the present / focused on the future -	0.04I	0.72N	0.10T	0.23J
+focuses on the big picture / takes care of the little details -	0.30I	0.61S	0.10F	0.34J
+wants to be treated right / just doesn't want to be treated wrong -	0.30I	0.00S	0.28T	0.25P
+humble / can be a bit arrogant -	0.37E	0.24N	0.68T	0.01J
+wants a destiny / afraid of fate -	0.20I	0.13S	0.19T	0.06P
+can be a bit arrogant / humble -	0.32I	0.17S	0.63F	0.06P
+wants people's respect / wants their love -	0.22E	0.37S	1.18F	0.40P
+confident / unsure -	0.92I	0.10S	0.40F	0.33P
+commits / keeps options open -	0.04E	0.25N	0.14T	0.87P
+likes to know \"who?\", \"what?\", \"when?\" / likes to know \"why?\" -	0.18I	0.73N	0.04T	0.19P
+manipulates things behind the scenes / leads from the front -	1.12E	0.11S	0.13F	0.04P
+trusting / paranoid -	0.60I	0.12N	0.43T	0.07J
+tricky / steady -	0.20I	0.26S	0.05F	0.52J
+assured by routine / bored by routine -	0.60E	0.59N	0.00F	0.82P
+needs certainty / needs flexibility -	0.44E	0.39N	0.16F	0.82P
+gets work done right away / procrastinates -	0.10I	0.11N	0.29F	0.93P
+feels unlucky / feels very lucky -	0.68E	0.05N	0.12F	0.05P
+cares if something is good or bad / cares if something is true or false -	0.19I	0.14N	1.12T	0.12J
+methodical / astonishing -	0.45E	0.21N	0.51F	0.72P
+cautious / bold -	1.04E	0.23N	0.07T	0.36P
+likes nature / likes human industry -	0.17E	0.00S	0.52T	0.03J
+caffeine (or other stimulant) gives a major boost / hardly notices the effects -	0.31I	0.13S	0.28T	0.01J
+somber / enthusiastic -	1.33E	0.02S	0.54F	0.31P
+wants loyal friends / wants fun friends -	0.50E	0.07S	0.06T	0.43P
+no one knows what they are talking about / some people know what they are talking about -	0.36E	0.11S	0.32F	0.02P
+sentimental / grim -	0.40I	0.28N	1.07T	0.13J
+like to listen to stories / likes to tell stories -	0.94E	0.10N	0.06F	0.15P
+adapts to the world / wants the world to adapt to them -	0.23I	0.33N	0.26T	0.05J
+double checks their work / hopes for the best -	0.44E	0.07N	0.35F	0.82P
+if a lawyer, would prefer to be a prosecutor / would prefer to be defense attorney -	0.11I	0.15N	0.65F	0.28P
+will say \"these are the things I have made\" / will say \"these are the things I have designed\" -	0.05I	0.63N	0.39T	0.08P
+good with names / bad with names -	0.23I	0.25N	0.24T	0.14P
+likes to eavesdrop / finds other people's conversations too boring -	0.21I	0.20N	0.55T	0.14J
+decides / guesses -	0.02I	0.04S	0.56F	0.94P
+sceptical / wants to believe -	0.46E	0.18S	1.17F	0.18P
+has been through a lot of tough times / has had an easy life -	0.17E	0.21S	0.19T	0.30P
+abstains / indulges -	0.57E	0.09S	0.27F	0.39P
+answers mail right away / gets behind on answering mail -	0.16I	0.20N	0.12F	0.70P
+fears sharing secrets / enjoys sharing secrets -	0.97E	0.10S	0.50F	0.30P
+wants to impress authority / rebels against authority -	0.10I	0.56N	0.32T	0.53P
+careful / lives dangerously -	0.76E	0.27N	0.01T	0.71P
+careful / spontaneous -	0.99E	0.11N	0.25F	0.85P
+always finishes sentences / can trail off in the middle of a sentences -	0.19I	0.16N	0.47F	0.63P
+reads books / watches movies -	0.37E	0.25S	0.27F	0.19P
+when describing an event, will tell people what happened / when describing an event, will tell people what it meant -	0.03I	0.74N	0.26F	0.15P
+likes being drunk / feels uncomfortable when drunk -	0.61I	0.05S	0.15T	0.52J
+energetic / mellow -	1.24I	0.11N	0.15T	0.05P
+sincere / sarcastic -	0.06I	0.03N	0.87T	0.04P
+always has a backup plan / never needs a backup plan -	0.21E	0.03S	0.16F	0.60P
+appreciates the scenery around them / too distracted to take a look -	0.09I	0.14N	0.42T	0.04J
+worries most about tripping and falling in the dark / imagines monsters in the dark -	0.02I	0.36N	0.49F	0.28P
+friendly / distant -	1.26I	0.27N	0.74T	0.13J
+seeks clarity / seeks harmony -	0.16E	0.17S	1.05F	0.34P
+fits in / stands out -	0.04I	0.48N	0.14T	0.18P
+thinks about things from the top down / reasons from the bottom up -	0.24I	0.14N	0.05T	0.11P
+would hate to be called weird / does not want to be thought of as normal -	0.10I	0.36N	0.12T	0.31P
+well-rounded / deep -	0.64I	0.42N	0.14F	0.10P
+wants a normal lifespan / wants to live forever -	0.34E	0.57N	0.28T	0.12P
+enthusiastic / deliberate -	1.17I	0.04S	0.80T	0.53J
+tries to be different / tries to be normal -	0.18I	0.43S	0.00T	0.23J
+has not changed much / very different than before -	0.37E	0.16N	0.13F	0.29P
+tense / relaxed -	0.60E	0.10S	0.15F	0.37P
+makes rules / breaks rules -	0.44E	0.45N	0.06T	0.86P
+literal / poetic -	0.05I	0.64N	1.02F	0.44P
+needs to work / only works because they must -	0.07I	0.06N	0.23F	0.78P
+liked school / hated school -	0.38I	0.06S	0.05F	0.35P
+comes up with ideas and convinces other people of them / critically evaluates the ideas of others -	0.66I	0.26S	0.26T	0.26J
+looks on the bright side / finds faults -	0.64I	0.08N	0.70T	0.41J
+thinks it is better to be naive / thinks it is better to be paranoid -	0.38I	0.11N	0.56T	0.24J
+worries about getting scammed all the time / too trusting -	0.37E	0.15S	0.58F	0.15P
+jealous / greedy -	0.14E	0.00S	0.38T	0.04P
+worried about the dangers of technology / thinks technology is always good -	0.05E	0.15S	0.40T	0.15P
+listens more / talks more -	1.37E	0.06S	0.09F	0.23P
+wants to believe / sceptical -	0.39I	0.17N	1.10T	0.16J
+prefers to be first mate / prefers to be captain -	0.93E	0.18N	0.36T	0.11J
+flowing / twitching -	0.24I	0.06S	0.13T	0.04P
+sticks to the plan / adapts the plan on the fly -	0.49E	0.40N	0.12F	1.07P
+idealistic / cynical -	0.45I	0.27S	0.83T	0.35J
+artistic / scientific -	0.21I	0.13S	1.08T	0.42J
+has deep interests / has many interests -	0.72E	0.15S	0.05T	0.32P
+finds natural disasters exciting / finds natural disasters tragic -	0.05E	0.29S	0.66F	0.20J
+accepts things as they are / unsatisfied with the ways things are -	0.06I	0.55N	0.15T	0.00P
+people-oriented / task-oriented -	1.23I	0.07S	1.10T	0.57J
+everyone breaks the law now and then / only bad people break the law -	0.15I	0.40S	0.18F	0.51J
+tells others about their plans / tells others about what they have done -	0.22I	0.10S	0.17T	0.08P
+keep room door closed / leaves door open -	0.83E	0.09S	0.17F	0.08P
+wants to know what others think / decides on their own -	0.19I	0.46N	0.78T	0.02J
+eager / reluctant -	0.86I	0.01N	0.33T	0.08P
+respects the letter of the law / follows the spirit of the law -	0.06E	0.51N	0.27F	0.50P
+criticizes themselves / accepts themselves -	0.48E	0.02S	0.10T	0.10P
+sounds and smells often bring back childhood memories / childhood memories never come unintentionally -	0.14I	0.11N	0.54T	0.13J
+quick thinker / deep thinker -	0.79I	0.37N	0.18F	0.03J
+likes words / likes numbers -	0.10I	0.28S	0.70T	0.22J
+argues for ideas / argues against ideas -	0.04I	0.20S	0.36T	0.07P
+notices a person' / s physical appearance first -	0.21E	0.21S	0.14T	0.09P
+complicated / uncomplicated -	0.27E	0.41S	0.06T	0.13P
+hates the dentist / does not mind the dentist -	0.19E	0.02N	0.11T	0.03P
+wants the big picture / wants the details -	0.28I	0.63S	0.03T	0.18J
+if a lawyer, would prefer to be a defense attorney / would prefer to be prosecutor -	0.13E	0.19S	0.55T	0.25J
+gives hints / tell it straight up -	0.35E	0.09S	0.75T	0.11J
+timid / offensive -	0.98E	0.10N	0.48T	0.04P
+thinks only the lucky succeed / knows only the hard-working get lucky -	0.02E	0.06N	0.26T	0.31J
+judges music based on melody / judges music based on lyrics -	0.01I	0.00N	0.09F	0.03P
+works best alone / works best in groups -	1.19E	0.09S	0.33F	0.21P
+relaxes / daydreams -	0.26I	0.48N	0.22F	0.34P
+views things as many shades of grey / views things as black and white -	0.14E	0.29S	0.25T	0.39J
+keeps pets / has no interest in pets -	0.15I	0.15N	0.40T	0.13J
+easy to gross out / fascinated by disgusting things -	0.09I	0.25N	0.38T	0.12P
+fumbling / graceful -	0.24E	0.03N	0.10T	0.28J
+hopeful / fearful -	0.68I	0.11S	0.09T	0.01J
+shares deepest secrets / has no secrets worth sharing -	0.58I	0.11S	0.69T	0.19J
+light sleeper / deep sleeper -	0.08E	0.03N	0.03F	0.14P
+comfortable / troubled -	0.71I	0.26N	0.08T	0.11P
+likes pop music / hates pop music -	0.30I	0.44N	0.44T	0.06J
+get a task done in one go / does a task a little at a time -	0.23I	0.01S	0.31F	0.41P
+has to be lost for a long time before they ask for help / will stop and ask for directions right away -	0.69E	0.08S	0.19F	0.25J
+feels very lucky / feels unlucky -	0.69I	0.04N	0.04T	0.04P
+interested in family history / wants to leave that all behind -	0.07I	0.11N	0.29T	0.21P
+how it is done matters / only the end results matters -	0.04E	0.11S	0.45T	0.12P
+jokes about things / jokes about people -	0.39E	0.07S	0.23T	0.06P
+plans far ahead / plans at the last minute -	0.30E	0.04S	0.29F	1.26P
+gets broken up with / does the breaking up -	0.37E	0.10N	0.33T	0.20J
+likes change / resists change -	0.53I	0.38S	0.05F	0.37J
+eats quickly / savours the flavour -	0.22I	0.04N	0.13F	0.09J
+finds the world interesting / finds the world boring -	0.25I	0.10S	0.17T	0.07J
+likes popular music / likes music that is not well known -	0.42I	0.43N	0.21T	0.24P
+remembers everything they did on their birthday before last / remembers not so much -	0.39I	0.29N	0.18T	0.19P
+careful with money / a high roller -	0.42E	0.06N	0.28F	0.56P
+has an accurate internal clock / often has no idea what time it is -	0.03I	0.08N	0.16F	0.59P
+supports a strong government / supports strong personal freedoms -	0.08I	0.18N	0.02F	0.31P
+judges a painting on how realistic it is / judges a painting by deeper criteria -	0.02I	0.74N	0.51F	0.38P
+gets worn out by parties / gets fired up by parties -	1.77E	0.20S	0.21F	0.35P
+tries to give convincing speeches / tries to give inspiring speeches -	0.39E	0.28N	1.04F	0.33P
+loyal to friends / loyal to family -	0.04I	0.15S	0.04T	0.27J
+will say \"these are the things I have made\" / will say \"these are the things I have designed\" -	0.06I	0.46N	0.43T	0.11J
+likes getting gifts / has no need for gifts -	0.30I	0.23N	0.58T	0.22J
+cheerful / gloomy -	0.91I	0.18N	0.44T	0.04J
+prefers the old ways / tries new ways -	0.44E	0.55N	0.15T	0.33P
+wants aliens to exist / hopes that they do not -	0.18E	0.43S	0.13F	0.26J
+wishes they could read minds / wishes they could fly -	0.09E	0.03N	0.25F	0.38P
+impatient / tolerant -	0.19I	0.12S	0.40F	0.12P
+jittery / smooth -	0.23E	0.07N	0.27T	0.19J
+well dressed / scruffy -	0.31I	0.05N	0.07T	0.40P
+never wants to make a mistake / accepts mistakes as inevitable -	0.41E	0.17N	0.03T	0.58P
+chooses carefully / chooses randomly -	0.39E	0.05S	0.34F	0.66P
+eats slowly / eats rapidly -	0.22E	0.02S	0.03T	0.03P
+people are basically good / people are basically evil -	0.34I	0.03N	0.65T	0.17J
+interests often change / has stable interests -	0.35I	0.21S	0.15T	0.63J
+thinks people can change / thinks people will only stay the same -	0.24I	0.06S	0.59T	0.34J
+finds it difficult to yell very loudly / yelling to others when they are far away comes naturally -	1.40E	0.11S	0.05F	0.18P
+tries to behave intelligently / tries to show their creativity -	0.27E	0.14N	0.90F	0.52P
+wants a big house / wants a cozy house -	0.52I	0.07N	0.33F	0.02J
+works hard / plays hard -	0.31E	0.02S	0.21F	0.82P
+feels that time passes to slowly / feels that time passes to quickly -	0.06E	0.01S	0.09F	0.11P
+aware of surroundings / easy to sneak up on -	0.02E	0.01S	0.32F	0.29P
+serious / silly -	0.64E	0.03S	0.51F	0.58P
+enjoys cracking joints / cracking joints is gross -	0.19I	0.04S	0.16F	0.31J
+tries to give inspiring speeches / tries to give convincing speeches -	0.38I	0.18S	0.99T	0.17J
+identifies with characters in stories / never really seems to like any fictional characters -	0.06E	0.28S	0.49T	0.12J
+wants to be tough / wants to be classy -	0.13E	0.06N	0.25F	0.04J
+sees the glass as glass half full / sees it as half empty -	0.71I	0.03N	0.35T	0.05J
+needs time alone / bored by time alone -	1.44E	0.18S	0.18F	0.22P
+wants the details / wants the big picture -	0.32E	0.57N	0.05T	0.25P
+has meaningful dreams / has dreams that make no sense, about things that do not matter -	0.03I	0.14S	0.29T	0.04J
+always looks for the best price / takes the first price -	0.08E	0.09N	0.25F	0.28P
+likes to perform in front of other people / avoids public speaking -	1.41I	0.10S	0.04T	0.05J
+wants honest friends / wants impressive friends -	0.20E	0.04N	0.23T	0.04P
+wants to be normal / wants to be different -	0.24E	0.51N	0.01T	0.39P
+takes stuff to mellow out / takes stuff to amp up -	0.28E	0.25S	0.07T	0.03P
+stays at home / goes out on the town -	1.43E	0.05S	0.18F	0.26P
+likes civilization / wants to get back to nature -	0.36I	0.25N	0.30F	0.21P
+values emotions / uncomfortable with emotions -	0.55I	0.03N	1.67T	0.22J
+likes to drive fast / likes to keep it under control -	0.64I	0.11N	0.07F	0.47J
+worries about who they are / accepts who they are -	0.33E	0.09N	0.44T	0.04J
+frequently embarrassed / shameless -	0.93E	0.10N	0.37T	0.13P
+needs silence to sleep / can sleep through anything -	0.58E	0.10S	0.06T	0.23P
+shows anger / hides anger -	0.64I	0.11N	0.22T	0.05J
+ambitious / rebellious -	0.09I	0.01S	0.14F	0.66P
+remembers dreams / does not -	0.08I	0.30S	0.28T	0.03P
+likes team sports / likes individual sports -	0.80I	0.37N	0.31T	0.09J
+trendy / hardcore -	0.12I	0.07N	0.29T	0.02P
+bounces around the room / remains calm -	1.31I	0.03N	0.44T	0.50J
+likes stories with lots of action / likes stories with lots of twists -	0.26I	0.51N	0.03F	0.04P
+thinks some people are all bad / knows everyone has a little bit of good in them -	0.43E	0.11N	0.78F	0.23P
+likes certain types of music / likes all types -	0.29E	0.03N	0.37F	0.16P
+worries about getting let down / worries about letting other people down -	0.09E	0.10S	0.42F	0.10P
+brave / careful -	0.77I	0.23S	0.02T	0.15J
+hates people who show off / maybe a little impressed by people who show off -	0.51E	0.02N	0.24F	0.27P
+enjoys mental competition / enjoys physical competition -	0.42E	0.47S	0.18F	0.07P
+stays up late / rises early -	0.06E	0.14S	0.15T	0.48J
+often mistaken as being angry / anger often goes unnoticed by others -	0.09E	0.07S	0.40F	0.21P
+cooperative / competitive -	0.28E	0.13N	0.64T	0.10J
+fears death / accepts death -	0.03I	0.27N	0.29T	0.10J
+passive / aggressive -	0.86E	0.04N	0.37T	0.13J
+creative / wise -	0.14I	0.09S	0.33T	0.46J
+makes repairs / buys new -	0.23E	0.11S	0.12F	0.13P
+has an average taste in music / has superior taste in music -	0.02E	0.21N	0.01T	0.14P
+reacts deliberately / reacts instantly -	0.67E	0.26S	0.36F	0.46P
+has many interests / has deep interests -	0.82I	0.11N	0.08T	0.25J
+prefer to take multiple choice test / prefer essay answers -	0.16E	0.47N	0.08F	0.01J
+has neat handwriting / has messy handwriting -	0.02I	0.18N	0.14T	0.45P
+likes being on solid ground / dreams of the sea -	0.09E	0.37N	0.43F	0.51P
+bothered by spelling mistakes / is fine with spelling mistakes, as long as the meaning comes through -	0.26E	0.11N	0.13F	0.44P
+likes spring / likes fall -	0.48I	0.39N	0.24T	0.11J
+forever young / all grown up -	0.45I	0.05S	0.38T	0.66J
+passionate / jaded -	0.56I	0.02N	0.73T	0.21J
+poor sense of smell / good sense of smell -	0.17E	0.06S	0.12F	0.02J
+easily hurt / thick-skinned -	0.22E	0.08N	1.10T	0.08J
+arrogant / insecure -	0.54I	0.10S	0.67F	0.19P
+bonds over shared interests / bonds through shared experience -	0.37E	0.14S	0.26F	0.04J
+empirical / theoretical -	0.16I	0.71N	0.11T	0.22P
+envious of what other people have / envious of what other people are -	0.12I	0.26N	0.14F	0.10P
+often misplaces their keys / has a system so that does not happen -	0.20I	0.14S	0.43T	0.80J
+keeps a clean room / just puts stuff where ever -	0.05E	0.15N	0.19F	0.93P
+gets bored of songs quickly / never gets tired of a good song -	0.15I	0.00S	0.18F	0.09J
+hates conflict / makes trouble -	0.64E	0.14N	0.52T	0.23P
+practical / dreamy -	0.01I	0.70N	0.88F	0.76P
+must be special / content to be normal -	0.32I	0.46S	0.14T	0.27J
+prefers to be captain / rather be first mate -	1.02I	0.21S	0.39F	0.19P
+does not vary diet / tries new foods -	0.59E	0.26N	0.15F	0.21P
+knows what they want / still trying to figure it all out -	0.39I	0.25S	0.39F	0.76P
+gives complements / receives compliments -	0.13I	0.00N	0.74T	0.02P
+likes to \"just drive\" / would never drive without a purpose -	0.31I	0.06N	0.49T	0.63J
+thinks about what they would do as a criminal / does not like the idea of crime -	0.03I	0.47S	0.51F	0.34J
+wants deep friendships / wants many friendships -	0.77E	0.11S	0.08T	0.15P
+scheduled / spontaneous -	0.57E	0.34N	0.35F	1.17P
+steady / unstable -	0.19I	0.16N	0.34F	0.56P
+prefer to run a small business / prefer to run a large corporation -	0.64E	0.07N	0.63T	0.07J
+rises early / sleeps late -	0.10I	0.08N	0.10F	0.58P
+bothered by disgusting things / fails to notice how gross things are -	0.11E	0.23N	0.42T	0.34P
+starts over when they fail / tries something new when they fail -	0.30E	0.36N	0.02F	0.31P
+prefer to read the news / prefer to read a story -	0.19I	0.01N	0.43F	0.24P
+likes to tell stories / like to listen to stories -	0.96I	0.05S	0.14T	0.13J
+always looking to taste something new / could eat the same thing every day -	0.51I	0.28S	0.03T	0.33J
+likes sports / bored by sports -	0.70I	0.39N	0.03F	0.10P
+hates being photographed / loves it -	1.06E	0.25S	0.44F	0.21P
+wants to be good at fixing things / wants to be good at fixing people -	0.40E	0.04S	1.28F	0.10P
+works in fits and bursts / works through it steadily -	0.23I	0.38S	0.30T	0.84J
+open / guarded -	1.41I	0.04N	0.67T	0.33J
+tries a sensible solution / tries a clever solution -	0.32E	0.63N	0.34T	0.36P
+leads from the front / manipulates things behind the scenes -	1.16I	0.27N	0.29T	0.09J
+normal / alternative -	0.08I	0.61N	0.02T	0.36P
+likes looking at pictures of them as a baby / hates that -	0.52I	0.14N	0.86T	0.10J
+reads the instructions first / jumps right into it -	0.57E	0.03N	0.18F	0.54P
+reckless / solid -	0.40I	0.10S	0.21T	0.87J
+feels most content at the start of the day / feels most content at the end of the day -	0.23I	0.04N	0.17T	0.11P
+would enjoy being stranded on an island / would want to be rescued as quickly as possible -	0.81E	0.46S	0.30F	0.04P
+reflective / active -	1.00E	0.40S	0.09T	0.03J
+does a good job handling the preparation / does a good job handling the fallout -	0.30E	0.17N	0.05F	0.72P
+mysterious / reliable -	0.30E	0.41S	0.06F	0.53J
+still in contact with first friends / loses touch with old friends -	0.57I	0.35N	0.30T	0.22P
+follows rules / breaks rules -	0.37E	0.56N	0.24T	0.66P
+thinks \"robotic\" is an insult / strives to have a mechanical mind -	0.45I	0.02S	1.21T	0.41J
+embarrassed by the things they daydream about / proud of the things they daydream about -	0.46E	0.31N	0.10T	0.19P
+puts time into choosing/preparing food / goes for whatever is simplest -	0.10I	0.27S	0.17T	0.45P
+has difficulty explaining their ideas / confident explaining their ideas -	1.02E	0.26N	0.31T	0.13J
+focuses on one thing at a time / multitasks -	0.47E	0.14N	0.04T	0.33P
+does their best / does what they need to get by -	0.15I	0.13S	0.17T	0.72P
+buys things they like / only buys things they really need -	0.32I	0.15N	0.39T	0.35J
+obsessed with travelling / no need to see the world -	0.35I	0.08S	0.22T	0.23J
+trusts personal experience / trusts theoretical knowledge -	0.30I	0.45N	0.68T	0.09J
+no need to see the world / obsessed with travelling -	0.47E	0.15N	0.25F	0.33P
+follows the heart / follows the head -	0.36I	0.01N	1.60T	0.45J
+demands precision / satisfied with good enough -	0.25E	0.12S	0.50F	0.68P
+makes lists / relies on memory -	0.06E	0.14N	0.13T	0.75P
+prefer to be wealthy / prefer to be famous -	0.41E	0.15N	0.36F	0.22P
+never edits their writing once they are done / always goes back and makes many revisions -	0.16I	0.06N	0.02T	0.41J
+mellow / energetic -	1.37E	0.05S	0.12F	0.14P
+tactful with others / blunt with others -	0.02E	0.04N	0.86T	0.07J
+nervous / calm -	0.28E	0.05S	0.56T	0.03J
+likes music / likes the visual arts -	0.01I	0.24N	0.06T	0.11P
+happy at home / obsessed with travelling -	0.78E	0.09N	0.17F	0.32P
+bases morality on compassion / bases morality on justice -	0.16I	0.02S	1.32T	0.39J
+okay / perfect -	0.46E	0.14N	0.41T	0.28J
+judges a painting on how realistic it is / judges a painting on the feeling it conveys -	0.07E	0.34N	0.84F	0.33P
+saves it / uses it -	0.39E	0.05N	0.18T	0.29P
