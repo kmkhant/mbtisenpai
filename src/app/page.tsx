@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   ChevronRightCircle,
   EarthIcon,
@@ -35,13 +36,13 @@ export default function Home() {
                 yourself.
               </p>
               <div className="mt-3 flex justify-center md:justify-start">
-                <button
-                  type="button"
-                  className="group transition-all text-md duration-300 ease-in-out inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-linear-to-r from-fuchsia-500 to-pink-500 px-8 py-3 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white group-hover:text-lg"
+                <Link
+                  href="/test"
+                  className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-linear-to-r from-fuchsia-500 to-pink-500 px-8 py-3 text-sm font-semibold text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white group-hover:text-base"
                 >
                   Take the Test
                   <ChevronRightCircle className="size-5 transition-all duration-300 ease-in-out group-hover:translate-x-0.5" />
-                </button>
+                </Link>
               </div>
             </section>
 
