@@ -158,23 +158,28 @@ function ResultPageContent() {
     }
   };
 
+  // Declare FB type for TypeScript
+  interface FacebookSDK {
+    ui: (
+      params:
+        | {
+            display?: string;
+            method: "share";
+            href: string;
+          }
+        | {
+            method: "send";
+            link: string;
+          },
+      callback?: (response: {
+        error_code?: string;
+        error_message?: string;
+      }) => void
+    ) => void;
+  }
+
   const handleFacebookShare = () => {
     if (!result || !shareableUrl || typeof window === "undefined") return;
-
-    // Declare FB type for TypeScript
-    interface FacebookSDK {
-      ui: (
-        params: {
-          display?: string;
-          method: string;
-          href: string;
-        },
-        callback?: (response: {
-          error_code?: string;
-          error_message?: string;
-        }) => void
-      ) => void;
-    }
 
     // Check if FB is loaded
     const FB = (window as typeof window & { FB?: FacebookSDK }).FB;
@@ -197,6 +202,34 @@ function ResultPageContent() {
         `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
           shareableUrl
         )}`,
+        "_blank",
+        "width=600,height=400"
+      );
+    }
+  };
+
+  const handleMessengerShare = () => {
+    if (!result || !shareableUrl || typeof window === "undefined") return;
+
+    // Check if FB is loaded
+    const FB = (window as typeof window & { FB?: FacebookSDK }).FB;
+    if (FB) {
+      // Use Send Dialog for Facebook Messenger
+      FB.ui(
+        {
+          method: "send",
+          link: shareableUrl,
+        },
+        function () {
+          // Handle response if needed
+        }
+      );
+    } else {
+      // Fallback to direct Messenger share URL
+      window.open(
+        `https://www.facebook.com/dialog/send?link=${encodeURIComponent(
+          shareableUrl
+        )}&app_id=${process.env.NEXT_PUBLIC_FACEBOOK_APP_ID || ""}`,
         "_blank",
         "width=600,height=400"
       );
@@ -445,6 +478,24 @@ function ResultPageContent() {
                         />
                       </svg>
                       Share on Facebook
+                    </Button>
+                    <Button
+                      onClick={handleMessengerShare}
+                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 hover:border-blue-300"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 0C5.373 0 0 4.925 0 11c0 2.133.577 4.137 1.595 5.861L0 24l7.437-2.044c1.96.54 4.031.857 6.126.857h.437C21.063 22.853 24 17.925 24 11S18.627 0 12 0zm.748 19.963h-.437c-1.796 0-3.53-.28-5.155-.784l-.354-.103-3.676.966.985-3.528-.23-.375C2.738 14.18 2.25 12.65 2.25 11c0-4.584 4.058-8.31 9.062-8.31S20.375 6.416 20.375 11s-4.058 8.31-9.062 8.31l-.565-.347z" />
+                        <path
+                          fill="#fff"
+                          d="M9.5 12.5c-.276 0-.5-.224-.5-.5s.224-.5.5-.5.5.224.5.5-.224.5-.5.5zm2.5 0c-.276 0-.5-.224-.5-.5s.224-.5.5-.5.5.224.5.5-.224.5-.5.5zm2.5 0c-.276 0-.5-.224-.5-.5s.224-.5.5-.5.5.224.5.5-.224.5-.5.5z"
+                        />
+                      </svg>
+                      Share on Messenger
                     </Button>
                   </div>
                 </DialogContent>
