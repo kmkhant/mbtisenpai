@@ -393,12 +393,41 @@ export default function TestPage() {
           </button>
         </section>
 
-        <footer className="mt-10 border-t border-zinc-100 pt-4 text-center text-[10px] text-zinc-400 sm:mt-12">
+        <footer className="mt-10 border-t border-zinc-100 pt-6 text-center text-[10px] text-zinc-400 sm:mt-12">
+          <div className="mb-4 flex flex-wrap items-center justify-center gap-4 text-xs">
+            <Link
+              href="/about"
+              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+            >
+              About
+            </Link>
+            <span className="text-zinc-300">·</span>
+            <Link
+              href="/contact"
+              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+            >
+              Contact
+            </Link>
+            <span className="text-zinc-300">·</span>
+            <Link
+              href="/privacy"
+              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+            >
+              Privacy
+            </Link>
+            <span className="text-zinc-300">·</span>
+            <Link
+              href="/terms"
+              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+            >
+              Terms
+            </Link>
+          </div>
           <p>
-            ©2025 MBTI Senpai · made with{" "}
+            ©2025 MBTI Senpai · Open-source · made with{" "}
             <span className="text-pink-500">♥</span> by{" "}
             <Link
-              href="https://khaingmyelkhant.com"
+              href="https://www.linkedin.com/in/khaing-myel-khant-457b69146/"
               className="underline underline-offset-2 hover:text-pink-500"
             >
               Khaing Myel Khant

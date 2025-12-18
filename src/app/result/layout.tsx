@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { decodeResult } from "./utils";
 import { TYPE_EXPLANATIONS } from "./data/type-explanations";
 import { encodeResult } from "./utils";

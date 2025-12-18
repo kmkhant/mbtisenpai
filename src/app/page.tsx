@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import {
   ChevronRightCircle,
   EarthIcon,
@@ -13,6 +16,35 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/animate-ui/components/buttons/button";
 import ProfileImage from "@/components/home/ProfileImage";
+
+function TestCountDisplay() {
+  const [testCount, setTestCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    async function fetchTestCount() {
+      try {
+        const res = await fetch("/api/stats/count");
+        if (res.ok) {
+          const data = (await res.json()) as { count: number };
+          setTestCount(data.count);
+        }
+      } catch (error) {
+        console.error("Failed to fetch test count:", error);
+      }
+    }
+
+    fetchTestCount();
+  }, []);
+
+  const formattedTestCount =
+    testCount !== null && testCount > 0
+      ? testCount.toLocaleString()
+      : testCount === null
+      ? "500+"
+      : "0";
+
+  return <>{formattedTestCount}</>;
+}
 
 export default function Home() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mbtisenpai.com";
@@ -92,7 +124,7 @@ export default function Home() {
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex-1">
                     <div className="text-lg font-semibold bg-linear-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent">
-                      13,100+
+                      100+
                     </div>
                     <div className="mt-1 text-xs font-medium capitalize text-zinc-500">
                       Site Visits
@@ -101,7 +133,7 @@ export default function Home() {
                   <div className="h-10 w-px bg-pink-100" />
                   <div className="flex-1">
                     <div className="text-lg font-semibold bg-linear-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent">
-                      500+
+                      <TestCountDisplay />
                     </div>
                     <div className="mt-1 text-xs font-medium capitalize text-zinc-500">
                       Tests Taken
@@ -376,14 +408,53 @@ export default function Home() {
             </div>
           </section>
 
-          <footer className="mt-10 border-t border-zinc-100 pt-4 text-center text-[10px] text-zinc-400 md:mt-12 md:flex md:items-center md:justify-between md:text-left md:text-[11px]">
-            <p>
-              ©2025 MBTI Senpai · made with{" "}
-              <span className="text-pink-500">♥</span> by Khaing Myel Khant
-            </p>
-            <p className="mt-2 md:mt-0">
-              Designed for mobile, tablet and desktop.
-            </p>
+          <footer className="mt-10 border-t border-zinc-100 pt-6 text-center text-[10px] text-zinc-400 md:mt-12 md:text-[11px]">
+            <div className="mb-4 flex flex-wrap items-center justify-center gap-4 text-xs">
+              <Link
+                href="/about"
+                className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+              >
+                About
+              </Link>
+              <span className="text-zinc-300">·</span>
+              <Link
+                href="/contact"
+                className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+              >
+                Contact
+              </Link>
+              <span className="text-zinc-300">·</span>
+              <Link
+                href="/privacy"
+                className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+              >
+                Privacy
+              </Link>
+              <span className="text-zinc-300">·</span>
+              <Link
+                href="/terms"
+                className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+              >
+                Terms
+              </Link>
+            </div>
+            <div className="md:flex md:items-center md:justify-between">
+              <p>
+                ©2025 MBTI Senpai · Open-source · made with{" "}
+                <span className="text-pink-500">♥</span> by{" "}
+                <Link
+                  href="https://www.linkedin.com/in/khaing-myel-khant-457b69146/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-500 hover:text-fuchsia-600 transition-colors underline underline-offset-2"
+                >
+                  Khaing Myel Khant
+                </Link>
+              </p>
+              <p className="mt-2 md:mt-0">
+                Designed for mobile, tablet and desktop.
+              </p>
+            </div>
           </footer>
         </main>
       </div>

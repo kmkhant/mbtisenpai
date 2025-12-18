@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Share2, Check } from "lucide-react";
+import { Share2, Check, CopyIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeaderSection } from "./components/HeaderSection";
 import { RadarChartSection } from "./components/RadarChartSection";
@@ -19,45 +19,67 @@ import {
 } from "./hooks/use-result-data";
 import { TYPE_EXPLANATIONS } from "./data/type-explanations";
 import type { MbtiResult } from "./types";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  TwitterShareButton,
+  TelegramIcon,
+  TelegramShareButton,
+  ViberIcon,
+  ViberShareButton,
+  LinkedinShareButton,
+  LinkedinIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+} from "next-share";
+import {
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogContent,
+  DialogTrigger,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 // Lazy load below-the-fold sections
 const CompatibilitySection = dynamic(
   () =>
-    import("./components/CompatibilitySection").then(
-      (mod) => ({ default: mod.CompatibilitySection })
-    ),
+    import("./components/CompatibilitySection").then((mod) => ({
+      default: mod.CompatibilitySection,
+    })),
   { ssr: false }
 );
 
 const DeepAnalysisSection = dynamic(
   () =>
-    import("./components/DeepAnalysisSection").then(
-      (mod) => ({ default: mod.DeepAnalysisSection })
-    ),
+    import("./components/DeepAnalysisSection").then((mod) => ({
+      default: mod.DeepAnalysisSection,
+    })),
   { ssr: false }
 );
 
 const TypeExplanationSection = dynamic(
   () =>
-    import("./components/TypeExplanationSection").then(
-      (mod) => ({ default: mod.TypeExplanationSection })
-    ),
+    import("./components/TypeExplanationSection").then((mod) => ({
+      default: mod.TypeExplanationSection,
+    })),
   { ssr: false }
 );
 
 const DimensionNarrativesSection = dynamic(
   () =>
-    import("./components/DimensionNarrativesSection").then(
-      (mod) => ({ default: mod.DimensionNarrativesSection })
-    ),
+    import("./components/DimensionNarrativesSection").then((mod) => ({
+      default: mod.DimensionNarrativesSection,
+    })),
   { ssr: false }
 );
 
 const DetailedScoreAnalysisSection = dynamic(
   () =>
-    import("./components/DetailedScoreAnalysisSection").then(
-      (mod) => ({ default: mod.DetailedScoreAnalysisSection })
-    ),
+    import("./components/DetailedScoreAnalysisSection").then((mod) => ({
+      default: mod.DetailedScoreAnalysisSection,
+    })),
   { ssr: false }
 );
 
@@ -117,36 +139,36 @@ function ResultPageContent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Generate shareable URL (same as copy link handler)
+  const shareableUrl = (() => {
+    if (!result || typeof window === "undefined") return "";
+    const encoded = encodeResult(result);
+    if (!encoded) return "";
+    return `${window.location.origin}/result?data=${encoded}`;
+  })();
+
   const handleShare = async () => {
-    if (!result) return;
+    if (!result || !shareableUrl) return;
 
     try {
-      const encoded = encodeResult(result);
-      if (!encoded) return;
-
-      const shareUrl = `${window.location.origin}/result?data=${encoded}`;
-      await navigator.clipboard.writeText(shareUrl);
+      await navigator.clipboard.writeText(shareableUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      const encoded = encodeResult(result);
-      if (encoded) {
-        const shareUrl = `${window.location.origin}/result?data=${encoded}`;
-        const textArea = document.createElement("textarea");
-        textArea.value = shareUrl;
-        textArea.style.position = "fixed";
-        textArea.style.opacity = "0";
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-          document.execCommand("copy");
-          setCopied(true);
-          setTimeout(() => setCopied(false), 2000);
-        } catch {
-          // Failed to copy
-        }
-        document.body.removeChild(textArea);
+      const textArea = document.createElement("textarea");
+      textArea.value = shareableUrl;
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch {
+        // Failed to copy
       }
+      document.body.removeChild(textArea);
     }
   };
 
@@ -352,12 +374,73 @@ function ResultPageContent() {
                 </>
               ) : (
                 <>
-                  <Share2 className="h-4 w-4" />
-                  Share Result
+                  <CopyIcon className="h-4 w-4" />
+                  Copy Link
                 </>
               )}
             </Button>
           )}
+          <div>
+            <div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className="inline-flex items-center justify-center gap-2 rounded-full border border-pink-100 px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
+                    <Share2 className="h-4 w-4" />
+                    <div>Share Result</div>
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Share Result via</DialogTitle>
+                    <DialogDescription>
+                      Share your result with your friends and family.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="flex flex-col gap-3">
+                    <FacebookShareButton url={shareableUrl}>
+                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
+                        <FacebookIcon size={24} />
+                        <div>Share on Facebook</div>
+                      </div>
+                    </FacebookShareButton>
+                    <FacebookMessengerShareButton
+                      url={shareableUrl}
+                      appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID ?? ""}
+                    >
+                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
+                        <FacebookMessengerIcon size={24} />
+                        <div>Share on Facebook Messenger</div>
+                      </div>
+                    </FacebookMessengerShareButton>
+                    <TwitterShareButton url={shareableUrl}>
+                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
+                        <TwitterIcon size={24} />
+                        <div>Share on Twitter</div>
+                      </div>
+                    </TwitterShareButton>
+                    <TelegramShareButton url={shareableUrl}>
+                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
+                        <TelegramIcon size={24} />
+                        <div>Share on Telegram</div>
+                      </div>
+                    </TelegramShareButton>
+                    <ViberShareButton url={shareableUrl}>
+                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
+                        <ViberIcon size={24} />
+                        <div>Share on Viber</div>
+                      </div>
+                    </ViberShareButton>
+                    <LinkedinShareButton url={shareableUrl}>
+                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
+                        <LinkedinIcon size={24} />
+                        <div>Share on Linkedin</div>
+                      </div>
+                    </LinkedinShareButton>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </div>
           <Link
             href="/test"
             className="inline-flex items-center justify-center rounded-full border border-pink-100 px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm"
@@ -369,12 +452,46 @@ function ResultPageContent() {
           </Button>
         </section>
 
-        <footer className="mt-8 border-t border-zinc-100 pt-4 text-center text-[10px] text-zinc-400 sm:mt-10">
+        <footer className="mt-8 border-t border-zinc-100 pt-6 text-center text-[10px] text-zinc-400 sm:mt-10">
+          <div className="mb-4 flex flex-wrap items-center justify-center gap-4 text-xs">
+            <Link
+              href="/about"
+              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+            >
+              About
+            </Link>
+            <span className="text-zinc-300">·</span>
+            <Link
+              href="/contact"
+              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+            >
+              Contact
+            </Link>
+            <span className="text-zinc-300">·</span>
+            <Link
+              href="/privacy"
+              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+            >
+              Privacy
+            </Link>
+            <span className="text-zinc-300">·</span>
+            <Link
+              href="/terms"
+              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+            >
+              Terms
+            </Link>
+          </div>
           <p>
-            ©2025 MBTI Senpai · made with
+            ©2025 MBTI Senpai · Open-source · made with
             <span className="text-pink-500"> ♥ </span>
-            by
-            <span className="font-medium"> Khaing Myel Khant</span>
+            by{" "}
+            <Link
+              href="https://www.linkedin.com/in/khaing-myel-khant-457b69146/"
+              className="font-medium underline underline-offset-2 hover:text-pink-500"
+            >
+              Khaing Myel Khant
+            </Link>
           </p>
         </footer>
       </main>

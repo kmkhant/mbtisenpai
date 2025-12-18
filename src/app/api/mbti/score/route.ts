@@ -342,6 +342,20 @@ export async function POST(req: NextRequest) {
       response.warning = `Only ${validAnswers.length} out of ${EXPECTED_QUESTIONS_COUNT} questions were answered. Results may be less accurate.`;
     }
 
+    // Increment test count asynchronously (don't block response)
+    // Only count if we have valid results (not all neutral or invalid)
+    if (type !== "XXXX" && validAnswers.length > 0) {
+      // Import and call increment function directly (more efficient than API call)
+      import("../../stats/utils")
+        .then(({ incrementCount }) => incrementCount())
+        .catch((err) => {
+          // Silently fail - don't block the response if stats update fails
+          if (DEBUG_LOGGING) {
+            console.warn("[SCORE] Failed to increment test count:", err);
+          }
+        });
+    }
+
     return NextResponse.json(response, { status: 200 });
   } catch (error) {
     console.error("[POST /api/mbti/score] failed", error);

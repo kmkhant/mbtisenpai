@@ -30,7 +30,12 @@ export const metadata: Metadata = {
     "16 personalities",
     "personality insights",
   ],
-  authors: [{ name: "Khaing Myel Khant", url: "https://khaingmyelkhant.com" }],
+  authors: [
+    {
+      name: "Khaing Myel Khant",
+      url: "https://www.linkedin.com/in/khaing-myel-khant-457b69146/",
+    },
+  ],
   creator: "Khaing Myel Khant",
   publisher: "MBTI Senpai",
   robots: {
