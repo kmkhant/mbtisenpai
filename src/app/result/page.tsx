@@ -6,6 +6,9 @@ import { encodeResult } from "./utils";
 import { ResultPageContent } from "./page-content";
 import { ResultSkeleton } from "./components/ResultSkeleton";
 
+// Mark this route as dynamic since it depends on searchParams
+export const dynamic = "force-dynamic";
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_URL
