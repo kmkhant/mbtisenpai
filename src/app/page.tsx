@@ -11,7 +11,8 @@ import {
   BarChart3,
   Sparkles,
 } from "lucide-react";
-import Image from "next/image";
+import { Button } from "@/components/animate-ui/components/buttons/button";
+import ProfileImage from "@/components/home/ProfileImage";
 
 export default function Home() {
   return (
@@ -19,15 +20,7 @@ export default function Home() {
       <main className="w-full max-w-md rounded-[32px] bg-white px-6 py-7 shadow-[0_18px_45px_rgba(199,110,255,0.18)] sm:max-w-lg sm:px-8 sm:py-8 md:max-w-3xl md:px-10 md:py-10 lg:max-w-5xl">
         <header className="flex items-center justify-center md:justify-between">
           <div className="flex items-center gap-2">
-            <div>
-              <Image
-                src="/logo.png"
-                alt="MBTI Senpai"
-                width={100}
-                height={100}
-                className="w-16 h-16 rounded-full"
-              />
-            </div>
+            <ProfileImage thickness={1} />
             <span className="inline-flex items-center rounded-full border border-pink-400 bg-linear-to-b from-fuchsia-500 to-pink-600 bg-clip-text px-4 py-1 text-xs font-semibold tracking-wide text-transparent">
               MBTI Senpai
             </span>
@@ -54,15 +47,10 @@ export default function Home() {
                 just give 10 minutes to accurately understand more about
                 yourself.
               </p>
-              <div className="mt-3 flex justify-center md:justify-start">
-                <Link
-                  href="/test"
-                  className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-linear-to-r from-fuchsia-500 to-pink-500 px-8 py-3 text-sm font-semibold text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white group-hover:text-base"
-                >
-                  Take the Test
-                  <ChevronRightCircle className="size-5 transition-all duration-300 ease-in-out group-hover:translate-x-0.5" />
-                </Link>
-              </div>
+              <Button className="mt-3 md:justify-start group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-linear-to-r from-fuchsia-500 to-pink-500 px-8 py-3 text-sm font-semibold text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white group-hover:text-base">
+                <Link href="/test">Take the Test</Link>
+                <ChevronRightCircle className="size-5 transition-all duration-300 ease-in-out group-hover:translate-x-0.5" />
+              </Button>
             </section>
 
             <section className="mt-4 rounded-2xl border border-pink-50 bg-fuchsia-50/60 px-4 py-4 text-center text-xs text-zinc-600 shadow-sm sm:text-sm">
@@ -87,7 +75,7 @@ export default function Home() {
                 <div className="h-10 w-px bg-pink-100" />
                 <div className="flex-1">
                   <div className="text-lg font-semibold bg-linear-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent">
-                    93.17%
+                    96.48%
                   </div>
                   <div className="mt-1 text-xs font-medium capitalize text-zinc-500">
                     Accuracy

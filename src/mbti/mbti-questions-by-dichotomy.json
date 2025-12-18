@@ -1860,9 +1860,9 @@
     },
     {
       "id": 53,
-      "prompt": "Which feels more like you: will say \\\"these are the things I have made\\\" or will say \\\"these are the things I have designed\\\"?",
-      "left": "will say \\\"these are the things I have made\\\"",
-      "right": "will say \\\"these are the things I have designed\\\"",
+      "prompt": "Which feels more like you: will say \"these are the things I have made\" or will say \"these are the things I have designed\"?",
+      "left": "will say \"these are the things I have made\"",
+      "right": "will say \"these are the things I have designed\"",
       "weights": {
         "I": 0.05,
         "E": 0,
@@ -2116,9 +2116,9 @@
     },
     {
       "id": 157,
-      "prompt": "Which feels more like you: will say \\\"these are the things I have made\\\" or will say \\\"these are the things I have designed\\\"?",
-      "left": "will say \\\"these are the things I have made\\\"",
-      "right": "will say \\\"these are the things I have designed\\\"",
+      "prompt": "Which feels more like you: will say \"these are the things I have made\" or will say \"these are the things I have designed\"?",
+      "left": "will say \"these are the things I have made\"",
+      "right": "will say \"these are the things I have designed\"",
       "weights": {
         "I": 0.06,
         "E": 0,
@@ -3606,8 +3606,8 @@
     },
     {
       "id": 275,
-      "prompt": "Which feels more like you: thinks \\\"robotic\\\" is an insult or strives to have a mechanical mind?",
-      "left": "thinks \\\"robotic\\\" is an insult",
+      "prompt": "Which feels more like you: thinks \"robotic\" is an insult or strives to have a mechanical mind?",
+      "left": "thinks \"robotic\" is an insult",
       "right": "strives to have a mechanical mind",
       "weights": {
         "I": 0.45,
@@ -4552,8 +4552,8 @@
     },
     {
       "id": 245,
-      "prompt": "Which feels more like you: likes to \\\"just drive\\\" or would never drive without a purpose?",
-      "left": "likes to \\\"just drive\\\"",
+      "prompt": "Which feels more like you: likes to \"just drive\" or would never drive without a purpose?",
+      "left": "likes to \"just drive\"",
       "right": "would never drive without a purpose",
       "weights": {
         "I": 0.31,

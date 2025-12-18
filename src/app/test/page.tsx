@@ -11,7 +11,7 @@ import {
 } from "@/components/animate-ui/components/base/radio";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
-import Image from "next/image";
+import ProfileImage from "@/components/home/ProfileImage";
 import type { MbtiQuestion } from "@/app/api/mbti/questions/route";
 
 // Likert-style answer value:
@@ -197,23 +197,17 @@ export default function TestPage() {
         <header className="flex items-center justify-center">
           <div className="flex items-center gap-2">
             <div className="inline-flex items-center gap-2 rounded-full border border-pink-300 bg-white/80 px-5 py-2 text-xs font-semibold tracking-wide text-fuchsia-600 shadow-sm sm:text-sm">
-              <div className="w-10 h-10 rounded-full">
-                <Image
-                  src="/logo.png"
-                  alt="MBTI Senpai"
-                  width={100}
-                  height={100}
-                  className="w-10 h-10 rounded-full"
-                />
-              </div>
+              <ProfileImage size="w-10 h-10" thickness={0} />
               <div>
                 <div>MBTI Senpai Test</div>
                 <div className="border-t border-zinc-200 w-full mt-1" />
                 <div>
-                  {questions.length > 0 && (
-                    <span className="text-xs font-medium text-zinc-400">
+                  {questions.length > 0 ? (
+                    <span className="text-xs mt-1 font-medium text-zinc-400">
                       Page {currentPage + 1} of {totalPages}
                     </span>
+                  ) : (
+                    <Skeleton className="h-4 w-20 mt-1" />
                   )}
                 </div>
               </div>

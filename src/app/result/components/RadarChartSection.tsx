@@ -21,7 +21,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { chartConfig, fallbackChartData } from "../data/chart-config";
+import { chartConfig } from "../data/chart-config";
 import type { MbtiLetter } from "../types";
 
 interface ChartDataPoint {
