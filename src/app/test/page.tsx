@@ -233,7 +233,7 @@ export default function TestPage() {
                 </div>
 
                 <RadioGroup
-                  className="flex flex-wrap items-center justify-center gap-16"
+                  className="flex flex-wrap items-center justify-between mx-4"
                   value={
                     answers[question.id] !== null &&
                     answers[question.id] !== undefined
