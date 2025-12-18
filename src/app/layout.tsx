@@ -12,8 +12,67 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
-  title: "MBTI Senpai",
-  description: "Take MBTI Test Quick, Easy and Accurate from Anywhere",
+  title: {
+    default: "MBTI Senpai - Free MBTI Personality Test",
+    template: "%s | MBTI Senpai",
+  },
+  description:
+    "Take a free, accurate MBTI personality test in just 10 minutes. Discover your personality type with detailed insights, compatibility analysis, and comprehensive results. Quick, easy, and completely free.",
+  keywords: [
+    "MBTI test",
+    "personality test",
+    "free MBTI",
+    "Myers-Briggs",
+    "personality type",
+    "MBTI quiz",
+    "personality assessment",
+    "MBTI free online",
+    "16 personalities",
+    "personality insights",
+  ],
+  authors: [{ name: "Khaing Myel Khant", url: "https://khaingmyelkhant.com" }],
+  creator: "Khaing Myel Khant",
+  publisher: "MBTI Senpai",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: "MBTI Senpai",
+    title: "MBTI Senpai - Free MBTI Personality Test",
+    description:
+      "Take a free, accurate MBTI personality test in just 10 minutes. Discover your personality type with detailed insights and compatibility analysis.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "MBTI Senpai - Free Personality Test",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MBTI Senpai - Free MBTI Personality Test",
+    description:
+      "Take a free, accurate MBTI personality test in just 10 minutes. Discover your personality type with detailed insights.",
+    images: ["/logo.png"],
+    creator: "@mbtisenpai",
+  },
+  alternates: {
+    canonical: "/",
+  },
+  category: "Personality Test",
 };
 
 export default function RootLayout({
@@ -24,7 +83,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} antialiased`}>{children}</body>
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""} />
+      <GoogleAnalytics
+        gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""}
+      />
     </html>
   );
 }

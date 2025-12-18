@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import { Suspense } from "react";
 import { decodeResult } from "./utils";
 import { TYPE_EXPLANATIONS } from "./data/type-explanations";
 import { encodeResult } from "./utils";
+import { ResultPageContent } from "./page-content";
+import { ResultSkeleton } from "./components/ResultSkeleton";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
@@ -46,11 +48,11 @@ export async function generateMetadata({
     const params = await searchParams;
     const dataParam = params?.data;
 
-    let result = null;
-    if (dataParam) {
-      result = decodeResult(dataParam);
+    if (!dataParam) {
+      return getDefaultMetadata();
     }
 
+    const result = decodeResult(dataParam);
     if (!result || !result.type) {
       return getDefaultMetadata();
     }
@@ -104,10 +106,17 @@ export async function generateMetadata({
   }
 }
 
-export default function ResultLayout({
-  children,
+export default async function ResultPage({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  searchParams: _searchParams,
 }: {
-  children: React.ReactNode;
+  searchParams: Promise<{ data?: string }>;
 }) {
-  return children;
+  // searchParams is used in generateMetadata above, but not needed here
+  // since ResultPageContent is a client component that uses useSearchParams()
+  return (
+    <Suspense fallback={<ResultSkeleton />}>
+      <ResultPageContent />
+    </Suspense>
+  );
 }
