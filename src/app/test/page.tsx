@@ -5,8 +5,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ChevronRightCircle } from "lucide-react";
 
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-
+import {
+  RadioGroup,
+  Radio,
+} from "@/components/animate-ui/components/base/radio";
+import { Label } from "@/components/ui/label";
+import { Skeleton } from "@/components/ui/skeleton";
+import Image from "next/image";
 import type { MbtiQuestion } from "@/app/api/mbti/questions/route";
 
 // Likert-style answer value:
@@ -191,22 +196,69 @@ export default function TestPage() {
       <main className="flex w-full max-w-md flex-col rounded-[32px] bg-white px-6 py-7 shadow-[0_18px_45px_rgba(199,110,255,0.18)] sm:max-w-lg sm:px-8 sm:py-8 md:max-w-2xl md:px-10 md:py-10">
         <header className="flex items-center justify-center">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center rounded-full border border-pink-300 bg-white/80 px-5 py-2 text-xs font-semibold tracking-wide text-fuchsia-600 shadow-sm sm:text-sm">
-              MBTI Senpai Test
-            </span>
-            {questions.length > 0 && (
-              <span className="text-[11px] font-medium text-zinc-400">
-                Page {currentPage + 1}/{totalPages}
-              </span>
-            )}
+            <div className="inline-flex items-center gap-2 rounded-full border border-pink-300 bg-white/80 px-5 py-2 text-xs font-semibold tracking-wide text-fuchsia-600 shadow-sm sm:text-sm">
+              <div className="w-10 h-10 rounded-full">
+                <Image
+                  src="/logo.png"
+                  alt="MBTI Senpai"
+                  width={100}
+                  height={100}
+                  className="w-10 h-10 rounded-full"
+                />
+              </div>
+              <div>
+                <div>MBTI Senpai Test</div>
+                <div className="border-t border-zinc-200 w-full mt-1" />
+                <div>
+                  {questions.length > 0 && (
+                    <span className="text-xs font-medium text-zinc-400">
+                      Page {currentPage + 1} of {totalPages}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </header>
 
         <section className="mt-8 space-y-6 sm:mt-10">
           {isLoadingQuestions && (
-            <p className="text-center text-sm text-zinc-500">
-              Loading questions...
-            </p>
+            <div className="space-y-6">
+              {Array.from({ length: QUESTIONS_PER_PAGE }).map((_, index) => (
+                <div key={index} className="space-y-3">
+                  {/* Question prompt skeleton */}
+                  <div className="flex items-start gap-2">
+                    <Skeleton className="h-5 w-6 mt-0.5" />
+                    <div className="flex-1 space-y-2">
+                      <Skeleton className="h-5 w-full" />
+                      <Skeleton className="h-5 w-4/5" />
+                    </div>
+                  </div>
+                  {/* Left/Right labels skeleton */}
+                  <div className="rounded-lg bg-zinc-50 px-3 py-2">
+                    <div className="flex justify-between gap-3">
+                      <Skeleton className="h-4 w-24" />
+                      <Skeleton className="h-4 w-24" />
+                    </div>
+                  </div>
+                  {/* Radio buttons skeleton */}
+                  <div className="flex flex-wrap items-center justify-between mx-4 gap-2">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Skeleton
+                        key={i}
+                        className={`${
+                          i === 0 || i === 4
+                            ? "h-7 w-7"
+                            : i === 1 || i === 3
+                            ? "h-6 w-6"
+                            : "h-5 w-5"
+                        } rounded-full`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
 
           {error && <p className="text-center text-sm text-red-500">{error}</p>}
@@ -233,7 +285,7 @@ export default function TestPage() {
                 </div>
 
                 <RadioGroup
-                  className="flex flex-wrap items-center justify-between mx-4"
+                  className="flex flex-wrap items-center justify-between mx-4 gap-2"
                   value={
                     answers[question.id] !== null &&
                     answers[question.id] !== undefined
@@ -248,31 +300,61 @@ export default function TestPage() {
                     }));
                   }}
                 >
-                  <RadioGroupItem
-                    value="-2"
-                    id={`q${question.id}-m2`}
-                    className="size-7 border-blue-400 data-[state=checked]:border-blue-600 [&_svg]:fill-blue-600"
-                  />
-                  <RadioGroupItem
-                    value="-1"
-                    id={`q${question.id}-m1`}
-                    className="size-6 border-blue-400 data-[state=checked]:border-blue-600 [&_svg]:fill-blue-600"
-                  />
-                  <RadioGroupItem
-                    value="0"
-                    id={`q${question.id}-0`}
-                    className="size-5 border-slate-500 data-[state=checked]:border-slate-700 [&_svg]:fill-slate-700"
-                  />
-                  <RadioGroupItem
-                    value="1"
-                    id={`q${question.id}-p1`}
-                    className="size-6 border-fuchsia-400 data-[state=checked]:border-fuchsia-600 [&_svg]:fill-fuchsia-600"
-                  />
-                  <RadioGroupItem
-                    value="2"
-                    id={`q${question.id}-p2`}
-                    className="size-7 border-fuchsia-400 data-[state=checked]:border-fuchsia-600 [&_svg]:fill-fuchsia-600"
-                  />
+                  <Label
+                    htmlFor={`q${question.id}-m2`}
+                    className="flex items-center gap-x-3 cursor-pointer"
+                  >
+                    <Radio
+                      value="-2"
+                      id={`q${question.id}-m2`}
+                      nativeButton={true}
+                      className="size-7 border-blue-400 data-[state=checked]:border-blue-600 [&_svg]:fill-blue-600"
+                    />
+                  </Label>
+                  <Label
+                    htmlFor={`q${question.id}-m1`}
+                    className="flex items-center gap-x-3 cursor-pointer"
+                  >
+                    <Radio
+                      value="-1"
+                      id={`q${question.id}-m1`}
+                      nativeButton={true}
+                      className="size-6 border-blue-400 data-[state=checked]:border-blue-600 [&_svg]:fill-blue-600"
+                    />
+                  </Label>
+                  <Label
+                    htmlFor={`q${question.id}-0`}
+                    className="flex items-center gap-x-3 cursor-pointer"
+                  >
+                    <Radio
+                      value="0"
+                      id={`q${question.id}-0`}
+                      nativeButton={true}
+                      className="size-5 border-slate-500 data-[state=checked]:border-slate-700 [&_svg]:fill-slate-700"
+                    />
+                  </Label>
+                  <Label
+                    htmlFor={`q${question.id}-p1`}
+                    className="flex items-center gap-x-3 cursor-pointer"
+                  >
+                    <Radio
+                      value="1"
+                      id={`q${question.id}-p1`}
+                      nativeButton={true}
+                      className="size-6 border-fuchsia-400 data-[state=checked]:border-fuchsia-600 [&_svg]:fill-fuchsia-600"
+                    />
+                  </Label>
+                  <Label
+                    htmlFor={`q${question.id}-p2`}
+                    className="flex items-center gap-x-3 cursor-pointer"
+                  >
+                    <Radio
+                      value="2"
+                      id={`q${question.id}-p2`}
+                      nativeButton={true}
+                      className="size-7 border-fuchsia-400 data-[state=checked]:border-fuchsia-600 [&_svg]:fill-fuchsia-600"
+                    />
+                  </Label>
                 </RadioGroup>
               </div>
             ))}

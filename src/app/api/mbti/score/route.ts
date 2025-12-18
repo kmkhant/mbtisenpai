@@ -205,12 +205,25 @@ export async function POST(req: NextRequest) {
     // Score valid answers
     // Weight interpretation: Weights in question data represent association with the "right" option.
     // - Positive answer (right, +1 or +2) → adds to weighted traits
-    // - Negative answer (left, -1 or -2) → subtracts from weighted traits
+    // - Negative answer (left, -1 or -2) → adds to opposite traits (inverted weights)
     // - Neutral answer (0) → no contribution (already filtered above)
     //
     // Example: Question "angry / resentful" with weights {I: 0.21, N: 0.02, J: 0.04}
     // - Choosing "resentful" (right, +2) → I += 0.42, N += 0.04, J += 0.08
-    // - Choosing "angry" (left, -2) → I -= 0.42, N -= 0.04, J -= 0.08
+    // - Choosing "angry" (left, -2) → E += 0.42, S += 0.04, P += 0.08 (opposite traits)
+    //
+    // Dichotomy pairs for inverting weights:
+    const dichotomyPairs: Record<MbtiLetter, MbtiLetter> = {
+      E: "I",
+      I: "E",
+      S: "N",
+      N: "S",
+      T: "F",
+      F: "T",
+      J: "P",
+      P: "J",
+    };
+
     const scores = emptyScores();
 
     for (const answer of validAnswers) {
@@ -223,6 +236,10 @@ export async function POST(req: NextRequest) {
         continue;
       }
 
+      // Get absolute value for strength (0, 1, or 2)
+      const strength = Math.abs(answerValue);
+      const isRight = answerValue > 0;
+
       // Apply all non-zero weights from the question
       // Each weight represents how much that trait is associated with the right option
       for (const [letter, weight] of Object.entries(meta.weights) as [
@@ -230,10 +247,14 @@ export async function POST(req: NextRequest) {
         number
       ][]) {
         if (weight !== 0) {
-          // Multiply answer value by weight to get contribution
-          // Positive answer (right) → positive contribution
-          // Negative answer (left) → negative contribution
-          scores[letter] += answerValue * weight;
+          if (isRight) {
+            // Right choice: add to weighted traits
+            scores[letter] += strength * weight;
+          } else {
+            // Left choice: add to opposite traits
+            const oppositeLetter = dichotomyPairs[letter];
+            scores[oppositeLetter] += strength * weight;
+          }
         }
       }
     }
@@ -250,16 +271,18 @@ export async function POST(req: NextRequest) {
     // Percentages are normalized to a 0-100 scale for display purposes.
     // The actual type determination uses raw scores (see computeType function).
     //
-    // Normalization process:
-    // 1. Find minimum score in the pair (handles negative scores)
-    // 2. Subtract minimum from both scores (normalizes to non-negative range)
+    // Since scores are now always positive (left choices add to opposite traits),
+    // normalization is simpler but we keep the same logic for consistency:
+    // 1. Find minimum score in the pair
+    // 2. Subtract minimum from both scores (normalizes to relative difference)
     // 3. Calculate percentage based on normalized scores
     // 4. Ensure percentages sum to exactly 100
     //
-    // Example: E = -100, I = -50
-    // - minScore = -100
-    // - normalizedE = 0, normalizedI = 50
-    // - E% = 0%, I% = 100% (correctly shows I is higher)
+    // Example: E = 100, I = 50
+    // - minScore = 50
+    // - normalizedE = 50, normalizedI = 0
+    // - total = 50
+    // - E% = 100%, I% = 0% (correctly shows E is higher)
     const percentages: Scores = { ...scores };
 
     const pairs: [MbtiLetter, MbtiLetter][] = [
@@ -280,8 +303,7 @@ export async function POST(req: NextRequest) {
         // Edge case: Equal scores or both zero - default to 50/50
         // This can happen if:
         // - Both scores are exactly equal
-        // - Both scores are negative and equal (normalized to 0)
-        // - All answers for this dichotomy were neutral
+        // - Both scores are zero (all answers for this dichotomy were neutral)
         percentages[a] = 50;
         percentages[b] = 50;
       } else {

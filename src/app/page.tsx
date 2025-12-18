@@ -25,7 +25,7 @@ export default function Home() {
                 alt="MBTI Senpai"
                 width={100}
                 height={100}
-                className="w-10 h-10 rounded-full"
+                className="w-16 h-16 rounded-full"
               />
             </div>
             <span className="inline-flex items-center rounded-full border border-pink-400 bg-linear-to-b from-fuchsia-500 to-pink-600 bg-clip-text px-4 py-1 text-xs font-semibold tracking-wide text-transparent">
@@ -47,6 +47,8 @@ export default function Home() {
                 Quick, Easy and Accurate
                 <br />
                 from Anywhere
+                <br />
+                for FREE
               </h1>
               <p className="text-sm leading-relaxed text-zinc-500 sm:text-base">
                 just give 10 minutes to accurately understand more about
@@ -98,7 +100,7 @@ export default function Home() {
           <div className="space-y-6">
             <section className="space-y-3">
               <h2 className="text-lg font-semibold capitalize text-pink-500">
-                What MBTI Senpai helps you get for FREE
+                What MBTI Senpai helps you get
               </h2>
               <p className="text-sm leading-relaxed text-zinc-600">
                 Master your strengths and navigate your growth with expert
@@ -239,6 +241,114 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="mt-10 space-y-6 md:mt-12">
+          <div className="text-center md:text-left">
+            <h2 className="bg-linear-to-b from-fuchsia-500 to-pink-600 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
+              What is MBTI?
+            </h2>
+            <p className="mt-2 text-sm text-zinc-600 sm:text-base">
+              Understanding the Myers-Briggs Type Indicator
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="rounded-xl border border-pink-50 bg-fuchsia-50/40 p-6 shadow-sm">
+              <p className="text-sm leading-relaxed text-zinc-700 sm:text-base">
+                The{" "}
+                <strong className="text-fuchsia-600">
+                  Myers-Briggs Type Indicator (MBTI)
+                </strong>{" "}
+                is a personality assessment tool that helps you understand how
+                you perceive the world and make decisions. Based on Carl
+                Jung&apos;s theory of psychological types, MBTI categorizes
+                personalities into 16 distinct types across four key dimensions.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border border-pink-50 bg-white p-5 shadow-sm">
+                <h3 className="text-sm font-semibold text-zinc-900 sm:text-base">
+                  Extraversion (E) vs Introversion (I)
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm">
+                  How you recharge and interact with the world. Extraverts gain
+                  energy from social interaction, while Introverts recharge
+                  through solitude and reflection.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-pink-50 bg-white p-5 shadow-sm">
+                <h3 className="text-sm font-semibold text-zinc-900 sm:text-base">
+                  Sensing (S) vs Intuition (N)
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm">
+                  How you take in information. Sensors focus on concrete facts
+                  and present realities, while Intuitives look for patterns and
+                  future possibilities.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-pink-50 bg-white p-5 shadow-sm">
+                <h3 className="text-sm font-semibold text-zinc-900 sm:text-base">
+                  Thinking (T) vs Feeling (F)
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm">
+                  How you make decisions. Thinkers prioritize logic and
+                  objectivity, while Feelers consider values and the impact on
+                  people.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-pink-50 bg-white p-5 shadow-sm">
+                <h3 className="text-sm font-semibold text-zinc-900 sm:text-base">
+                  Judging (J) vs Perceiving (P)
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm">
+                  How you organize your outer world. Judgers prefer structure
+                  and closure, while Perceivers like flexibility and keeping
+                  options open.
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-pink-100 bg-linear-to-br from-fuchsia-50 to-pink-50 p-6">
+              <h3 className="text-sm font-semibold text-zinc-900 sm:text-base">
+                Why Take the MBTI Test?
+              </h3>
+              <ul className="mt-3 space-y-2 text-xs text-zinc-700 sm:text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-fuchsia-500 mt-0.5">•</span>
+                  <span>
+                    <strong>Self-awareness:</strong> Understand your natural
+                    preferences and strengths
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-fuchsia-500 mt-0.5">•</span>
+                  <span>
+                    <strong>Better relationships:</strong> Improve communication
+                    by understanding different personality types
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-fuchsia-500 mt-0.5">•</span>
+                  <span>
+                    <strong>Career insights:</strong> Discover work environments
+                    and roles that align with your personality
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-fuchsia-500 mt-0.5">•</span>
+                  <span>
+                    <strong>Personal growth:</strong> Identify areas for
+                    development and understand your blind spots
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 

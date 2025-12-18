@@ -1,0 +1,18 @@
+export const SENPAI_MESSAGES: Record<string, string> = {
+  INTJ: "You're a mastermind plotting world domination. Senpai sees your grand plans! 🧠✨",
+  INTP: "Your brain is a beautiful chaos of ideas. Senpai loves watching you think! 🤔💡",
+  ENTJ: "You're a natural-born leader. Senpai respects that commanding energy! 👑⚡",
+  ENTP: "You're always one step ahead with wild ideas. Senpai is impressed! 🚀🎯",
+  INFJ: "You see what others miss. Senpai appreciates your deep wisdom! 🔮💫",
+  INFP: "Your heart is pure gold and your dreams are beautiful. Senpai feels your vibe! 💖🌈",
+  ENFJ: "You light up every room you enter. Senpai sees your magical presence! ✨🌟",
+  ENFP: "Your energy is absolutely infectious. Senpai can't help but smile! 🎉💃",
+  ISTJ: "You're the steady rock everyone relies on. Senpai trusts your process! 🏛️📋",
+  ISFJ: "You care so deeply for others. Senpai sees your beautiful kindness! 💝🤗",
+  ESTJ: "You get things done like nobody's business. Senpai admires your efficiency! ⚡📊",
+  ESFJ: "You bring people together like a pro. Senpai loves your warm heart! 🎊💕",
+  ISTP: "You're a hands-on problem-solver. Senpai respects your skills! 🔧🎨",
+  ISFP: "You create beauty everywhere you go. Senpai sees your artistic soul! 🎨🌸",
+  ESTP: "You live in the moment like a boss. Senpai loves your spontaneity! 🎲🔥",
+  ESFP: "You're the life of every party. Senpai can't keep up with your energy! 🎪🎈",
+};

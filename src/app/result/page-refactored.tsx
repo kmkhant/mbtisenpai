@@ -23,41 +23,41 @@ import type { MbtiResult } from "./types";
 // Lazy load below-the-fold sections
 const CompatibilitySection = dynamic(
   () =>
-    import("./components/CompatibilitySection").then(
-      (mod) => ({ default: mod.CompatibilitySection })
-    ),
+    import("./components/CompatibilitySection").then((mod) => ({
+      default: mod.CompatibilitySection,
+    })),
   { ssr: false }
 );
 
 const DeepAnalysisSection = dynamic(
   () =>
-    import("./components/DeepAnalysisSection").then(
-      (mod) => ({ default: mod.DeepAnalysisSection })
-    ),
+    import("./components/DeepAnalysisSection").then((mod) => ({
+      default: mod.DeepAnalysisSection,
+    })),
   { ssr: false }
 );
 
 const TypeExplanationSection = dynamic(
   () =>
-    import("./components/TypeExplanationSection").then(
-      (mod) => ({ default: mod.TypeExplanationSection })
-    ),
+    import("./components/TypeExplanationSection").then((mod) => ({
+      default: mod.TypeExplanationSection,
+    })),
   { ssr: false }
 );
 
 const DimensionNarrativesSection = dynamic(
   () =>
-    import("./components/DimensionNarrativesSection").then(
-      (mod) => ({ default: mod.DimensionNarrativesSection })
-    ),
+    import("./components/DimensionNarrativesSection").then((mod) => ({
+      default: mod.DimensionNarrativesSection,
+    })),
   { ssr: false }
 );
 
 const DetailedScoreAnalysisSection = dynamic(
   () =>
-    import("./components/DetailedScoreAnalysisSection").then(
-      (mod) => ({ default: mod.DetailedScoreAnalysisSection })
-    ),
+    import("./components/DetailedScoreAnalysisSection").then((mod) => ({
+      default: mod.DetailedScoreAnalysisSection,
+    })),
   { ssr: false }
 );
 
