@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, Suspense } from "react";
 import Link from "next/link";
-import { TrendingUp } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { TrendingUp, Share2, Check } from "lucide-react";
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -200,8 +201,42 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function ResultPage() {
-  const [result] = useState<MbtiResult | null>(() => {
+// Helper functions to encode/decode result in URL
+function encodeResult(result: MbtiResult): string {
+  try {
+    const json = JSON.stringify(result);
+    return btoa(encodeURIComponent(json));
+  } catch {
+    return "";
+  }
+}
+
+function decodeResult(encoded: string): MbtiResult | null {
+  try {
+    const json = decodeURIComponent(atob(encoded));
+    const parsed = JSON.parse(json) as MbtiResult;
+    // Validate result structure
+    if (
+      !parsed.type ||
+      !parsed.scores ||
+      !parsed.percentages ||
+      typeof parsed.type !== "string"
+    ) {
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function ResultPageContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [copied, setCopied] = useState(false);
+
+  // Initialize from sessionStorage using lazy initializer (runs once on mount)
+  const [result, setResult] = useState<MbtiResult | null>(() => {
     if (typeof window === "undefined") return null;
 
     const stored = window.sessionStorage.getItem("mbtiResult");
@@ -211,24 +246,144 @@ export default function ResultPage() {
       const parsed = JSON.parse(stored) as MbtiResult;
       // Validate result structure
       if (
-        !parsed.type ||
-        !parsed.scores ||
-        !parsed.percentages ||
-        typeof parsed.type !== "string"
+        parsed.type &&
+        parsed.scores &&
+        parsed.percentages &&
+        typeof parsed.type === "string"
       ) {
-        // Invalid structure - clear and return null
-        window.sessionStorage.removeItem("mbtiResult");
-        return null;
+        return parsed;
       }
-      return parsed;
+      // Invalid structure - clear
+      window.sessionStorage.removeItem("mbtiResult");
+      return null;
     } catch {
-      // Invalid JSON - clear and return null
-      if (typeof window !== "undefined") {
-        window.sessionStorage.removeItem("mbtiResult");
-      }
+      // Invalid JSON - clear
+      window.sessionStorage.removeItem("mbtiResult");
       return null;
     }
   });
+
+  // Handle URL params - only runs once on mount
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const urlData = searchParams.get("data");
+    if (urlData) {
+      const decoded = decodeResult(urlData);
+      if (decoded) {
+        // URL params take precedence - update state and sessionStorage
+        setResult(decoded);
+        window.sessionStorage.setItem("mbtiResult", JSON.stringify(decoded));
+        return;
+      }
+    }
+
+    // If no URL params but we have result from sessionStorage, update URL
+    if (result && !urlData) {
+      const encoded = encodeResult(result);
+      if (encoded) {
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set("data", encoded);
+        router.replace(newUrl.pathname + newUrl.search, { scroll: false });
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Only run on mount
+
+  // Function to copy shareable URL to clipboard
+  const handleShare = async () => {
+    if (!result) return;
+
+    try {
+      const encoded = encodeResult(result);
+      if (!encoded) return;
+
+      const shareUrl = `${window.location.origin}/result?data=${encoded}`;
+      await navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback for browsers that don't support clipboard API
+      const encoded = encodeResult(result);
+      if (encoded) {
+        const shareUrl = `${window.location.origin}/result?data=${encoded}`;
+        const textArea = document.createElement("textarea");
+        textArea.value = shareUrl;
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand("copy");
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        } catch {
+          // Failed to copy
+        }
+        document.body.removeChild(textArea);
+      }
+    }
+  };
+
+  // Update Open Graph metadata when result is available
+  useEffect(() => {
+    if (!result) return;
+
+    const type = result.type === "XXXX" ? "Unable to Determine" : result.type;
+    const typeTitle =
+      TYPE_EXPLANATIONS[result.type]?.typeTitle || "MBTI Result";
+    const description =
+      TYPE_EXPLANATIONS[result.type]?.typeDescription?.substring(0, 160) +
+        "..." ||
+      `Your MBTI type is ${type}. Discover your personality insights.`;
+
+    const encoded = encodeResult(result);
+    if (!encoded) return;
+
+    const ogImageUrl = `${
+      window.location.origin
+    }/api/og/result?data=${encodeURIComponent(encoded)}`;
+
+    // Update or create meta tags
+    const updateMetaTag = (property: string, content: string) => {
+      let element = document.querySelector(`meta[property="${property}"]`);
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute("property", property);
+        document.head.appendChild(element);
+      }
+      element.setAttribute("content", content);
+    };
+
+    const updateNameTag = (name: string, content: string) => {
+      let element = document.querySelector(`meta[name="${name}"]`);
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute("name", name);
+        document.head.appendChild(element);
+      }
+      element.setAttribute("content", content);
+    };
+
+    // Update title
+    document.title = `${type} - ${typeTitle} | MBTI Senpai`;
+
+    // Open Graph tags
+    updateMetaTag("og:title", `${type} - ${typeTitle}`);
+    updateMetaTag("og:description", description);
+    updateMetaTag("og:image", ogImageUrl);
+    updateMetaTag("og:type", "website");
+    updateMetaTag("og:url", window.location.href);
+
+    // Twitter Card tags
+    updateNameTag("twitter:card", "summary_large_image");
+    updateNameTag("twitter:title", `${type} - ${typeTitle}`);
+    updateNameTag("twitter:description", description);
+    updateNameTag("twitter:image", ogImageUrl);
+
+    // Description meta tag
+    updateNameTag("description", description);
+  }, [result]);
 
   // Handle invalid type "XXXX" (all neutral answers)
   const mbtiType =
@@ -649,15 +804,31 @@ export default function ResultPage() {
             </ul>
           </section>
         )}
-        <section className="mt-4 flex items-center justify-center space-x-4">
-          <div className="">
-            <Link
-              href="/test"
-              className="inline-flex items-center justify-center rounded-full border border-pink-100 px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm"
+        <section className="mt-4 flex items-center justify-center flex-wrap gap-3">
+          {result && (
+            <Button
+              onClick={handleShare}
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-pink-100 px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white"
             >
-              Retake test
-            </Link>
-          </div>
+              {copied ? (
+                <>
+                  <Check className="h-4 w-4" />
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <Share2 className="h-4 w-4" />
+                  Share Result
+                </>
+              )}
+            </Button>
+          )}
+          <Link
+            href="/test"
+            className="inline-flex items-center justify-center rounded-full border border-pink-100 px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm"
+          >
+            Retake test
+          </Link>
           <Button className="bg-linear-to-r from-fuchsia-500 to-pink-500 text-white">
             <Link href="/">Return to Home</Link>
           </Button>
@@ -673,5 +844,21 @@ export default function ResultPage() {
         </footer>
       </main>
     </div>
+  );
+}
+
+export default function ResultPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          <div className="text-center">
+            <p className="text-lg text-zinc-600">Loading your results...</p>
+          </div>
+        </div>
+      }
+    >
+      <ResultPageContent />
+    </Suspense>
   );
 }

@@ -5,13 +5,6 @@ import questionsByDichotomy from "@/mbti/mbti-questions-by-dichotomy.json";
 type DichotomyKey = "EI" | "SN" | "TF" | "JP";
 type MbtiLetter = "E" | "I" | "S" | "N" | "T" | "F" | "J" | "P";
 
-const DICHOTOMY_LETTERS: Record<DichotomyKey, [MbtiLetter, MbtiLetter]> = {
-  EI: ["E", "I"],
-  SN: ["S", "N"],
-  TF: ["T", "F"],
-  JP: ["J", "P"],
-};
-
 type RawQuestion = (typeof questionsByDichotomy)[DichotomyKey][number];
 
 type QuestionMeta = {

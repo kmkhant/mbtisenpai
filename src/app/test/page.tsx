@@ -59,7 +59,6 @@ export default function TestPage() {
         setAnswers(initialAnswers);
       } catch (err) {
         if (!cancelled) {
-          // eslint-disable-next-line no-console
           console.error(err);
           setError(
             "Sorry, we couldn't load the questions. Please refresh and try again."
@@ -156,17 +155,25 @@ export default function TestPage() {
       // Check for warnings from API
       if (result.warning) {
         // Store warning with result - will be displayed on result page
-        // eslint-disable-next-line no-console
         console.warn("Quiz warning:", result.warning);
       }
 
       if (typeof window !== "undefined") {
         window.sessionStorage.setItem("mbtiResult", JSON.stringify(result));
-      }
 
-      router.push("/result");
+        // Encode result in URL for sharing
+        try {
+          const json = JSON.stringify(result);
+          const encoded = btoa(encodeURIComponent(json));
+          router.push(`/result?data=${encoded}`);
+        } catch {
+          // Fallback to regular navigation if encoding fails
+          router.push("/result");
+        }
+      } else {
+        router.push("/result");
+      }
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.error(err);
       // Use error message from API if available, otherwise show generic message
       const errorMessage =

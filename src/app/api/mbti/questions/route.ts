@@ -124,7 +124,6 @@ export async function GET() {
       }
     );
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error("[GET /api/mbti/questions] failed", error);
     return NextResponse.json(
       { error: "Failed to generate MBTI questions." },
