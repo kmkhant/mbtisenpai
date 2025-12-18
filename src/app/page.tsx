@@ -6,6 +6,10 @@ import {
   MessageCircleIcon,
   PersonStandingIcon,
   TrendingUpDownIcon,
+  PlayCircle,
+  FileText,
+  BarChart3,
+  Sparkles,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -167,6 +171,76 @@ export default function Home() {
             </section>
           </div>
         </div>
+
+        <section className="mt-10 md:mt-12">
+          <div className="space-y-4 text-center md:text-left">
+            <h2 className="text-xl font-semibold capitalize text-pink-500 sm:text-2xl">
+              How MBTI Senpai Works
+            </h2>
+            <p className="text-sm leading-relaxed text-zinc-600 sm:text-base">
+              Discover your personality type in just a few simple steps
+            </p>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {[
+              {
+                step: "1",
+                title: "Start the Test",
+                icon: <PlayCircle className="size-6" />,
+                description:
+                  "Click 'Take the Test' and begin your 10-minute journey to self-discovery.",
+              },
+              {
+                step: "2",
+                title: "Answer Questions",
+                icon: <FileText className="size-6" />,
+                description:
+                  "Respond to carefully crafted questions that assess your personality preferences across four key dimensions.",
+              },
+              {
+                step: "3",
+                title: "Get Your Results",
+                icon: <BarChart3 className="size-6" />,
+                description:
+                  "Receive your MBTI type based on our accurate scoring algorithm that analyzes your responses.",
+              },
+              {
+                step: "4",
+                title: "View Insights",
+                icon: <Sparkles className="size-6" />,
+                description:
+                  "Explore detailed insights about your personality type, strengths, growth areas, and communication style.",
+              },
+            ].map((item) => (
+              <div
+                key={item.step}
+                className="rounded-xl border border-pink-50 bg-fuchsia-50/40 p-5 shadow-sm transition-all hover:shadow-md"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex-none size-12 rounded-full bg-linear-to-tr from-fuchsia-500 via-pink-400 to-orange-400 p-3 shadow-sm">
+                    <div className="text-white size-full flex items-center justify-center">
+                      {item.icon}
+                    </div>
+                  </div>
+                  <div className="flex-1 space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-fuchsia-600">
+                        STEP {item.step}
+                      </span>
+                    </div>
+                    <h3 className="text-sm font-semibold text-zinc-900">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs leading-relaxed text-zinc-600">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <footer className="mt-10 border-t border-zinc-100 pt-4 text-center text-[10px] text-zinc-400 md:mt-12 md:flex md:items-center md:justify-between md:text-left md:text-[11px]">
           <p>

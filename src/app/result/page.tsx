@@ -288,7 +288,7 @@ export default function ResultPage() {
     }
 
     return normalized;
-  }, [result?.scores]);
+  }, [result]);
 
   const chartData = useMemo(
     () =>
@@ -367,7 +367,7 @@ export default function ResultPage() {
   }, [result, derivedPercentages]);
 
   const dimensionNarratives = useMemo(() => {
-    if (!result || !normalizedScores) return [];
+    if (!derivedPercentages) return [];
 
     type DimensionNarrative = {
       key: string;
@@ -380,33 +380,29 @@ export default function ResultPage() {
       b: MbtiLetter,
       title: string
     ): DimensionNarrative => {
-      const aScore = normalizedScores[a];
-      const bScore = normalizedScores[b];
+      const aScore = derivedPercentages[a];
+      const bScore = derivedPercentages[b];
       const dominant = aScore >= bScore ? a : b;
       const dominantScore = aScore >= bScore ? aScore : bScore;
 
-      // Format normalized score (0-100 range, but cap at 99 to avoid showing 100%)
-      const formatScore = (value: number) => {
-        const rounded = Math.round(value);
-        return rounded >= 100 ? "99" : rounded.toString();
-      };
+      const formatPercent = (value: number) => `${value}%`;
 
       if (a === "E" && b === "I") {
         if (dominant === "E") {
           return {
             key: "EI",
             title,
-            summary: `You lean ${formatScore(
+            summary: `You lean about ${formatPercent(
               dominantScore
-            )}% toward Extraversion. You’re more likely to recharge through interaction, shared experiences and outer stimulation, but still have an Introverted side that sometimes needs quiet time to reset.`,
+            )} toward Extraversion. You’re more likely to recharge through interaction, shared experiences and outer stimulation, but still have an Introverted side that sometimes needs quiet time to reset.`,
           };
         }
         return {
           key: "EI",
           title,
-          summary: `You lean ${formatScore(
+          summary: `You lean about ${formatPercent(
             dominantScore
-          )}% toward Introversion. You likely recharge through solitude, reflection and a small circle of close connections, while still being able to step into more social, outgoing modes when needed.`,
+          )} toward Introversion. You likely recharge through solitude, reflection and a small circle of close connections, while still being able to step into more social, outgoing modes when needed.`,
         };
       }
 
@@ -415,17 +411,17 @@ export default function ResultPage() {
           return {
             key: "SN",
             title,
-            summary: `You lean ${formatScore(
+            summary: `You lean about ${formatPercent(
               dominantScore
-            )}% toward Sensing. You tend to notice concrete facts, current realities and practical details first, adding intuition and imagination as a secondary layer when it’s useful.`,
+            )} toward Sensing. You tend to notice concrete facts, current realities and practical details first, adding intuition and imagination as a secondary layer when it’s useful.`,
           };
         }
         return {
           key: "SN",
           title,
-          summary: `You lean ${formatScore(
+          summary: `You lean about ${formatPercent(
             dominantScore
-          )}% toward Intuition. You’re more drawn to patterns, possibilities and the “big picture,” filling in details as needed rather than starting from them.`,
+          )} toward Intuition. You’re more drawn to patterns, possibilities and the “big picture,” filling in details as needed rather than starting from them.`,
         };
       }
 
@@ -434,17 +430,17 @@ export default function ResultPage() {
           return {
             key: "TF",
             title,
-            summary: `You lean ${formatScore(
+            summary: `You lean about ${formatPercent(
               dominantScore
-            )}% toward Thinking. You’re inclined to evaluate situations through logic, consistency and fairness of principles, even though feelings and harmony still matter to you in close relationships.`,
+            )} toward Thinking. You’re inclined to evaluate situations through logic, consistency and fairness of principles, even though feelings and harmony still matter to you in close relationships.`,
           };
         }
         return {
           key: "TF",
           title,
-          summary: `You lean ${formatScore(
+          summary: `You lean about ${formatPercent(
             dominantScore
-          )}% toward Feeling. You’re more likely to prioritize people, impact and values in decisions, while still appreciating clear reasoning when stakes are high.`,
+          )} toward Feeling. You’re more likely to prioritize people, impact and values in decisions, while still appreciating clear reasoning when stakes are high.`,
         };
       }
 
@@ -453,17 +449,17 @@ export default function ResultPage() {
         return {
           key: "JP",
           title,
-          summary: `You lean ${formatScore(
+          summary: `You lean about ${formatPercent(
             dominantScore
-          )}% toward Judging. You probably feel calmer when plans, timelines and expectations are defined, even if you still enjoy some flexibility and last‑minute inspiration.`,
+          )} toward Judging. You probably feel calmer when plans, timelines and expectations are defined, even if you still enjoy some flexibility and last‑minute inspiration.`,
         };
       }
       return {
         key: "JP",
         title,
-        summary: `You lean ${formatScore(
+        summary: `You lean about ${formatPercent(
           dominantScore
-        )}% toward Perceiving. You tend to keep options open, adapt in the moment and follow emerging opportunities, even if you can use structure when it serves your goals.`,
+        )} toward Perceiving. You tend to keep options open, adapt in the moment and follow emerging opportunities, even if you can use structure when it serves your goals.`,
       };
     };
 
@@ -473,7 +469,7 @@ export default function ResultPage() {
       describeAxis("T", "F", "How you evaluate and make decisions"),
       describeAxis("J", "P", "How you like to organize your outer world"),
     ];
-  }, [result, normalizedScores]);
+  }, [derivedPercentages]);
 
   return (
     <div className="flex min-h-screen justify-center bg-linear-to-b from-fuchsia-50 via-white to-white px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10">

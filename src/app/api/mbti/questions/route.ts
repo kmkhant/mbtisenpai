@@ -45,21 +45,18 @@ function seededShuffle<T>(items: T[], seed: number): T[] {
 }
 
 /**
- * Gets a rotation seed based on the current date.
+ * Gets a rotation seed based on the current minute.
  * This ensures:
- * - Same questions shown on the same day (consistent experience)
- * - Different questions shown on different days (variety)
+ * - Same questions shown within the same minute (cached for 1 minute)
+ * - Different questions shown in different minutes (variety on each request)
  * - All questions eventually get shown (balanced coverage over time)
  */
 function getRotationSeed(): number {
-  // Use day of year (1-365/366) as seed
-  // This rotates questions daily while maintaining consistency within a day
+  // Use minute-based timestamp as seed
+  // This rotates questions every minute while maintaining consistency within that minute
   const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 0);
-  const dayOfYear = Math.floor(
-    (now.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
-  );
-  return dayOfYear;
+  // Get timestamp in minutes since epoch
+  return Math.floor(now.getTime() / (1000 * 60));
 }
 
 const QUESTIONS_PER_DICHOTOMY = 11;
@@ -119,7 +116,12 @@ export async function GET() {
         count: shuffled.length,
         questions: shuffled,
       },
-      { status: 200 }
+      {
+        status: 200,
+        headers: {
+          "Cache-Control": "public, max-age=60, s-maxage=60",
+        },
+      }
     );
   } catch (error) {
     // eslint-disable-next-line no-console
