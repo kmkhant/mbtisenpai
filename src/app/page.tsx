@@ -93,7 +93,7 @@ export default function Home() {
               </span>
             </div>
 
-            <span className="hidden font-medium capitalize text-zinc-400 md:inline">
+            <span className="hidden font-medium capitalize text-muted-foreground md:inline">
               Personality insights in 10 minutes
             </span>
           </header>
@@ -110,7 +110,7 @@ export default function Home() {
                   <br />
                   for FREE
                 </h1>
-                <p className="text-sm leading-relaxed text-zinc-500 sm:text-base">
+                <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                   just give 10 minutes to accurately understand more about
                   yourself.
                 </p>
@@ -120,13 +120,13 @@ export default function Home() {
                 </Button>
               </section>
 
-              <section className="mt-4 rounded-2xl border border-pink-50 bg-fuchsia-50/60 px-4 py-4 text-center text-xs text-zinc-600 shadow-sm sm:text-sm">
+              <section className="mt-4 rounded-2xl border border-border bg-accent/60 px-4 py-4 text-center text-xs text-muted-foreground shadow-sm sm:text-sm">
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex-1">
                     <div className="text-lg font-semibold bg-linear-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent">
                       100+
                     </div>
-                    <div className="mt-1 text-xs font-medium capitalize text-zinc-500">
+                    <div className="mt-1 text-xs font-medium capitalize text-muted-foreground">
                       Site Visits
                     </div>
                   </div>
@@ -135,7 +135,7 @@ export default function Home() {
                     <div className="text-lg font-semibold bg-linear-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent">
                       <TestCountDisplay />
                     </div>
-                    <div className="mt-1 text-xs font-medium capitalize text-zinc-500">
+                    <div className="mt-1 text-xs font-medium capitalize text-muted-foreground">
                       Tests Taken
                     </div>
                   </div>
@@ -144,7 +144,7 @@ export default function Home() {
                     <div className="text-lg font-semibold bg-linear-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent">
                       96.48%
                     </div>
-                    <div className="mt-1 text-xs font-medium capitalize text-zinc-500">
+                    <div className="mt-1 text-xs font-medium capitalize text-muted-foreground">
                       Accuracy
                     </div>
                   </div>
@@ -157,7 +157,7 @@ export default function Home() {
                 <h2 className="text-lg font-semibold capitalize text-pink-500">
                   What MBTI Senpai helps you get
                 </h2>
-                <p className="text-sm leading-relaxed text-zinc-600">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   Master your strengths and navigate your growth with expert
                   personality insights.
                 </p>
@@ -199,10 +199,10 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-sm font-semibold text-zinc-900">
+                        <h3 className="text-sm font-semibold text-foreground">
                           {item.title}
                         </h3>
-                        <p className="mt-1 text-xs leading-relaxed text-zinc-500">
+                        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                           {item.body}
                         </p>
                       </div>
@@ -221,7 +221,7 @@ export default function Home() {
                     →
                   </span>
                 </button>
-                <p className="mt-1 text-xs text-zinc-500 sm:text-sm">
+                <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
                   Step into the shoes of all 16 archetypes and understand the
                   world through their eyes.
                 </p>
@@ -234,7 +234,7 @@ export default function Home() {
               <h2 className="text-xl font-semibold capitalize text-pink-500 sm:text-2xl">
                 How MBTI Senpai Works
               </h2>
-              <p className="text-sm leading-relaxed text-zinc-600 sm:text-base">
+              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                 Discover your personality type in just a few simple steps
               </p>
             </div>
@@ -286,10 +286,10 @@ export default function Home() {
                           STEP {item.step}
                         </span>
                       </div>
-                      <h3 className="text-sm font-semibold text-zinc-900">
+                      <h3 className="text-sm font-semibold text-foreground">
                         {item.title}
                       </h3>
-                      <p className="text-xs leading-relaxed text-zinc-600">
+                      <p className="text-xs leading-relaxed text-muted-foreground">
                         {item.description}
                       </p>
                     </div>
@@ -304,14 +304,14 @@ export default function Home() {
               <h2 className="bg-linear-to-b from-fuchsia-500 to-pink-600 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
                 What is MBTI?
               </h2>
-              <p className="mt-2 text-sm text-zinc-600 sm:text-base">
+              <p className="mt-2 text-sm text-muted-foreground sm:text-base">
                 Understanding the Myers-Briggs Type Indicator
               </p>
             </div>
 
             <div className="space-y-4">
               <div className="rounded-xl border border-pink-50 bg-fuchsia-50/40 p-6 shadow-sm">
-                <p className="text-sm leading-relaxed text-zinc-700 sm:text-base">
+                <p className="text-sm leading-relaxed text-foreground sm:text-base">
                   The{" "}
                   <strong className="text-fuchsia-600">
                     Myers-Briggs Type Indicator (MBTI)
@@ -326,10 +326,10 @@ export default function Home() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-xl border border-pink-50 bg-white p-5 shadow-sm">
-                  <h3 className="text-sm font-semibold text-zinc-900 sm:text-base">
+                  <h3 className="text-sm font-semibold text-foreground sm:text-base">
                     Extraversion (E) vs Introversion (I)
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm">
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                     How you recharge and interact with the world. Extraverts
                     gain energy from social interaction, while Introverts
                     recharge through solitude and reflection.
@@ -337,10 +337,10 @@ export default function Home() {
                 </div>
 
                 <div className="rounded-xl border border-pink-50 bg-white p-5 shadow-sm">
-                  <h3 className="text-sm font-semibold text-zinc-900 sm:text-base">
+                  <h3 className="text-sm font-semibold text-foreground sm:text-base">
                     Sensing (S) vs Intuition (N)
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm">
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                     How you take in information. Sensors focus on concrete facts
                     and present realities, while Intuitives look for patterns
                     and future possibilities.
@@ -348,10 +348,10 @@ export default function Home() {
                 </div>
 
                 <div className="rounded-xl border border-pink-50 bg-white p-5 shadow-sm">
-                  <h3 className="text-sm font-semibold text-zinc-900 sm:text-base">
+                  <h3 className="text-sm font-semibold text-foreground sm:text-base">
                     Thinking (T) vs Feeling (F)
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm">
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                     How you make decisions. Thinkers prioritize logic and
                     objectivity, while Feelers consider values and the impact on
                     people.
@@ -359,10 +359,10 @@ export default function Home() {
                 </div>
 
                 <div className="rounded-xl border border-pink-50 bg-white p-5 shadow-sm">
-                  <h3 className="text-sm font-semibold text-zinc-900 sm:text-base">
+                  <h3 className="text-sm font-semibold text-foreground sm:text-base">
                     Judging (J) vs Perceiving (P)
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm">
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                     How you organize your outer world. Judgers prefer structure
                     and closure, while Perceivers like flexibility and keeping
                     options open.
@@ -371,10 +371,10 @@ export default function Home() {
               </div>
 
               <div className="rounded-xl border border-pink-100 bg-linear-to-br from-fuchsia-50 to-pink-50 p-6">
-                <h3 className="text-sm font-semibold text-zinc-900 sm:text-base">
+                <h3 className="text-sm font-semibold text-foreground sm:text-base">
                   Why Take the MBTI Test?
                 </h3>
-                <ul className="mt-3 space-y-2 text-xs text-zinc-700 sm:text-sm">
+                <ul className="mt-3 space-y-2 text-xs text-foreground sm:text-sm">
                   <li className="flex items-start gap-2">
                     <span className="text-fuchsia-500 mt-0.5">•</span>
                     <span>
@@ -408,32 +408,32 @@ export default function Home() {
             </div>
           </section>
 
-          <footer className="mt-10 border-t border-zinc-100 pt-6 text-center text-[10px] text-zinc-400 md:mt-12 md:text-[11px]">
+          <footer className="mt-10 border-t border-border pt-6 text-center text-[10px] text-muted-foreground/60 md:mt-12 md:text-[11px]">
             <div className="mb-4 flex flex-wrap items-center justify-center gap-4 text-xs">
               <Link
                 href="/about"
-                className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+                className="text-muted-foreground hover:text-fuchsia-600 transition-colors"
               >
                 About
               </Link>
-              <span className="text-zinc-300">·</span>
+              <span className="text-muted-foreground/40">·</span>
               <Link
                 href="/contact"
-                className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+                className="text-muted-foreground hover:text-fuchsia-600 transition-colors"
               >
                 Contact
               </Link>
-              <span className="text-zinc-300">·</span>
+              <span className="text-muted-foreground/40">·</span>
               <Link
                 href="/privacy"
-                className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+                className="text-muted-foreground hover:text-fuchsia-600 transition-colors"
               >
                 Privacy
               </Link>
-              <span className="text-zinc-300">·</span>
+              <span className="text-muted-foreground/40">·</span>
               <Link
                 href="/terms"
-                className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+                className="text-muted-foreground hover:text-fuchsia-600 transition-colors"
               >
                 Terms
               </Link>
@@ -446,7 +446,7 @@ export default function Home() {
                   href="https://www.linkedin.com/in/khaing-myel-khant-457b69146/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-fuchsia-600 transition-colors underline underline-offset-2"
+                  className="text-muted-foreground hover:text-fuchsia-600 transition-colors underline underline-offset-2"
                 >
                   Khaing Myel Khant
                 </Link>

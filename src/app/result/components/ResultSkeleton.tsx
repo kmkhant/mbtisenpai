@@ -48,7 +48,7 @@ export function ResultSkeleton() {
 
         <section className="mt-5 space-y-3">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="rounded-xl bg-zinc-50 px-4 py-3">
+            <div key={i} className="rounded-xl bg-muted px-4 py-3">
               <Skeleton className="h-5 w-48 mb-2" />
               <Skeleton className="h-4 w-full" />
               <Skeleton className="h-4 w-5/6 mt-1" />

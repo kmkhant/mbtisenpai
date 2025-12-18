@@ -52,7 +52,7 @@ export function ChartContainer({
       <div
         data-chart
         className={cn(
-          "relative flex w-full items-center justify-center [&_.recharts-polar-grid-concentric-polygon]:stroke-zinc-200 [&_.recharts-polar-angle-axis-tick text]:fill-zinc-400",
+          "relative flex w-full items-center justify-center [&_.recharts-polar-grid-concentric-polygon]:stroke-border [&_.recharts-polar-angle-axis-tick text]:fill-muted-foreground",
           className
         )}
         style={{ ...(style as React.CSSProperties), ...colorVars }}
@@ -94,9 +94,9 @@ export function ChartTooltipContent({
   const rawScore = item.payload?.rawScore;
 
   return (
-    <div className="rounded-xl border border-pink-50 bg-white/90 px-3 py-2 text-xs shadow-md">
-      <div className="font-semibold text-zinc-800">{label}</div>
-      <div className="mt-1 flex items-center gap-2 text-zinc-600">
+    <div className="rounded-xl border border-border bg-card/90 px-3 py-2 text-xs shadow-md">
+      <div className="font-semibold text-card-foreground">{label}</div>
+      <div className="mt-1 flex items-center gap-2 text-muted-foreground">
         <span
           className="h-2 w-2 rounded-full"
           style={{ backgroundColor: item.fill as string }}
@@ -105,7 +105,9 @@ export function ChartTooltipContent({
           {typeof rawScore === "number" ? (
             <>
               {rawScore.toFixed(2)}{" "}
-              <span className="text-zinc-400">(normalized: {item.value})</span>
+              <span className="text-muted-foreground/70">
+                (normalized: {item.value})
+              </span>
             </>
           ) : (
             item.value

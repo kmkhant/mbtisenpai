@@ -74,8 +74,8 @@ export function RadarChartSection({
             </ResponsiveContainer>
           </ChartContainer>
         </CardContent>
-        <CardFooter className="flex flex-col items-start gap-2 text-xs text-zinc-600 sm:text-sm">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 font-medium text-zinc-800">
+        <CardFooter className="flex flex-col items-start gap-2 text-xs text-muted-foreground sm:text-sm">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 font-medium text-foreground">
             <TrendingUp className="h-4 w-4 text-fuchsia-500" />
             {strongestPreferenceLabel}
           </div>
@@ -85,9 +85,9 @@ export function RadarChartSection({
             </div>
           )}
 
-          <div className="h-4 border-t border-zinc-200 w-full mt-4" />
+          <div className="h-4 border-t border-border w-full mt-4" />
 
-          <p className="text-xs sm:text-sm text-zinc-500">
+          <p className="text-xs sm:text-sm text-muted-foreground">
             Chart shows normalized raw scores. Hover over points to see actual
             score values. Scores are calculated from weighted question responses
             across the entire test.

@@ -245,7 +245,7 @@ function ResultPageContent() {
       <main className="flex w-full max-w-md flex-col rounded-[32px] bg-white px-6 py-7 shadow-[0_18px_45px_rgba(199,110,255,0.18)] sm:max-w-lg sm:px-8 sm:py-8 md:max-w-3xl md:px-10 md:py-10">
         <HeaderSection type={result?.type ?? null} />
 
-        <div className="border-t border-zinc-200 w-full mt-4" />
+        <div className="border-t border-border w-full mt-4" />
 
         <section className="mt-7 space-y-1 text-center md:text-left">
           <p className="text-lg font-semibold capitalize text-pink-500">
@@ -256,12 +256,12 @@ function ResultPageContent() {
               {mbtiType}
             </h1>
           </div>
-          <p className="text-sm leading-relaxed text-zinc-600 sm:text-base">
+          <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
             This result is based on how often you chose each side of the MBTI
             dichotomies across all questions in the test.
           </p>
           {!result && (
-            <p className="text-xs text-red-500 sm:text-sm">
+            <p className="text-xs text-destructive sm:text-sm">
               No recent test result found. Please take the test first.
             </p>
           )}
@@ -281,7 +281,7 @@ function ResultPageContent() {
           />
         )}
 
-        <section className="mt-5 text-xs text-zinc-500 sm:text-sm">
+        <section className="mt-5 text-xs text-muted-foreground sm:text-sm">
           <p className="font-semibold capitalize text-pink-500">
             Letter meanings
           </p>
@@ -306,10 +306,10 @@ function ResultPageContent() {
           </div>
         </section>
 
-        <section className="mt-8 flex flex-col gap-3 text-sm text-zinc-700 sm:flex-row sm:items-center sm:justify-between">
+        <section className="mt-8 flex flex-col gap-3 text-sm text-foreground sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-semibold text-zinc-900">What this means</p>
-            <p className="text-xs text-zinc-500 sm:text-sm">
+            <p className="font-semibold text-foreground">What this means</p>
+            <p className="text-xs text-muted-foreground sm:text-sm">
               Your four-letter type summarizes how you tend to get energy, take
               in information, make decisions and organize your outer world.
             </p>
@@ -317,7 +317,7 @@ function ResultPageContent() {
         </section>
 
         {result && result.type === "XXXX" && (
-          <section className="mt-6 space-y-3 text-xs text-zinc-600 sm:text-sm">
+          <section className="mt-6 space-y-3 text-xs text-muted-foreground sm:text-sm">
             <div className="mt-3 space-y-1 rounded-xl bg-amber-50/60 px-4 py-3 border border-amber-200">
               <p className="text-sm font-semibold text-amber-900 sm:text-base">
                 Unable to Determine Your Type
@@ -452,32 +452,32 @@ function ResultPageContent() {
           </Button>
         </section>
 
-        <footer className="mt-8 border-t border-zinc-100 pt-6 text-center text-[10px] text-zinc-400 sm:mt-10">
+        <footer className="mt-8 border-t border-border pt-6 text-center text-[10px] text-muted-foreground/60 sm:mt-10">
           <div className="mb-4 flex flex-wrap items-center justify-center gap-4 text-xs">
             <Link
               href="/about"
-              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+              className="text-muted-foreground hover:text-fuchsia-600 transition-colors"
             >
               About
             </Link>
-            <span className="text-zinc-300">·</span>
+            <span className="text-muted-foreground/40">·</span>
             <Link
               href="/contact"
-              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+              className="text-muted-foreground hover:text-fuchsia-600 transition-colors"
             >
               Contact
             </Link>
-            <span className="text-zinc-300">·</span>
+            <span className="text-muted-foreground/40">·</span>
             <Link
               href="/privacy"
-              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+              className="text-muted-foreground hover:text-fuchsia-600 transition-colors"
             >
               Privacy
             </Link>
-            <span className="text-zinc-300">·</span>
+            <span className="text-muted-foreground/40">·</span>
             <Link
               href="/terms"
-              className="text-zinc-500 hover:text-fuchsia-600 transition-colors"
+              className="text-muted-foreground hover:text-fuchsia-600 transition-colors"
             >
               Terms
             </Link>

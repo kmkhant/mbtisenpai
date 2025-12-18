@@ -15,7 +15,7 @@ export function HeaderSection({ type }: HeaderSectionProps) {
         <span className="inline-flex items-center text-center rounded-full bg-linear-to-b from-fuchsia-500 to-pink-600 bg-clip-text px-4 text-xl font-semibold tracking-wide text-transparent">
           Senpai&apos;s Opinionated MBTI Results
         </span>
-        <span className="text-xs px-4 font-medium text-zinc-400">
+        <span className="text-xs px-4 font-medium text-muted-foreground">
           {type && type !== "XXXX"
             ? SENPAI_MESSAGES[type] ||
               "You're awesome. Senpai has got your back."

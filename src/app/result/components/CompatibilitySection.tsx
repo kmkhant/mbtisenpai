@@ -19,7 +19,7 @@ export function CompatibilitySection({ type }: CompatibilitySectionProps) {
   if (!compatibility) return null;
 
   return (
-    <section className="mt-8 space-y-4 text-xs text-zinc-600 sm:text-sm">
+    <section className="mt-8 space-y-4 text-xs text-muted-foreground sm:text-sm">
       <p className="font-semibold capitalize text-pink-500">
         Compatibility & Communication
       </p>

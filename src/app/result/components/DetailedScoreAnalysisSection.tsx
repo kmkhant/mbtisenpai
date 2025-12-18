@@ -38,12 +38,12 @@ export function DetailedScoreAnalysisSection({
   rawScoreAnalysis,
 }: DetailedScoreAnalysisSectionProps) {
   return (
-    <section className="mt-8 space-y-4 text-xs text-zinc-600 sm:text-sm">
+    <section className="mt-8 space-y-4 text-xs text-muted-foreground sm:text-sm">
       <p className="font-semibold capitalize text-pink-500 flex items-center gap-2">
         <BarChart3 className="h-5 w-5" />
         Detailed Score Analysis
       </p>
-      <p className="text-xs text-zinc-500 sm:text-sm">
+      <p className="text-xs text-muted-foreground sm:text-sm">
         A breakdown of your raw scores and preference strength for each
         dimension.
       </p>
@@ -52,9 +52,9 @@ export function DetailedScoreAnalysisSection({
           const [a, b] = analysis.pair;
 
           return (
-            <Card key={idx} className="bg-zinc-50/60 border-zinc-200">
+            <Card key={idx} className="bg-muted/60 border-border">
               <CardHeader className="pb-3">
-                <CardTitle className="text-sm sm:text-base text-zinc-900">
+                <CardTitle className="text-sm sm:text-base text-foreground">
                   {analysis.title}
                 </CardTitle>
                 <CardDescription className="text-xs sm:text-sm">
@@ -82,7 +82,7 @@ export function DetailedScoreAnalysisSection({
                     />
                   </div>
                 </div>
-                <div className="pt-2 border-t border-zinc-200">
+                <div className="pt-2 border-t border-border">
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
                     <span
                       className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold border ${
@@ -91,14 +91,14 @@ export function DetailedScoreAnalysisSection({
                     >
                       {analysis.strengthLabel} Preference
                     </span>
-                    <span className="text-xs text-zinc-500">
+                    <span className="text-xs text-muted-foreground">
                       Difference: {analysis.normalizedDiff}%
                     </span>
                   </div>
-                  <p className="text-xs text-zinc-600 sm:text-sm mb-2">
+                  <p className="text-xs text-muted-foreground sm:text-sm mb-2">
                     {analysis.strengthDescription}
                   </p>
-                  <p className="text-xs text-zinc-500 italic">
+                  <p className="text-xs text-muted-foreground italic">
                     {analysis.comparisonDescription}
                   </p>
                 </div>

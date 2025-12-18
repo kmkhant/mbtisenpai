@@ -19,7 +19,7 @@ export function DeepAnalysisSection({ type }: DeepAnalysisSectionProps) {
   if (!analysis) return null;
 
   return (
-    <section className="mt-8 space-y-4 text-xs text-zinc-600 sm:text-sm">
+    <section className="mt-8 space-y-4 text-xs text-muted-foreground sm:text-sm">
       <p className="font-semibold capitalize text-pink-500 flex items-center gap-2">
         <Target className="h-5 w-5" />
         Deep Analysis: {type}

@@ -42,14 +42,14 @@ export function AnimatedProgressBar({
   return (
     <div ref={ref} className="space-y-2">
       <div className="flex items-center justify-between mb-1">
-        <span className="text-xs font-semibold text-zinc-700">{label}</span>
+        <span className="text-xs font-semibold text-foreground">{label}</span>
         <span
           className={`text-xs font-mono font-semibold ${
             rawScore < 0
               ? "text-amber-600"
               : rawScore > 0
               ? "text-green-600"
-              : "text-zinc-600"
+              : "text-muted-foreground"
           }`}
         >
           {rawScore > 0 ? "+" : ""}
@@ -59,20 +59,22 @@ export function AnimatedProgressBar({
       <Progress value={progressValue} className="w-full">
         <ProgressTrackPrimitive
           className={cn(
-            "bg-zinc-200 relative h-2 w-full overflow-hidden rounded-full"
+            "bg-muted relative h-2 w-full overflow-hidden rounded-full"
           )}
         >
           <ProgressIndicator
             className={`h-2 rounded-full ${
               isDominant
                 ? "bg-linear-to-r from-fuchsia-500 to-pink-600"
-                : "bg-zinc-300"
+                : "bg-muted-foreground/30"
             }`}
           />
         </ProgressTrackPrimitive>
       </Progress>
       <div className="flex items-center justify-between">
-        <span className="text-xs text-zinc-500">{value}% (normalized)</span>
+        <span className="text-xs text-muted-foreground">
+          {value}% (normalized)
+        </span>
       </div>
     </div>
   );

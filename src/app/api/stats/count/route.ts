@@ -1,13 +1,19 @@
 import { NextResponse } from "next/server";
-import { readCount } from "../utils";
+import { readCount, getStorageInfo } from "../utils";
 
 export async function GET() {
   try {
     const data = await readCount();
+    const storageInfo = getStorageInfo();
+
     return NextResponse.json(
       {
         count: data.count,
         lastUpdated: data.lastUpdated,
+        // Include storage info for debugging (only in development)
+        ...(process.env.NODE_ENV === "development" && {
+          _debug: storageInfo,
+        }),
       },
       {
         status: 200,

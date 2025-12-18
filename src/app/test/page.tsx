@@ -5,10 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ChevronRightCircle } from "lucide-react";
 
-import {
-  RadioGroup,
-  Radio,
-} from "@/components/animate-ui/components/base/radio";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import ProfileImage from "@/components/home/ProfileImage";
@@ -298,10 +295,9 @@ export default function TestPage() {
                     htmlFor={`q${question.id}-m2`}
                     className="flex items-center gap-x-3 cursor-pointer"
                   >
-                    <Radio
+                    <RadioGroupItem
                       value="-2"
                       id={`q${question.id}-m2`}
-                      nativeButton={true}
                       className="size-7 border-blue-400 data-[state=checked]:border-blue-600 [&_svg]:fill-blue-600"
                     />
                   </Label>
@@ -309,10 +305,9 @@ export default function TestPage() {
                     htmlFor={`q${question.id}-m1`}
                     className="flex items-center gap-x-3 cursor-pointer"
                   >
-                    <Radio
+                    <RadioGroupItem
                       value="-1"
                       id={`q${question.id}-m1`}
-                      nativeButton={true}
                       className="size-6 border-blue-400 data-[state=checked]:border-blue-600 [&_svg]:fill-blue-600"
                     />
                   </Label>
@@ -320,10 +315,9 @@ export default function TestPage() {
                     htmlFor={`q${question.id}-0`}
                     className="flex items-center gap-x-3 cursor-pointer"
                   >
-                    <Radio
+                    <RadioGroupItem
                       value="0"
                       id={`q${question.id}-0`}
-                      nativeButton={true}
                       className="size-5 border-slate-500 data-[state=checked]:border-slate-700 [&_svg]:fill-slate-700"
                     />
                   </Label>
@@ -331,10 +325,9 @@ export default function TestPage() {
                     htmlFor={`q${question.id}-p1`}
                     className="flex items-center gap-x-3 cursor-pointer"
                   >
-                    <Radio
+                    <RadioGroupItem
                       value="1"
                       id={`q${question.id}-p1`}
-                      nativeButton={true}
                       className="size-6 border-fuchsia-400 data-[state=checked]:border-fuchsia-600 [&_svg]:fill-fuchsia-600"
                     />
                   </Label>
@@ -342,10 +335,9 @@ export default function TestPage() {
                     htmlFor={`q${question.id}-p2`}
                     className="flex items-center gap-x-3 cursor-pointer"
                   >
-                    <Radio
+                    <RadioGroupItem
                       value="2"
                       id={`q${question.id}-p2`}
-                      nativeButton={true}
                       className="size-7 border-fuchsia-400 data-[state=checked]:border-fuchsia-600 [&_svg]:fill-fuchsia-600"
                     />
                   </Label>
