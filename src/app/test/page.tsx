@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ChevronRightCircle } from "lucide-react";
 
-import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 import type { MbtiQuestion } from "@/app/api/mbti/questions/route";
@@ -227,7 +226,7 @@ export default function TestPage() {
                 </div>
 
                 <RadioGroup
-                  className="flex flex-wrap items-center justify-between gap-3 text-[11px] font-semibold sm:text-xs"
+                  className="flex flex-wrap items-center justify-center gap-16"
                   value={
                     answers[question.id] !== null &&
                     answers[question.id] !== undefined
@@ -242,46 +241,31 @@ export default function TestPage() {
                     }));
                   }}
                 >
-                  <div className="flex flex-col items-center gap-1">
-                    <RadioGroupItem
-                      value="-2"
-                      id={`q${question.id}-m2`}
-                      className=""
-                    />
-                    <Label htmlFor={`q${question.id}-m2`}>Strongly left</Label>
-                  </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <RadioGroupItem
-                      value="-1"
-                      id={`q${question.id}-m1`}
-                      className=""
-                    />
-                    <Label htmlFor={`q${question.id}-m1`}>Slightly left</Label>
-                  </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <RadioGroupItem
-                      value="0"
-                      id={`q${question.id}-0`}
-                      className=""
-                    />
-                    <Label htmlFor={`q${question.id}-0`}>Neutral</Label>
-                  </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <RadioGroupItem
-                      value="1"
-                      id={`q${question.id}-p1`}
-                      className=""
-                    />
-                    <Label htmlFor={`q${question.id}-p1`}>Slightly right</Label>
-                  </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <RadioGroupItem
-                      value="2"
-                      id={`q${question.id}-p2`}
-                      className=""
-                    />
-                    <Label htmlFor={`q${question.id}-p2`}>Strongly right</Label>
-                  </div>
+                  <RadioGroupItem
+                    value="-2"
+                    id={`q${question.id}-m2`}
+                    className="size-7 border-blue-400 data-[state=checked]:border-blue-600 [&_svg]:fill-blue-600"
+                  />
+                  <RadioGroupItem
+                    value="-1"
+                    id={`q${question.id}-m1`}
+                    className="size-6 border-blue-400 data-[state=checked]:border-blue-600 [&_svg]:fill-blue-600"
+                  />
+                  <RadioGroupItem
+                    value="0"
+                    id={`q${question.id}-0`}
+                    className="size-5 border-slate-500 data-[state=checked]:border-slate-700 [&_svg]:fill-slate-700"
+                  />
+                  <RadioGroupItem
+                    value="1"
+                    id={`q${question.id}-p1`}
+                    className="size-6 border-fuchsia-400 data-[state=checked]:border-fuchsia-600 [&_svg]:fill-fuchsia-600"
+                  />
+                  <RadioGroupItem
+                    value="2"
+                    id={`q${question.id}-p2`}
+                    className="size-7 border-fuchsia-400 data-[state=checked]:border-fuchsia-600 [&_svg]:fill-fuchsia-600"
+                  />
                 </RadioGroup>
               </div>
             ))}

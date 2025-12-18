@@ -340,13 +340,10 @@ export default function ResultPage() {
   );
 
   const strongestPreferenceLabel = useMemo(() => {
-    if (!result || !derivedPercentages)
+    if (!result || !result.scores)
       return "Complete the test to see your strongest preference.";
 
-    const entries = Object.entries(derivedPercentages) as [
-      MbtiLetter,
-      number
-    ][];
+    const entries = Object.entries(result.scores) as [MbtiLetter, number][];
     const [topLetter] = entries.reduce(
       (max, current) => (current[1] > max[1] ? current : max),
       entries[0]
@@ -364,7 +361,7 @@ export default function ResultPage() {
     };
 
     return `Your strongest preference is toward ${labelMap[topLetter]}.`;
-  }, [result, derivedPercentages]);
+  }, [result]);
 
   const dimensionNarratives = useMemo(() => {
     if (!derivedPercentages) return [];
@@ -383,26 +380,19 @@ export default function ResultPage() {
       const aScore = derivedPercentages[a];
       const bScore = derivedPercentages[b];
       const dominant = aScore >= bScore ? a : b;
-      const dominantScore = aScore >= bScore ? aScore : bScore;
-
-      const formatPercent = (value: number) => `${value}%`;
 
       if (a === "E" && b === "I") {
         if (dominant === "E") {
           return {
             key: "EI",
             title,
-            summary: `You lean about ${formatPercent(
-              dominantScore
-            )} toward Extraversion. You’re more likely to recharge through interaction, shared experiences and outer stimulation, but still have an Introverted side that sometimes needs quiet time to reset.`,
+            summary: `You lean about toward Extraversion. You’re more likely to recharge through interaction, shared experiences and outer stimulation, but still have an Introverted side that sometimes needs quiet time to reset.`,
           };
         }
         return {
           key: "EI",
           title,
-          summary: `You lean about ${formatPercent(
-            dominantScore
-          )} toward Introversion. You likely recharge through solitude, reflection and a small circle of close connections, while still being able to step into more social, outgoing modes when needed.`,
+          summary: `You lean about toward Introversion. You likely recharge through solitude, reflection and a small circle of close connections, while still being able to step into more social, outgoing modes when needed.`,
         };
       }
 
@@ -411,17 +401,13 @@ export default function ResultPage() {
           return {
             key: "SN",
             title,
-            summary: `You lean about ${formatPercent(
-              dominantScore
-            )} toward Sensing. You tend to notice concrete facts, current realities and practical details first, adding intuition and imagination as a secondary layer when it’s useful.`,
+            summary: `You lean about toward Sensing. You tend to notice concrete facts, current realities and practical details first, adding intuition and imagination as a secondary layer when it’s useful.`,
           };
         }
         return {
           key: "SN",
           title,
-          summary: `You lean about ${formatPercent(
-            dominantScore
-          )} toward Intuition. You’re more drawn to patterns, possibilities and the “big picture,” filling in details as needed rather than starting from them.`,
+          summary: `You lean about toward Intuition. You’re more drawn to patterns, possibilities and the “big picture,” filling in details as needed rather than starting from them.`,
         };
       }
 
@@ -430,17 +416,13 @@ export default function ResultPage() {
           return {
             key: "TF",
             title,
-            summary: `You lean about ${formatPercent(
-              dominantScore
-            )} toward Thinking. You’re inclined to evaluate situations through logic, consistency and fairness of principles, even though feelings and harmony still matter to you in close relationships.`,
+            summary: `You lean about toward Thinking. You’re inclined to evaluate situations through logic, consistency and fairness of principles, even though feelings and harmony still matter to you in close relationships.`,
           };
         }
         return {
           key: "TF",
           title,
-          summary: `You lean about ${formatPercent(
-            dominantScore
-          )} toward Feeling. You’re more likely to prioritize people, impact and values in decisions, while still appreciating clear reasoning when stakes are high.`,
+          summary: `You lean about toward Feeling. You’re more likely to prioritize people, impact and values in decisions, while still appreciating clear reasoning when stakes are high.`,
         };
       }
 
@@ -449,17 +431,13 @@ export default function ResultPage() {
         return {
           key: "JP",
           title,
-          summary: `You lean about ${formatPercent(
-            dominantScore
-          )} toward Judging. You probably feel calmer when plans, timelines and expectations are defined, even if you still enjoy some flexibility and last‑minute inspiration.`,
+          summary: `You lean about toward Judging. You probably feel calmer when plans, timelines and expectations are defined, even if you still enjoy some flexibility and last‑minute inspiration.`,
         };
       }
       return {
         key: "JP",
         title,
-        summary: `You lean about ${formatPercent(
-          dominantScore
-        )} toward Perceiving. You tend to keep options open, adapt in the moment and follow emerging opportunities, even if you can use structure when it serves your goals.`,
+        summary: `You lean about toward Perceiving. You tend to keep options open, adapt in the moment and follow emerging opportunities, even if you can use structure when it serves your goals.`,
       };
     };
 
