@@ -26,6 +26,7 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 type MbtiLetter = "E" | "I" | "S" | "N" | "T" | "F" | "J" | "P";
 
@@ -33,6 +34,7 @@ type MbtiResult = {
   type: string;
   scores: Record<MbtiLetter, number>;
   percentages: Record<MbtiLetter, number>;
+  warning?: string;
 };
 
 type TypeExplanation = {
@@ -180,41 +182,6 @@ const TYPE_EXPLANATIONS: Record<string, TypeExplanation> = {
   },
 };
 
-function computePercentagesFromScores(
-  scores: Record<MbtiLetter, number>
-): Record<MbtiLetter, number> {
-  const percentages: Record<MbtiLetter, number> = {
-    E: 0,
-    I: 0,
-    S: 0,
-    N: 0,
-    T: 0,
-    F: 0,
-    J: 0,
-    P: 0,
-  };
-
-  const pairs: [MbtiLetter, MbtiLetter][] = [
-    ["E", "I"],
-    ["S", "N"],
-    ["T", "F"],
-    ["J", "P"],
-  ];
-
-  for (const [a, b] of pairs) {
-    const total = scores[a] + scores[b];
-    if (total === 0) {
-      percentages[a] = 0;
-      percentages[b] = 0;
-    } else {
-      percentages[a] = Math.round((scores[a] / total) * 100);
-      percentages[b] = 100 - percentages[a];
-    }
-  }
-
-  return percentages;
-}
-
 const fallbackChartData = [
   { dimension: "E", score: 50 },
   { dimension: "I", score: 50 },
@@ -241,59 +208,135 @@ export default function ResultPage() {
     if (!stored) return null;
 
     try {
-      return JSON.parse(stored) as MbtiResult;
+      const parsed = JSON.parse(stored) as MbtiResult;
+      // Validate result structure
+      if (
+        !parsed.type ||
+        !parsed.scores ||
+        !parsed.percentages ||
+        typeof parsed.type !== "string"
+      ) {
+        // Invalid structure - clear and return null
+        window.sessionStorage.removeItem("mbtiResult");
+        return null;
+      }
+      return parsed;
     } catch {
-      // ignore invalid stored data
+      // Invalid JSON - clear and return null
+      if (typeof window !== "undefined") {
+        window.sessionStorage.removeItem("mbtiResult");
+      }
       return null;
     }
   });
 
-  const mbtiType = result?.type ?? "Your MBTI Type";
+  // Handle invalid type "XXXX" (all neutral answers)
+  const mbtiType =
+    result?.type === "XXXX"
+      ? "Unable to Determine"
+      : result?.type ?? "Your MBTI Type";
 
+  // Use percentages directly from API instead of recalculating
+  // This ensures consistency with the API's normalization logic
   const derivedPercentages = useMemo(
-    () => (result ? computePercentagesFromScores(result.scores) : null),
+    () => (result ? result.percentages : null),
     [result]
   );
 
+  // Normalize raw scores to 0-100 range for radar chart
+  // This allows visualization of actual score values (including negatives)
+  const normalizedScores = useMemo(() => {
+    if (!result?.scores) return null;
+
+    const scores = result.scores;
+    const allValues = Object.values(scores);
+    const minScore = Math.min(...allValues);
+    const maxScore = Math.max(...allValues);
+    const range = maxScore - minScore;
+
+    // If all scores are the same, return 50 for all (neutral)
+    if (range === 0) {
+      return {
+        E: 50,
+        I: 50,
+        S: 50,
+        N: 50,
+        T: 50,
+        F: 50,
+        J: 50,
+        P: 50,
+      };
+    }
+
+    // Normalize to 0-100 range
+    const normalized: Record<MbtiLetter, number> = {
+      E: 0,
+      I: 0,
+      S: 0,
+      N: 0,
+      T: 0,
+      F: 0,
+      J: 0,
+      P: 0,
+    };
+
+    for (const letter of Object.keys(normalized) as MbtiLetter[]) {
+      // Normalize: (value - min) / range * 100
+      normalized[letter] = Math.round(
+        ((scores[letter] - minScore) / range) * 100
+      );
+    }
+
+    return normalized;
+  }, [result?.scores]);
+
   const chartData = useMemo(
     () =>
-      result && derivedPercentages
+      result && normalizedScores
         ? ([
             {
               dimension: "E",
-              score: derivedPercentages.E,
+              score: normalizedScores.E,
+              rawScore: result.scores.E,
             },
             {
               dimension: "I",
-              score: derivedPercentages.I,
+              score: normalizedScores.I,
+              rawScore: result.scores.I,
             },
             {
               dimension: "S",
-              score: derivedPercentages.S,
+              score: normalizedScores.S,
+              rawScore: result.scores.S,
             },
             {
               dimension: "N",
-              score: derivedPercentages.N,
+              score: normalizedScores.N,
+              rawScore: result.scores.N,
             },
             {
               dimension: "T",
-              score: derivedPercentages.T,
+              score: normalizedScores.T,
+              rawScore: result.scores.T,
             },
             {
               dimension: "F",
-              score: derivedPercentages.F,
+              score: normalizedScores.F,
+              rawScore: result.scores.F,
             },
             {
               dimension: "J",
-              score: derivedPercentages.J,
+              score: normalizedScores.J,
+              rawScore: result.scores.J,
             },
             {
               dimension: "P",
-              score: derivedPercentages.P,
+              score: normalizedScores.P,
+              rawScore: result.scores.P,
             },
-          ] as { dimension: MbtiLetter; score: number }[])
+          ] as { dimension: MbtiLetter; score: number; rawScore: number }[])
         : fallbackChartData,
-    [result, derivedPercentages]
+    [result, normalizedScores]
   );
 
   const strongestPreferenceLabel = useMemo(() => {
@@ -324,7 +367,7 @@ export default function ResultPage() {
   }, [result, derivedPercentages]);
 
   const dimensionNarratives = useMemo(() => {
-    if (!derivedPercentages) return [];
+    if (!result || !normalizedScores) return [];
 
     type DimensionNarrative = {
       key: string;
@@ -337,29 +380,33 @@ export default function ResultPage() {
       b: MbtiLetter,
       title: string
     ): DimensionNarrative => {
-      const aScore = derivedPercentages[a];
-      const bScore = derivedPercentages[b];
+      const aScore = normalizedScores[a];
+      const bScore = normalizedScores[b];
       const dominant = aScore >= bScore ? a : b;
       const dominantScore = aScore >= bScore ? aScore : bScore;
 
-      const formatPercent = (value: number) => `${value}%`;
+      // Format normalized score (0-100 range, but cap at 99 to avoid showing 100%)
+      const formatScore = (value: number) => {
+        const rounded = Math.round(value);
+        return rounded >= 100 ? "99" : rounded.toString();
+      };
 
       if (a === "E" && b === "I") {
         if (dominant === "E") {
           return {
             key: "EI",
             title,
-            summary: `You lean about ${formatPercent(
+            summary: `You lean ${formatScore(
               dominantScore
-            )} toward Extraversion. You’re more likely to recharge through interaction, shared experiences and outer stimulation, but still have an Introverted side that sometimes needs quiet time to reset.`,
+            )}% toward Extraversion. You’re more likely to recharge through interaction, shared experiences and outer stimulation, but still have an Introverted side that sometimes needs quiet time to reset.`,
           };
         }
         return {
           key: "EI",
           title,
-          summary: `You lean about ${formatPercent(
+          summary: `You lean ${formatScore(
             dominantScore
-          )} toward Introversion. You likely recharge through solitude, reflection and a small circle of close connections, while still being able to step into more social, outgoing modes when needed.`,
+          )}% toward Introversion. You likely recharge through solitude, reflection and a small circle of close connections, while still being able to step into more social, outgoing modes when needed.`,
         };
       }
 
@@ -368,17 +415,17 @@ export default function ResultPage() {
           return {
             key: "SN",
             title,
-            summary: `You lean about ${formatPercent(
+            summary: `You lean ${formatScore(
               dominantScore
-            )} toward Sensing. You tend to notice concrete facts, current realities and practical details first, adding intuition and imagination as a secondary layer when it’s useful.`,
+            )}% toward Sensing. You tend to notice concrete facts, current realities and practical details first, adding intuition and imagination as a secondary layer when it’s useful.`,
           };
         }
         return {
           key: "SN",
           title,
-          summary: `You lean about ${formatPercent(
+          summary: `You lean ${formatScore(
             dominantScore
-          )} toward Intuition. You’re more drawn to patterns, possibilities and the “big picture,” filling in details as needed rather than starting from them.`,
+          )}% toward Intuition. You’re more drawn to patterns, possibilities and the “big picture,” filling in details as needed rather than starting from them.`,
         };
       }
 
@@ -387,17 +434,17 @@ export default function ResultPage() {
           return {
             key: "TF",
             title,
-            summary: `You lean about ${formatPercent(
+            summary: `You lean ${formatScore(
               dominantScore
-            )} toward Thinking. You’re inclined to evaluate situations through logic, consistency and fairness of principles, even though feelings and harmony still matter to you in close relationships.`,
+            )}% toward Thinking. You’re inclined to evaluate situations through logic, consistency and fairness of principles, even though feelings and harmony still matter to you in close relationships.`,
           };
         }
         return {
           key: "TF",
           title,
-          summary: `You lean about ${formatPercent(
+          summary: `You lean ${formatScore(
             dominantScore
-          )} toward Feeling. You’re more likely to prioritize people, impact and values in decisions, while still appreciating clear reasoning when stakes are high.`,
+          )}% toward Feeling. You’re more likely to prioritize people, impact and values in decisions, while still appreciating clear reasoning when stakes are high.`,
         };
       }
 
@@ -406,17 +453,17 @@ export default function ResultPage() {
         return {
           key: "JP",
           title,
-          summary: `You lean about ${formatPercent(
+          summary: `You lean ${formatScore(
             dominantScore
-          )} toward Judging. You probably feel calmer when plans, timelines and expectations are defined, even if you still enjoy some flexibility and last‑minute inspiration.`,
+          )}% toward Judging. You probably feel calmer when plans, timelines and expectations are defined, even if you still enjoy some flexibility and last‑minute inspiration.`,
         };
       }
       return {
         key: "JP",
         title,
-        summary: `You lean about ${formatPercent(
+        summary: `You lean ${formatScore(
           dominantScore
-        )} toward Perceiving. You tend to keep options open, adapt in the moment and follow emerging opportunities, even if you can use structure when it serves your goals.`,
+        )}% toward Perceiving. You tend to keep options open, adapt in the moment and follow emerging opportunities, even if you can use structure when it serves your goals.`,
       };
     };
 
@@ -426,15 +473,24 @@ export default function ResultPage() {
       describeAxis("T", "F", "How you evaluate and make decisions"),
       describeAxis("J", "P", "How you like to organize your outer world"),
     ];
-  }, [derivedPercentages]);
+  }, [result, normalizedScores]);
 
   return (
     <div className="flex min-h-screen justify-center bg-linear-to-b from-fuchsia-50 via-white to-white px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10">
       <main className="flex w-full max-w-md flex-col rounded-[32px] bg-white px-6 py-7 shadow-[0_18px_45px_rgba(199,110,255,0.18)] sm:max-w-lg sm:px-8 sm:py-8 md:max-w-3xl md:px-10 md:py-10">
         <header className="flex flex-col items-center gap-3 text-center md:flex-row md:justify-between md:text-left">
-          <span className="inline-flex items-center rounded-full border border-pink-400 bg-linear-to-b from-fuchsia-500 to-pink-600 bg-clip-text px-4 py-1 text-xs font-semibold tracking-wide text-transparent">
-            MBTI Senpai Result
-          </span>
+          <div className="flex items-center gap-2">
+            <Image
+              src="/logo.png"
+              alt="MBTI Senpai"
+              width={100}
+              height={100}
+              className="w-10 h-10 rounded-full"
+            />
+            <span className="inline-flex items-center rounded-full border border-pink-400 bg-linear-to-b from-fuchsia-500 to-pink-600 bg-clip-text px-4 py-1 text-xs font-semibold tracking-wide text-transparent">
+              MBTI Senpai Result
+            </span>
+          </div>
           <p className="text-[11px] font-medium capitalize text-zinc-400">
             Your personalized personality snapshot
           </p>
@@ -458,6 +514,12 @@ export default function ResultPage() {
               No recent test result found. Please take the test first.
             </p>
           )}
+          {result?.warning && (
+            <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-800 sm:text-sm">
+              <p className="font-semibold">⚠️ Notice:</p>
+              <p className="mt-1">{result.warning}</p>
+            </div>
+          )}
         </section>
 
         <section className="mt-8">
@@ -465,7 +527,8 @@ export default function ResultPage() {
             <CardHeader className="items-center pb-3 text-center">
               <CardTitle>Preference radar</CardTitle>
               <CardDescription>
-                How strongly you lean toward each MBTI dimension.
+                Raw scores normalized for visualization (hover to see actual
+                values).
               </CardDescription>
             </CardHeader>
             <CardContent className="pb-2">
@@ -497,8 +560,9 @@ export default function ResultPage() {
                 {strongestPreferenceLabel}
               </div>
               <p>
-                Scores are based on how often you chose each side of a dichotomy
-                across the entire test.
+                Chart shows normalized raw scores. Hover over points to see
+                actual score values. Scores are calculated from weighted
+                question responses across the entire test.
               </p>
             </CardFooter>
           </Card>
@@ -553,7 +617,21 @@ export default function ResultPage() {
             </p>
           </div>
         </section>
-        {result && TYPE_EXPLANATIONS[result.type] && (
+        {result && result.type === "XXXX" && (
+          <section className="mt-6 space-y-3 text-xs text-zinc-600 sm:text-sm">
+            <div className="mt-3 space-y-1 rounded-xl bg-amber-50/60 px-4 py-3 border border-amber-200">
+              <p className="text-sm font-semibold text-amber-900 sm:text-base">
+                Unable to Determine Your Type
+              </p>
+              <p className="text-xs text-amber-800 sm:text-sm">
+                All your answers were neutral, making it impossible to determine
+                your MBTI type. Please retake the test and provide more
+                definitive answers to get accurate results.
+              </p>
+            </div>
+          </section>
+        )}
+        {result && result.type !== "XXXX" && TYPE_EXPLANATIONS[result.type] && (
           <section className="mt-6 space-y-3 text-xs text-zinc-600 sm:text-sm">
             <p className="font-semibold capitalize text-pink-500">
               {TYPE_EXPLANATIONS[result.type].groupTitle}
@@ -564,6 +642,14 @@ export default function ResultPage() {
                 {mbtiType} — {TYPE_EXPLANATIONS[result.type].typeTitle}
               </p>
               <p>{TYPE_EXPLANATIONS[result.type].typeDescription}</p>
+            </div>
+            <div className="flex justify-center items-center">
+              <Image
+                src={`/personalities/${result.type.toLowerCase()}.png`}
+                alt={result.type}
+                width={400}
+                height={400}
+              />
             </div>
           </section>
         )}

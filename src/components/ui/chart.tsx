@@ -64,14 +64,34 @@ export function ChartContainer({
   );
 }
 
-export function ChartTooltip(props: TooltipProps<any, any>) {
+export function ChartTooltip<
+  TValue extends string | number = string | number,
+  TName extends string | number = string | number
+>(props: TooltipProps<TValue, TName>) {
   return <Tooltip {...props} />;
 }
 
-export function ChartTooltipContent({ active, payload, label }: any) {
+type TooltipContentProps = {
+  active?: boolean;
+  payload?: Array<{
+    fill?: string;
+    value?: string | number;
+    payload?: {
+      rawScore?: number;
+    };
+  }>;
+  label?: string;
+};
+
+export function ChartTooltipContent({
+  active,
+  payload,
+  label,
+}: TooltipContentProps) {
   if (!active || !payload?.length) return null;
 
   const item = payload[0];
+  const rawScore = item.payload?.rawScore;
 
   return (
     <div className="rounded-xl border border-pink-50 bg-white/90 px-3 py-2 text-xs shadow-md">
@@ -81,7 +101,16 @@ export function ChartTooltipContent({ active, payload, label }: any) {
           className="h-2 w-2 rounded-full"
           style={{ backgroundColor: item.fill as string }}
         />
-        <span className="font-medium">{item.value}</span>
+        <span className="font-medium">
+          {typeof rawScore === "number" ? (
+            <>
+              {rawScore.toFixed(2)}{" "}
+              <span className="text-zinc-400">(normalized: {item.value})</span>
+            </>
+          ) : (
+            item.value
+          )}
+        </span>
       </div>
     </div>
   );

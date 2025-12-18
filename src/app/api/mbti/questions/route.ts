@@ -23,19 +23,51 @@ export type MbtiQuestion = {
   rightLetter: string;
 };
 
-function shuffle<T>(items: T[]): T[] {
+/**
+ * Seeded shuffle function for deterministic randomization.
+ * Uses a seed value to ensure consistent results for the same seed.
+ * This enables balanced question coverage over time.
+ */
+function seededShuffle<T>(items: T[], seed: number): T[] {
   const array = [...items];
+  // Simple seeded random number generator
+  let currentSeed = seed;
+  const seededRandom = () => {
+    currentSeed = (currentSeed * 9301 + 49297) % 233280;
+    return currentSeed / 233280;
+  };
+
   for (let i = array.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(seededRandom() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
+}
+
+/**
+ * Gets a rotation seed based on the current date.
+ * This ensures:
+ * - Same questions shown on the same day (consistent experience)
+ * - Different questions shown on different days (variety)
+ * - All questions eventually get shown (balanced coverage over time)
+ */
+function getRotationSeed(): number {
+  // Use day of year (1-365/366) as seed
+  // This rotates questions daily while maintaining consistency within a day
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 0);
+  const dayOfYear = Math.floor(
+    (now.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
+  );
+  return dayOfYear;
 }
 
 const QUESTIONS_PER_DICHOTOMY = 11;
 
 export async function GET() {
   try {
+    // Get rotation seed for balanced coverage
+    const rotationSeed = getRotationSeed();
     const allQuestions: MbtiQuestion[] = [];
 
     (Object.keys(DICHOTOMY_LETTERS) as DichotomyKey[]).forEach(
@@ -54,7 +86,14 @@ export async function GET() {
 
         const [leftLetter, rightLetter] = DICHOTOMY_LETTERS[dichotomyKey];
 
-        const selected = shuffle(raw)
+        // Use seeded shuffle with a unique seed per dichotomy
+        // This ensures balanced coverage: same questions on same day,
+        // but different questions rotate over time
+        const dichotomySeed =
+          rotationSeed +
+          dichotomyKey.charCodeAt(0) * 1000 +
+          dichotomyKey.charCodeAt(1) * 100;
+        const selected = seededShuffle(raw, dichotomySeed)
           .slice(0, QUESTIONS_PER_DICHOTOMY)
           .map<MbtiQuestion>((q) => ({
             id: q.id,
@@ -70,7 +109,10 @@ export async function GET() {
       }
     );
 
-    const shuffled = shuffle(allQuestions);
+    // Shuffle all questions together using a final seed
+    // This maintains randomness in question order while ensuring balanced selection
+    const finalSeed = rotationSeed * 1000;
+    const shuffled = seededShuffle(allQuestions, finalSeed);
 
     return NextResponse.json(
       {

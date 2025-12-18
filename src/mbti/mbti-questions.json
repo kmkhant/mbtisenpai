@@ -498,9 +498,9 @@
     },
     {
       "id": 32,
-      "prompt": "Which feels more like you: likes to know \\\"who?\\\", \\\"what?\\\", \\\"when?\\\" or likes to know \\\"why?\\\"?",
-      "left": "likes to know \\\"who?\\\", \\\"what?\\\", \\\"when?\\\"",
-      "right": "likes to know \\\"why?\\\"",
+      "prompt": "Which feels more like you: likes to know \"who?\", \"what?\", \"when?\" or likes to know \"why?\"?",
+      "left": "likes to know \"who?\", \"what?\", \"when?\"",
+      "right": "likes to know \"why?\"",
       "weights": {
         "I": 0.18,
         "E": 0,

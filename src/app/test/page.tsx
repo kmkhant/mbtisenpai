@@ -145,11 +145,21 @@ export default function TestPage() {
         body: JSON.stringify(payload),
       });
 
+      const result = await res.json();
+
       if (!res.ok) {
-        throw new Error("Failed to score MBTI answers.");
+        // Parse error message from API response
+        const errorMessage =
+          result?.error || "Failed to score MBTI answers. Please try again.";
+        throw new Error(errorMessage);
       }
 
-      const result = await res.json();
+      // Check for warnings from API
+      if (result.warning) {
+        // Store warning with result - will be displayed on result page
+        // eslint-disable-next-line no-console
+        console.warn("Quiz warning:", result.warning);
+      }
 
       if (typeof window !== "undefined") {
         window.sessionStorage.setItem("mbtiResult", JSON.stringify(result));
@@ -159,9 +169,12 @@ export default function TestPage() {
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error(err);
-      setError(
-        "Something went wrong while submitting your answers. Please try again."
-      );
+      // Use error message from API if available, otherwise show generic message
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : "Something went wrong while submitting your answers. Please try again.";
+      setError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }

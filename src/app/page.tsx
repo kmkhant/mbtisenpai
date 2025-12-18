@@ -7,15 +7,28 @@ import {
   PersonStandingIcon,
   TrendingUpDownIcon,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen justify-center bg-linear-to-b from-fuchsia-50 via-white to-white px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10">
       <main className="w-full max-w-md rounded-[32px] bg-white px-6 py-7 shadow-[0_18px_45px_rgba(199,110,255,0.18)] sm:max-w-lg sm:px-8 sm:py-8 md:max-w-3xl md:px-10 md:py-10 lg:max-w-5xl">
         <header className="flex items-center justify-center md:justify-between">
-          <span className="inline-flex items-center rounded-full border border-pink-400 bg-linear-to-b from-fuchsia-500 to-pink-600 bg-clip-text px-4 py-1 text-xs font-semibold tracking-wide text-transparent">
-            MBTI Senpai
-          </span>
+          <div className="flex items-center gap-2">
+            <div>
+              <Image
+                src="/logo.png"
+                alt="MBTI Senpai"
+                width={100}
+                height={100}
+                className="w-10 h-10 rounded-full"
+              />
+            </div>
+            <span className="inline-flex items-center rounded-full border border-pink-400 bg-linear-to-b from-fuchsia-500 to-pink-600 bg-clip-text px-4 py-1 text-xs font-semibold tracking-wide text-transparent">
+              MBTI Senpai
+            </span>
+          </div>
+
           <span className="hidden font-medium capitalize text-zinc-400 md:inline">
             Personality insights in 10 minutes
           </span>
