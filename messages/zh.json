@@ -1,0 +1,40 @@
+{
+  "common": {
+    "siteName": "MBTI Senpai",
+    "takeTest": "开始测试",
+    "about": "关于",
+    "contact": "联系",
+    "privacy": "隐私",
+    "terms": "条款",
+    "retakeTest": "重新测试",
+    "returnHome": "返回首页",
+    "copyLink": "复制链接",
+    "shareResult": "分享结果",
+    "copied": "已复制！"
+  },
+  "home": {
+    "title": "进行MBTI测试",
+    "subtitle": "快速、简单且准确",
+    "subtitle2": "随时随地",
+    "subtitle3": "免费",
+    "description": "只需10分钟即可准确了解自己。",
+    "personalityInsights": "10分钟内获得性格洞察",
+    "whatHelps": "MBTI Senpai 能帮助您获得什么",
+    "description2": "通过专业的性格洞察，掌握您的优势并指导您的成长。"
+  },
+  "test": {
+    "title": "MBTI Senpai 测试",
+    "page": "第",
+    "of": "页，共",
+    "previous": "上一页",
+    "nextPage": "下一页",
+    "seeResult": "查看结果",
+    "submitting": "提交中..."
+  },
+  "result": {
+    "yourType": "您的类型",
+    "letterMeanings": "字母含义",
+    "whatThisMeans": "这意味着什么",
+    "description": "您的四字母类型总结了您如何获取能量、接收信息、做出决策和组织外部世界。"
+  }
+}

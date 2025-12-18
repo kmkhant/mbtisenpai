@@ -1,0 +1,40 @@
+{
+  "common": {
+    "siteName": "MBTI Senpai",
+    "takeTest": "Take the Test",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "retakeTest": "Retake test",
+    "returnHome": "Return to Home",
+    "copyLink": "Copy Link",
+    "shareResult": "Share Result",
+    "copied": "Copied!"
+  },
+  "home": {
+    "title": "Take MBTI Test",
+    "subtitle": "Quick, Easy and Accurate",
+    "subtitle2": "from Anywhere",
+    "subtitle3": "for FREE",
+    "description": "just give 10 minutes to accurately understand more about yourself.",
+    "personalityInsights": "Personality insights in 10 minutes",
+    "whatHelps": "What MBTI Senpai helps you get",
+    "description2": "Master your strengths and navigate your growth with expert personality insights."
+  },
+  "test": {
+    "title": "MBTI Senpai Test",
+    "page": "Page",
+    "of": "of",
+    "previous": "Previous",
+    "nextPage": "Next Page",
+    "seeResult": "See Result",
+    "submitting": "Submitting..."
+  },
+  "result": {
+    "yourType": "Your type",
+    "letterMeanings": "Letter meanings",
+    "whatThisMeans": "What this means",
+    "description": "Your four-letter type summarizes how you tend to get energy, take in information, make decisions and organize your outer world."
+  }
+}

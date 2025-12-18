@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
@@ -85,12 +86,40 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const facebookAppId = process.env.NEXT_PUBLIC_FACEBOOK_APP_ID;
+
   return (
     <html lang="en">
       <body className={`${poppins.className} antialiased`}>{children}</body>
       <GoogleAnalytics
         gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""}
       />
+      {facebookAppId && (
+        <>
+          <Script
+            id="facebook-sdk"
+            strategy="lazyOnload"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.fbAsyncInit = function() {
+                  FB.init({
+                    appId: '${facebookAppId}',
+                    xfbml: true,
+                    version: 'v24.0'
+                  });
+                };
+              `,
+            }}
+          />
+          <Script
+            src="https://connect.facebook.net/en_US/sdk.js"
+            strategy="lazyOnload"
+            async
+            defer
+            crossOrigin="anonymous"
+          />
+        </>
+      )}
     </html>
   );
 }

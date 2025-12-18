@@ -20,20 +20,6 @@ import {
 import { TYPE_EXPLANATIONS } from "./data/type-explanations";
 import type { MbtiResult } from "./types";
 import {
-  FacebookShareButton,
-  FacebookIcon,
-  TwitterIcon,
-  TwitterShareButton,
-  TelegramIcon,
-  TelegramShareButton,
-  ViberIcon,
-  ViberShareButton,
-  LinkedinShareButton,
-  LinkedinIcon,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
-} from "next-share";
-import {
   Dialog,
   DialogHeader,
   DialogTitle,
@@ -169,6 +155,51 @@ function ResultPageContent() {
         // Failed to copy
       }
       document.body.removeChild(textArea);
+    }
+  };
+
+  const handleFacebookShare = () => {
+    if (!result || !shareableUrl || typeof window === "undefined") return;
+
+    // Declare FB type for TypeScript
+    interface FacebookSDK {
+      ui: (
+        params: {
+          display?: string;
+          method: string;
+          href: string;
+        },
+        callback?: (response: {
+          error_code?: string;
+          error_message?: string;
+        }) => void
+      ) => void;
+    }
+
+    // Check if FB is loaded
+    const FB = (window as typeof window & { FB?: FacebookSDK }).FB;
+    if (FB) {
+      // Use Share Dialog as per Facebook documentation
+      // The dialog will use Open Graph tags from the page for title, description, and image
+      FB.ui(
+        {
+          display: "popup",
+          method: "share",
+          href: shareableUrl,
+        },
+        function () {
+          // Handle response if needed
+        }
+      );
+    } else {
+      // Fallback to direct share URL
+      window.open(
+        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+          shareableUrl
+        )}`,
+        "_blank",
+        "width=600,height=400"
+      );
     }
   };
 
@@ -397,45 +428,24 @@ function ResultPageContent() {
                     </DialogDescription>
                   </DialogHeader>
                   <div className="flex flex-col gap-3">
-                    <FacebookShareButton url={shareableUrl}>
-                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
-                        <FacebookIcon size={24} />
-                        <div>Share on Facebook</div>
-                      </div>
-                    </FacebookShareButton>
-                    <FacebookMessengerShareButton
-                      url={shareableUrl}
-                      appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID ?? ""}
+                    <Button
+                      onClick={handleFacebookShare}
+                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 hover:border-blue-300"
                     >
-                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
-                        <FacebookMessengerIcon size={24} />
-                        <div>Share on Facebook Messenger</div>
-                      </div>
-                    </FacebookMessengerShareButton>
-                    <TwitterShareButton url={shareableUrl}>
-                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
-                        <TwitterIcon size={24} />
-                        <div>Share on Twitter</div>
-                      </div>
-                    </TwitterShareButton>
-                    <TelegramShareButton url={shareableUrl}>
-                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
-                        <TelegramIcon size={24} />
-                        <div>Share on Telegram</div>
-                      </div>
-                    </TelegramShareButton>
-                    <ViberShareButton url={shareableUrl}>
-                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
-                        <ViberIcon size={24} />
-                        <div>Share on Viber</div>
-                      </div>
-                    </ViberShareButton>
-                    <LinkedinShareButton url={shareableUrl}>
-                      <div className="inline-flex items-center justify-center gap-2 rounded-md border w-full px-5 py-2 text-xs font-semibold text-fuchsia-600 transition hover:border-pink-300 hover:bg-fuchsia-50 sm:text-sm bg-white">
-                        <LinkedinIcon size={24} />
-                        <div>Share on Linkedin</div>
-                      </div>
-                    </LinkedinShareButton>
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      Share on Facebook
+                    </Button>
                   </div>
                 </DialogContent>
               </Dialog>

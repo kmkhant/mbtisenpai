@@ -2,9 +2,9 @@
   "EI": [
     {
       "id": 5,
-      "prompt": "Deep down, are you more angry or resentful?",
-      "left": "angry",
-      "right": "resentful",
+      "prompt": "Are you more angry or resentful?",
+      "left": "Angry",
+      "right": "Resentful",
       "weights": {
         "I": 0.21,
         "E": 0,
@@ -18,9 +18,9 @@
     },
     {
       "id": 7,
-      "prompt": "Which feels more like you: talks over a decision with other people or makes it alone?",
-      "left": "talks over a decision with other people",
-      "right": "makes it alone",
+      "prompt": "Do you talk to others before deciding or decide alone?",
+      "left": "Talk to others before deciding",
+      "right": "Decide alone",
       "weights": {
         "I": 0.89,
         "E": 0,
@@ -34,9 +34,9 @@
     },
     {
       "id": 11,
-      "prompt": "Which feels more like you: learns before doing or learns while doing?",
-      "left": "learns before doing",
-      "right": "learns while doing",
+      "prompt": "Do you learn first, then do or learn by doing?",
+      "left": "Learn first, then do",
+      "right": "Learn by doing",
       "weights": {
         "I": 0,
         "E": 0.72,
@@ -50,9 +50,9 @@
     },
     {
       "id": 12,
-      "prompt": "In everyday life, are you more careful or extreme?",
-      "left": "careful",
-      "right": "extreme",
+      "prompt": "Are you more careful or extreme?",
+      "left": "Careful",
+      "right": "Extreme",
       "weights": {
         "I": 0,
         "E": 0.73,
@@ -66,9 +66,9 @@
     },
     {
       "id": 14,
-      "prompt": "Which feels more like you: learns by doing or learns by watching?",
-      "left": "learns by doing",
-      "right": "learns by watching",
+      "prompt": "Do you learn by doing or learn by watching?",
+      "left": "Learn by doing",
+      "right": "Learn by watching",
       "weights": {
         "I": 0.34,
         "E": 0,
@@ -82,9 +82,9 @@
     },
     {
       "id": 17,
-      "prompt": "Which feels more like you: often thinks about what they should have done differently or does not second guess?",
-      "left": "often thinks about what they should have done differently",
-      "right": "does not second guess",
+      "prompt": "Do you think about mistakes or don't think about mistakes?",
+      "left": "Think about mistakes",
+      "right": "Don't think about mistakes",
       "weights": {
         "I": 0,
         "E": 0.46,
@@ -98,9 +98,9 @@
     },
     {
       "id": 18,
-      "prompt": "Which feels more like you: likes small talk or hates small talk?",
-      "left": "likes small talk",
-      "right": "hates small talk",
+      "prompt": "Do you like small talk or hate small talk?",
+      "left": "Like small talk",
+      "right": "Hate small talk",
       "weights": {
         "I": 0.98,
         "E": 0,
@@ -114,9 +114,9 @@
     },
     {
       "id": 25,
-      "prompt": "Which feels more like you: wants to be treated right or just doesn't want to be treated wrong?",
-      "left": "wants to be treated right",
-      "right": "just doesn't want to be treated wrong",
+      "prompt": "Do you want to be treated well or don't want to be treated badly?",
+      "left": "Want to be treated well",
+      "right": "Don't want to be treated badly",
       "weights": {
         "I": 0.3,
         "E": 0,
@@ -130,9 +130,9 @@
     },
     {
       "id": 27,
-      "prompt": "Which feels more like you: wants a destiny or afraid of fate?",
-      "left": "wants a destiny",
-      "right": "afraid of fate",
+      "prompt": "Do you want a plan or afraid of plans?",
+      "left": "Want a plan",
+      "right": "Afraid of plans",
       "weights": {
         "I": 0.2,
         "E": 0,
@@ -147,8 +147,8 @@
     {
       "id": 30,
       "prompt": "Are you more confident or unsure?",
-      "left": "confident",
-      "right": "unsure",
+      "left": "Confident",
+      "right": "Unsure",
       "weights": {
         "I": 0.92,
         "E": 0,
@@ -162,9 +162,9 @@
     },
     {
       "id": 33,
-      "prompt": "Which feels more like you: manipulates things behind the scenes or leads from the front?",
-      "left": "manipulates things behind the scenes",
-      "right": "leads from the front",
+      "prompt": "Do you work behind the scenes or lead from the front?",
+      "left": "Work behind the scenes",
+      "right": "Lead from the front",
       "weights": {
         "I": 0,
         "E": 1.12,
@@ -178,9 +178,9 @@
     },
     {
       "id": 34,
-      "prompt": "Deep down, are you more trusting or paranoid?",
-      "left": "trusting",
-      "right": "paranoid",
+      "prompt": "Are you more trusting or paranoid?",
+      "left": "Trusting",
+      "right": "Paranoid",
       "weights": {
         "I": 0.6,
         "E": 0,
@@ -194,9 +194,9 @@
     },
     {
       "id": 39,
-      "prompt": "Which feels more like you: feels unlucky or feels very lucky?",
-      "left": "feels unlucky",
-      "right": "feels very lucky",
+      "prompt": "Do you feel unlucky or feel lucky?",
+      "left": "Feel unlucky",
+      "right": "Feel lucky",
       "weights": {
         "I": 0,
         "E": 0.68,
@@ -210,9 +210,9 @@
     },
     {
       "id": 42,
-      "prompt": "Day to day, are you more cautious or bold?",
-      "left": "cautious",
-      "right": "bold",
+      "prompt": "Are you more cautious or bold?",
+      "left": "Cautious",
+      "right": "Bold",
       "weights": {
         "I": 0,
         "E": 1.04,
@@ -226,9 +226,9 @@
     },
     {
       "id": 44,
-      "prompt": "Which feels more like you: caffeine (or other stimulant) gives a major boost or hardly notices the effects?",
-      "left": "caffeine (or other stimulant) gives a major boost",
-      "right": "hardly notices the effects",
+      "prompt": "Are you more caffeine (or other stimulant) gives a major boost or hardly notices the effects?",
+      "left": "Caffeine (or other stimulant) gives a major boost",
+      "right": "Hardly notices the effects",
       "weights": {
         "I": 0.31,
         "E": 0,
@@ -243,8 +243,8 @@
     {
       "id": 45,
       "prompt": "Are you more somber or enthusiastic?",
-      "left": "somber",
-      "right": "enthusiastic",
+      "left": "Somber",
+      "right": "Enthusiastic",
       "weights": {
         "I": 0,
         "E": 1.33,
@@ -258,9 +258,9 @@
     },
     {
       "id": 46,
-      "prompt": "Which feels more like you: wants loyal friends or wants fun friends?",
-      "left": "wants loyal friends",
-      "right": "wants fun friends",
+      "prompt": "Do you want loyal friends or want fun friends?",
+      "left": "Want loyal friends",
+      "right": "Want fun friends",
       "weights": {
         "I": 0,
         "E": 0.5,
@@ -274,9 +274,9 @@
     },
     {
       "id": 47,
-      "prompt": "Which feels more like you: no one knows what they are talking about or some people know what they are talking about?",
-      "left": "no one knows what they are talking about",
-      "right": "some people know what they are talking about",
+      "prompt": "Are you more no one knows what they're talking about or some people know what they're talking about?",
+      "left": "No one knows what they're talking about",
+      "right": "Some people know what they're talking about",
       "weights": {
         "I": 0,
         "E": 0.36,
@@ -290,9 +290,9 @@
     },
     {
       "id": 49,
-      "prompt": "Which feels more like you: like to listen to stories or likes to tell stories?",
-      "left": "like to listen to stories",
-      "right": "likes to tell stories",
+      "prompt": "Do you like to hear stories or like to tell stories?",
+      "left": "Like to hear stories",
+      "right": "Like to tell stories",
       "weights": {
         "I": 0,
         "E": 0.94,
@@ -306,9 +306,9 @@
     },
     {
       "id": 59,
-      "prompt": "When people describe you, are you more abstains or indulges?",
-      "left": "abstains",
-      "right": "indulges",
+      "prompt": "Are you more abstains or indulges?",
+      "left": "Abstains",
+      "right": "Indulges",
       "weights": {
         "I": 0,
         "E": 0.57,
@@ -322,9 +322,9 @@
     },
     {
       "id": 61,
-      "prompt": "Which feels more like you: fears sharing secrets or enjoys sharing secrets?",
-      "left": "fears sharing secrets",
-      "right": "enjoys sharing secrets",
+      "prompt": "Are you more afraid to share secrets or like to share secrets?",
+      "left": "Afraid to share secrets",
+      "right": "Like to share secrets",
       "weights": {
         "I": 0,
         "E": 0.97,
@@ -338,9 +338,9 @@
     },
     {
       "id": 63,
-      "prompt": "Which feels more like you: careful or lives dangerously?",
-      "left": "careful",
-      "right": "lives dangerously",
+      "prompt": "Are you more careful or take risks?",
+      "left": "Careful",
+      "right": "Take risks",
       "weights": {
         "I": 0,
         "E": 0.76,
@@ -354,9 +354,9 @@
     },
     {
       "id": 64,
-      "prompt": "Day to day, are you more careful or spontaneous?",
-      "left": "careful",
-      "right": "spontaneous",
+      "prompt": "Are you more careful or spontaneous?",
+      "left": "Careful",
+      "right": "Spontaneous",
       "weights": {
         "I": 0,
         "E": 0.99,
@@ -370,9 +370,9 @@
     },
     {
       "id": 66,
-      "prompt": "Which feels more like you: reads books or watches movies?",
-      "left": "reads books",
-      "right": "watches movies",
+      "prompt": "Are you more reads books or watches movies?",
+      "left": "Reads books",
+      "right": "Watches movies",
       "weights": {
         "I": 0,
         "E": 0.37,
@@ -386,9 +386,9 @@
     },
     {
       "id": 68,
-      "prompt": "Which feels more like you: likes being drunk or feels uncomfortable when drunk?",
-      "left": "likes being drunk",
-      "right": "feels uncomfortable when drunk",
+      "prompt": "Do you likes being drunk or feels uncomfortable when drunk?",
+      "left": "Likes being drunk",
+      "right": "Feels uncomfortable when drunk",
       "weights": {
         "I": 0.61,
         "E": 0,
@@ -403,8 +403,8 @@
     {
       "id": 69,
       "prompt": "Are you more energetic or mellow?",
-      "left": "energetic",
-      "right": "mellow",
+      "left": "Energetic",
+      "right": "Mellow",
       "weights": {
         "I": 1.24,
         "E": 0,
@@ -418,9 +418,9 @@
     },
     {
       "id": 74,
-      "prompt": "In everyday life, are you more friendly or distant?",
-      "left": "friendly",
-      "right": "distant",
+      "prompt": "Are you more friendly or distant?",
+      "left": "Friendly",
+      "right": "Distant",
       "weights": {
         "I": 1.26,
         "E": 0,
@@ -434,9 +434,9 @@
     },
     {
       "id": 77,
-      "prompt": "Which feels more like you: thinks about things from the top down or reasons from the bottom up?",
-      "left": "thinks about things from the top down",
-      "right": "reasons from the bottom up",
+      "prompt": "Do you think from big to small or think from small to big?",
+      "left": "Think from big to small",
+      "right": "Think from small to big",
       "weights": {
         "I": 0.24,
         "E": 0,
@@ -450,9 +450,9 @@
     },
     {
       "id": 79,
-      "prompt": "When people describe you, are you more well-rounded or deep?",
-      "left": "well-rounded",
-      "right": "deep",
+      "prompt": "Are you more well-rounded or deep?",
+      "left": "Well-rounded",
+      "right": "Deep",
       "weights": {
         "I": 0.64,
         "E": 0,
@@ -466,9 +466,9 @@
     },
     {
       "id": 81,
-      "prompt": "Day to day, are you more enthusiastic or deliberate?",
-      "left": "enthusiastic",
-      "right": "deliberate",
+      "prompt": "Are you more enthusiastic or deliberate?",
+      "left": "Enthusiastic",
+      "right": "Deliberate",
       "weights": {
         "I": 1.17,
         "E": 0,
@@ -482,9 +482,9 @@
     },
     {
       "id": 83,
-      "prompt": "Which feels more like you: has not changed much or very different than before?",
-      "left": "has not changed much",
-      "right": "very different than before",
+      "prompt": "Do you haven't changed much or very different now?",
+      "left": "Haven't changed much",
+      "right": "Very different now",
       "weights": {
         "I": 0,
         "E": 0.37,
@@ -499,8 +499,8 @@
     {
       "id": 84,
       "prompt": "Are you more tense or relaxed?",
-      "left": "tense",
-      "right": "relaxed",
+      "left": "Tense",
+      "right": "Relaxed",
       "weights": {
         "I": 0,
         "E": 0.6,
@@ -514,9 +514,9 @@
     },
     {
       "id": 88,
-      "prompt": "Which feels more like you: liked school or hated school?",
-      "left": "liked school",
-      "right": "hated school",
+      "prompt": "Do you liked school or hated school?",
+      "left": "Liked school",
+      "right": "Hated school",
       "weights": {
         "I": 0.38,
         "E": 0,
@@ -530,9 +530,9 @@
     },
     {
       "id": 89,
-      "prompt": "Which feels more like you: comes up with ideas and convinces other people of them or critically evaluates the ideas of others?",
-      "left": "comes up with ideas and convinces other people of them",
-      "right": "critically evaluates the ideas of others",
+      "prompt": "Do you come up with ideas or judge other ideas?",
+      "left": "Come up with ideas",
+      "right": "Judge other ideas",
       "weights": {
         "I": 0.66,
         "E": 0,
@@ -546,9 +546,9 @@
     },
     {
       "id": 95,
-      "prompt": "Which feels more like you: listens more or talks more?",
-      "left": "listens more",
-      "right": "talks more",
+      "prompt": "Are you more listen more or talk more?",
+      "left": "Listen more",
+      "right": "Talk more",
       "weights": {
         "I": 0,
         "E": 1.37,
@@ -562,9 +562,9 @@
     },
     {
       "id": 97,
-      "prompt": "Which feels more like you: prefers to be first mate or prefers to be captain?",
-      "left": "prefers to be first mate",
-      "right": "prefers to be captain",
+      "prompt": "Do you like to follow or like to lead?",
+      "left": "Like to follow",
+      "right": "Like to lead",
       "weights": {
         "I": 0,
         "E": 0.93,
@@ -578,9 +578,9 @@
     },
     {
       "id": 98,
-      "prompt": "When people describe you, are you more flowing or twitching?",
-      "left": "flowing",
-      "right": "twitching",
+      "prompt": "Are you more flowing or twitching?",
+      "left": "Flowing",
+      "right": "Twitching",
       "weights": {
         "I": 0.24,
         "E": 0,
@@ -594,9 +594,9 @@
     },
     {
       "id": 102,
-      "prompt": "Which feels more like you: has deep interests or has many interests?",
-      "left": "has deep interests",
-      "right": "has many interests",
+      "prompt": "Do you have deep interests or have many interests?",
+      "left": "Have deep interests",
+      "right": "Have many interests",
       "weights": {
         "I": 0,
         "E": 0.72,
@@ -610,9 +610,9 @@
     },
     {
       "id": 105,
-      "prompt": "Deep down, are you more people-oriented or task-oriented?",
-      "left": "people-oriented",
-      "right": "task-oriented",
+      "prompt": "Do you care about people or care about tasks?",
+      "left": "Care about people",
+      "right": "Care about tasks",
       "weights": {
         "I": 1.23,
         "E": 0,
@@ -626,9 +626,9 @@
     },
     {
       "id": 107,
-      "prompt": "Which feels more like you: tells others about their plans or tells others about what they have done?",
-      "left": "tells others about their plans",
-      "right": "tells others about what they have done",
+      "prompt": "Do you tell others your plans or tell others what you did?",
+      "left": "Tell others your plans",
+      "right": "Tell others what you did",
       "weights": {
         "I": 0.22,
         "E": 0,
@@ -642,9 +642,9 @@
     },
     {
       "id": 108,
-      "prompt": "Which feels more like you: keep room door closed or leaves door open?",
-      "left": "keep room door closed",
-      "right": "leaves door open",
+      "prompt": "Do you keep door closed or leave door open?",
+      "left": "Keep door closed",
+      "right": "Leave door open",
       "weights": {
         "I": 0,
         "E": 0.83,
@@ -658,9 +658,9 @@
     },
     {
       "id": 110,
-      "prompt": "In everyday life, are you more eager or reluctant?",
-      "left": "eager",
-      "right": "reluctant",
+      "prompt": "Are you more eager or reluctant?",
+      "left": "Eager",
+      "right": "Reluctant",
       "weights": {
         "I": 0.86,
         "E": 0,
@@ -674,9 +674,9 @@
     },
     {
       "id": 112,
-      "prompt": "Which feels more like you: criticizes themselves or accepts themselves?",
-      "left": "criticizes themselves",
-      "right": "accepts themselves",
+      "prompt": "Do you criticize yourself or accept yourself?",
+      "left": "Criticize yourself",
+      "right": "Accept yourself",
       "weights": {
         "I": 0,
         "E": 0.48,
@@ -690,9 +690,9 @@
     },
     {
       "id": 114,
-      "prompt": "Which feels more like you: quick thinker or deep thinker?",
-      "left": "quick thinker",
-      "right": "deep thinker",
+      "prompt": "Do you think fast or think deep?",
+      "left": "Think fast",
+      "right": "Think deep",
       "weights": {
         "I": 0.79,
         "E": 0,
@@ -706,9 +706,9 @@
     },
     {
       "id": 117,
-      "prompt": "Which feels more like you: notices a person' or s physical appearance first?",
-      "left": "notices a person'",
-      "right": "s physical appearance first",
+      "prompt": "Do you notice how people look first?",
+      "left": "Notices a person'",
+      "right": "S physical appearance first",
       "weights": {
         "I": 0,
         "E": 0.21,
@@ -722,9 +722,9 @@
     },
     {
       "id": 119,
-      "prompt": "Which feels more like you: hates the dentist or does not mind the dentist?",
-      "left": "hates the dentist",
-      "right": "does not mind the dentist",
+      "prompt": "Do you hate the dentist or don't mind the dentist?",
+      "left": "Hate the dentist",
+      "right": "Don't mind the dentist",
       "weights": {
         "I": 0,
         "E": 0.19,
@@ -738,9 +738,9 @@
     },
     {
       "id": 123,
-      "prompt": "Day to day, are you more timid or offensive?",
-      "left": "timid",
-      "right": "offensive",
+      "prompt": "Are you more timid or offensive?",
+      "left": "Timid",
+      "right": "Offensive",
       "weights": {
         "I": 0,
         "E": 0.98,
@@ -754,9 +754,9 @@
     },
     {
       "id": 126,
-      "prompt": "Which feels more like you: works best alone or works best in groups?",
-      "left": "works best alone",
-      "right": "works best in groups",
+      "prompt": "Do you work best alone or work best in groups?",
+      "left": "Work best alone",
+      "right": "Work best in groups",
       "weights": {
         "I": 0,
         "E": 1.19,
@@ -770,9 +770,9 @@
     },
     {
       "id": 132,
-      "prompt": "In everyday life, are you more hopeful or fearful?",
-      "left": "hopeful",
-      "right": "fearful",
+      "prompt": "Are you more hopeful or fearful?",
+      "left": "Hopeful",
+      "right": "Fearful",
       "weights": {
         "I": 0.68,
         "E": 0,
@@ -786,9 +786,9 @@
     },
     {
       "id": 135,
-      "prompt": "When people describe you, are you more comfortable or troubled?",
-      "left": "comfortable",
-      "right": "troubled",
+      "prompt": "Are you more comfortable or troubled?",
+      "left": "Comfortable",
+      "right": "Troubled",
       "weights": {
         "I": 0.71,
         "E": 0,
@@ -802,9 +802,9 @@
     },
     {
       "id": 138,
-      "prompt": "Which feels more like you: has to be lost for a long time before they ask for help or will stop and ask for directions right away?",
-      "left": "has to be lost for a long time before they ask for help",
-      "right": "will stop and ask for directions right away",
+      "prompt": "Are you more has to be lost for a long time before they ask for help or will stop and ask for directions right away?",
+      "left": "Has to be lost for a long time before they ask for help",
+      "right": "Will stop and ask for directions right away",
       "weights": {
         "I": 0,
         "E": 0.69,
@@ -818,9 +818,9 @@
     },
     {
       "id": 139,
-      "prompt": "Which feels more like you: feels very lucky or feels unlucky?",
-      "left": "feels very lucky",
-      "right": "feels unlucky",
+      "prompt": "Do you feel lucky or feel unlucky?",
+      "left": "Feel lucky",
+      "right": "Feel unlucky",
       "weights": {
         "I": 0.69,
         "E": 0,
@@ -834,9 +834,9 @@
     },
     {
       "id": 142,
-      "prompt": "Which feels more like you: jokes about things or jokes about people?",
-      "left": "jokes about things",
-      "right": "jokes about people",
+      "prompt": "Are you more jokes about things or jokes about people?",
+      "left": "Jokes about things",
+      "right": "Jokes about people",
       "weights": {
         "I": 0,
         "E": 0.39,
@@ -850,9 +850,9 @@
     },
     {
       "id": 144,
-      "prompt": "Which feels more like you: gets broken up with or does the breaking up?",
-      "left": "gets broken up with",
-      "right": "does the breaking up",
+      "prompt": "Are you more gets broken up with or does the breaking up?",
+      "left": "Gets broken up with",
+      "right": "Does the breaking up",
       "weights": {
         "I": 0,
         "E": 0.37,
@@ -866,9 +866,9 @@
     },
     {
       "id": 145,
-      "prompt": "Which feels more like you: likes change or resists change?",
-      "left": "likes change",
-      "right": "resists change",
+      "prompt": "Do you likes change or resists change?",
+      "left": "Likes change",
+      "right": "Resists change",
       "weights": {
         "I": 0.53,
         "E": 0,
@@ -882,9 +882,9 @@
     },
     {
       "id": 146,
-      "prompt": "Which feels more like you: eats quickly or savours the flavour?",
-      "left": "eats quickly",
-      "right": "savours the flavour",
+      "prompt": "Are you more eats quickly or savours the flavour?",
+      "left": "Eats quickly",
+      "right": "Savours the flavour",
       "weights": {
         "I": 0.22,
         "E": 0,
@@ -898,9 +898,9 @@
     },
     {
       "id": 147,
-      "prompt": "Which feels more like you: finds the world interesting or finds the world boring?",
-      "left": "finds the world interesting",
-      "right": "finds the world boring",
+      "prompt": "Are you more finds the world interesting or finds the world boring?",
+      "left": "Finds the world interesting",
+      "right": "Finds the world boring",
       "weights": {
         "I": 0.25,
         "E": 0,
@@ -914,9 +914,9 @@
     },
     {
       "id": 149,
-      "prompt": "Which feels more like you: remembers everything they did on their birthday before last or remembers not so much?",
-      "left": "remembers everything they did on their birthday before last",
-      "right": "remembers not so much",
+      "prompt": "Are you more remembers everything they did on their birthday before last or remembers not so much?",
+      "left": "Remembers everything they did on their birthday before last",
+      "right": "Remembers not so much",
       "weights": {
         "I": 0.39,
         "E": 0,
@@ -930,9 +930,9 @@
     },
     {
       "id": 154,
-      "prompt": "Which feels more like you: gets worn out by parties or gets fired up by parties?",
-      "left": "gets worn out by parties",
-      "right": "gets fired up by parties",
+      "prompt": "Are you more gets worn out by parties or gets fired up by parties?",
+      "left": "Gets worn out by parties",
+      "right": "Gets fired up by parties",
       "weights": {
         "I": 0,
         "E": 1.77,
@@ -946,9 +946,9 @@
     },
     {
       "id": 159,
-      "prompt": "Day to day, are you more cheerful or gloomy?",
-      "left": "cheerful",
-      "right": "gloomy",
+      "prompt": "Are you more cheerful or gloomy?",
+      "left": "Cheerful",
+      "right": "Gloomy",
       "weights": {
         "I": 0.91,
         "E": 0,
@@ -962,9 +962,9 @@
     },
     {
       "id": 168,
-      "prompt": "Which feels more like you: eats slowly or eats rapidly?",
-      "left": "eats slowly",
-      "right": "eats rapidly",
+      "prompt": "Are you more eats slowly or eats rapidly?",
+      "left": "Eats slowly",
+      "right": "Eats rapidly",
       "weights": {
         "I": 0,
         "E": 0.22,
@@ -978,9 +978,9 @@
     },
     {
       "id": 172,
-      "prompt": "Which feels more like you: finds it difficult to yell very loudly or yelling to others when they are far away comes naturally?",
-      "left": "finds it difficult to yell very loudly",
-      "right": "yelling to others when they are far away comes naturally",
+      "prompt": "Are you more finds it difficult to yell very loudly or yelling to others when they are far away comes naturally?",
+      "left": "Finds it difficult to yell very loudly",
+      "right": "Yelling to others when they are far away comes naturally",
       "weights": {
         "I": 0,
         "E": 1.4,
@@ -994,9 +994,9 @@
     },
     {
       "id": 174,
-      "prompt": "Which feels more like you: wants a big house or wants a cozy house?",
-      "left": "wants a big house",
-      "right": "wants a cozy house",
+      "prompt": "Do you wants a big house or wants a cozy house?",
+      "left": "Wants a big house",
+      "right": "Wants a cozy house",
       "weights": {
         "I": 0.52,
         "E": 0,
@@ -1010,9 +1010,9 @@
     },
     {
       "id": 178,
-      "prompt": "In everyday life, are you more serious or silly?",
-      "left": "serious",
-      "right": "silly",
+      "prompt": "Are you more serious or silly?",
+      "left": "Serious",
+      "right": "Silly",
       "weights": {
         "I": 0,
         "E": 0.64,
@@ -1026,9 +1026,9 @@
     },
     {
       "id": 183,
-      "prompt": "Which feels more like you: sees the glass as glass half full or sees it as half empty?",
-      "left": "sees the glass as glass half full",
-      "right": "sees it as half empty",
+      "prompt": "Are you more sees the glass as glass half full or sees it as half empty?",
+      "left": "Sees the glass as glass half full",
+      "right": "Sees it as half empty",
       "weights": {
         "I": 0.71,
         "E": 0,
@@ -1042,9 +1042,9 @@
     },
     {
       "id": 184,
-      "prompt": "Which feels more like you: needs time alone or bored by time alone?",
-      "left": "needs time alone",
-      "right": "bored by time alone",
+      "prompt": "Are you more needs time alone or bored by time alone?",
+      "left": "Needs time alone",
+      "right": "Bored by time alone",
       "weights": {
         "I": 0,
         "E": 1.44,
@@ -1058,9 +1058,9 @@
     },
     {
       "id": 188,
-      "prompt": "Which feels more like you: likes to perform in front of other people or avoids public speaking?",
-      "left": "likes to perform in front of other people",
-      "right": "avoids public speaking",
+      "prompt": "Do you likes to perform in front of other people or avoids public speaking?",
+      "left": "Likes to perform in front of other people",
+      "right": "Avoids public speaking",
       "weights": {
         "I": 1.41,
         "E": 0,
@@ -1074,9 +1074,9 @@
     },
     {
       "id": 191,
-      "prompt": "Which feels more like you: takes stuff to mellow out or takes stuff to amp up?",
-      "left": "takes stuff to mellow out",
-      "right": "takes stuff to amp up",
+      "prompt": "Do you takes stuff to mellow out or takes stuff to amp up?",
+      "left": "Takes stuff to mellow out",
+      "right": "Takes stuff to amp up",
       "weights": {
         "I": 0,
         "E": 0.28,
@@ -1090,9 +1090,9 @@
     },
     {
       "id": 192,
-      "prompt": "Which feels more like you: stays at home or goes out on the town?",
-      "left": "stays at home",
-      "right": "goes out on the town",
+      "prompt": "Are you more stays at home or goes out on the town?",
+      "left": "Stays at home",
+      "right": "Goes out on the town",
       "weights": {
         "I": 0,
         "E": 1.43,
@@ -1106,9 +1106,9 @@
     },
     {
       "id": 193,
-      "prompt": "Which feels more like you: likes civilization or wants to get back to nature?",
-      "left": "likes civilization",
-      "right": "wants to get back to nature",
+      "prompt": "Do you likes civilization or wants to get back to nature?",
+      "left": "Likes civilization",
+      "right": "Wants to get back to nature",
       "weights": {
         "I": 0.36,
         "E": 0,
@@ -1122,9 +1122,9 @@
     },
     {
       "id": 195,
-      "prompt": "Which feels more like you: likes to drive fast or likes to keep it under control?",
-      "left": "likes to drive fast",
-      "right": "likes to keep it under control",
+      "prompt": "Do you likes to drive fast or likes to keep it under control?",
+      "left": "Likes to drive fast",
+      "right": "Likes to keep it under control",
       "weights": {
         "I": 0.64,
         "E": 0,
@@ -1138,9 +1138,9 @@
     },
     {
       "id": 197,
-      "prompt": "Which feels more like you: frequently embarrassed or shameless?",
-      "left": "frequently embarrassed",
-      "right": "shameless",
+      "prompt": "Are you more frequently embarrassed or shameless?",
+      "left": "Frequently embarrassed",
+      "right": "Shameless",
       "weights": {
         "I": 0,
         "E": 0.93,
@@ -1154,9 +1154,9 @@
     },
     {
       "id": 198,
-      "prompt": "Which feels more like you: needs silence to sleep or can sleep through anything?",
-      "left": "needs silence to sleep",
-      "right": "can sleep through anything",
+      "prompt": "Are you more needs silence to sleep or can sleep through anything?",
+      "left": "Needs silence to sleep",
+      "right": "Can sleep through anything",
       "weights": {
         "I": 0,
         "E": 0.58,
@@ -1170,9 +1170,9 @@
     },
     {
       "id": 199,
-      "prompt": "Which feels more like you: shows anger or hides anger?",
-      "left": "shows anger",
-      "right": "hides anger",
+      "prompt": "Are you more shows anger or hides anger?",
+      "left": "Shows anger",
+      "right": "Hides anger",
       "weights": {
         "I": 0.64,
         "E": 0,
@@ -1186,9 +1186,9 @@
     },
     {
       "id": 202,
-      "prompt": "Which feels more like you: likes team sports or likes individual sports?",
-      "left": "likes team sports",
-      "right": "likes individual sports",
+      "prompt": "Do you likes team sports or likes individual sports?",
+      "left": "Likes team sports",
+      "right": "Likes individual sports",
       "weights": {
         "I": 0.8,
         "E": 0,
@@ -1202,9 +1202,9 @@
     },
     {
       "id": 204,
-      "prompt": "Which feels more like you: bounces around the room or remains calm?",
-      "left": "bounces around the room",
-      "right": "remains calm",
+      "prompt": "Are you more bounces around the room or remains calm?",
+      "left": "Bounces around the room",
+      "right": "Remains calm",
       "weights": {
         "I": 1.31,
         "E": 0,
@@ -1219,8 +1219,8 @@
     {
       "id": 209,
       "prompt": "Are you more brave or careful?",
-      "left": "brave",
-      "right": "careful",
+      "left": "Brave",
+      "right": "Careful",
       "weights": {
         "I": 0.77,
         "E": 0,
@@ -1234,9 +1234,9 @@
     },
     {
       "id": 210,
-      "prompt": "Which feels more like you: hates people who show off or maybe a little impressed by people who show off?",
-      "left": "hates people who show off",
-      "right": "maybe a little impressed by people who show off",
+      "prompt": "Do you hates people who show off or maybe a little impressed by people who show off?",
+      "left": "Hates people who show off",
+      "right": "Maybe a little impressed by people who show off",
       "weights": {
         "I": 0,
         "E": 0.51,
@@ -1250,9 +1250,9 @@
     },
     {
       "id": 216,
-      "prompt": "In everyday life, are you more passive or aggressive?",
-      "left": "passive",
-      "right": "aggressive",
+      "prompt": "Are you more passive or aggressive?",
+      "left": "Passive",
+      "right": "Aggressive",
       "weights": {
         "I": 0,
         "E": 0.86,
@@ -1266,9 +1266,9 @@
     },
     {
       "id": 218,
-      "prompt": "Which feels more like you: makes repairs or buys new?",
-      "left": "makes repairs",
-      "right": "buys new",
+      "prompt": "Are you more makes repairs or buys new?",
+      "left": "Makes repairs",
+      "right": "Buys new",
       "weights": {
         "I": 0,
         "E": 0.23,
@@ -1282,9 +1282,9 @@
     },
     {
       "id": 220,
-      "prompt": "Which feels more like you: reacts deliberately or reacts instantly?",
-      "left": "reacts deliberately",
-      "right": "reacts instantly",
+      "prompt": "Are you more reacts deliberately or reacts instantly?",
+      "left": "Reacts deliberately",
+      "right": "Reacts instantly",
       "weights": {
         "I": 0,
         "E": 0.67,
@@ -1298,9 +1298,9 @@
     },
     {
       "id": 221,
-      "prompt": "Which feels more like you: has many interests or has deep interests?",
-      "left": "has many interests",
-      "right": "has deep interests",
+      "prompt": "Do you have many interests or have deep interests?",
+      "left": "Have many interests",
+      "right": "Have deep interests",
       "weights": {
         "I": 0.82,
         "E": 0,
@@ -1314,9 +1314,9 @@
     },
     {
       "id": 226,
-      "prompt": "Which feels more like you: likes spring or likes fall?",
-      "left": "likes spring",
-      "right": "likes fall",
+      "prompt": "Do you likes spring or likes fall?",
+      "left": "Likes spring",
+      "right": "Likes fall",
       "weights": {
         "I": 0.48,
         "E": 0,
@@ -1330,9 +1330,9 @@
     },
     {
       "id": 229,
-      "prompt": "Which feels more like you: poor sense of smell or good sense of smell?",
-      "left": "poor sense of smell",
-      "right": "good sense of smell",
+      "prompt": "Are you more poor sense of smell or good sense of smell?",
+      "left": "Poor sense of smell",
+      "right": "Good sense of smell",
       "weights": {
         "I": 0,
         "E": 0.17,
@@ -1346,9 +1346,9 @@
     },
     {
       "id": 232,
-      "prompt": "Which feels more like you: bonds over shared interests or bonds through shared experience?",
-      "left": "bonds over shared interests",
-      "right": "bonds through shared experience",
+      "prompt": "Are you more bonds over shared interests or bonds through shared experience?",
+      "left": "Bonds over shared interests",
+      "right": "Bonds through shared experience",
       "weights": {
         "I": 0,
         "E": 0.37,
@@ -1362,9 +1362,9 @@
     },
     {
       "id": 238,
-      "prompt": "Which feels more like you: hates conflict or makes trouble?",
-      "left": "hates conflict",
-      "right": "makes trouble",
+      "prompt": "Do you hates conflict or makes trouble?",
+      "left": "Hates conflict",
+      "right": "Makes trouble",
       "weights": {
         "I": 0,
         "E": 0.64,
@@ -1378,9 +1378,9 @@
     },
     {
       "id": 241,
-      "prompt": "Which feels more like you: prefers to be captain or rather be first mate?",
-      "left": "prefers to be captain",
-      "right": "rather be first mate",
+      "prompt": "Do you like to lead or rather be first mate?",
+      "left": "Like to lead",
+      "right": "Rather be first mate",
       "weights": {
         "I": 1.02,
         "E": 0,
@@ -1394,9 +1394,9 @@
     },
     {
       "id": 242,
-      "prompt": "Which feels more like you: does not vary diet or tries new foods?",
-      "left": "does not vary diet",
-      "right": "tries new foods",
+      "prompt": "Are you more does not vary diet or tries new foods?",
+      "left": "Does not vary diet",
+      "right": "Tries new foods",
       "weights": {
         "I": 0,
         "E": 0.59,
@@ -1410,9 +1410,9 @@
     },
     {
       "id": 247,
-      "prompt": "Which feels more like you: wants deep friendships or wants many friendships?",
-      "left": "wants deep friendships",
-      "right": "wants many friendships",
+      "prompt": "Do you wants deep friendships or wants many friendships?",
+      "left": "Wants deep friendships",
+      "right": "Wants many friendships",
       "weights": {
         "I": 0,
         "E": 0.77,
@@ -1426,9 +1426,9 @@
     },
     {
       "id": 250,
-      "prompt": "Which feels more like you: prefer to run a small business or prefer to run a large corporation?",
-      "left": "prefer to run a small business",
-      "right": "prefer to run a large corporation",
+      "prompt": "Do you prefer to run a small business or prefer to run a large corporation?",
+      "left": "Prefer to run a small business",
+      "right": "Prefer to run a large corporation",
       "weights": {
         "I": 0,
         "E": 0.64,
@@ -1442,9 +1442,9 @@
     },
     {
       "id": 255,
-      "prompt": "Which feels more like you: likes to tell stories or like to listen to stories?",
-      "left": "likes to tell stories",
-      "right": "like to listen to stories",
+      "prompt": "Do you like to tell stories or like to hear stories?",
+      "left": "Like to tell stories",
+      "right": "Like to hear stories",
       "weights": {
         "I": 0.96,
         "E": 0,
@@ -1458,9 +1458,9 @@
     },
     {
       "id": 256,
-      "prompt": "Which feels more like you: always looking to taste something new or could eat the same thing every day?",
-      "left": "always looking to taste something new",
-      "right": "could eat the same thing every day",
+      "prompt": "Are you more always looking to taste something new or could eat the same thing every day?",
+      "left": "Always looking to taste something new",
+      "right": "Could eat the same thing every day",
       "weights": {
         "I": 0.51,
         "E": 0,
@@ -1474,9 +1474,9 @@
     },
     {
       "id": 257,
-      "prompt": "Which feels more like you: likes sports or bored by sports?",
-      "left": "likes sports",
-      "right": "bored by sports",
+      "prompt": "Do you likes sports or bored by sports?",
+      "left": "Likes sports",
+      "right": "Bored by sports",
       "weights": {
         "I": 0.7,
         "E": 0,
@@ -1490,9 +1490,9 @@
     },
     {
       "id": 258,
-      "prompt": "Which feels more like you: hates being photographed or loves it?",
-      "left": "hates being photographed",
-      "right": "loves it",
+      "prompt": "Do you hates being photographed or loves it?",
+      "left": "Hates being photographed",
+      "right": "Loves it",
       "weights": {
         "I": 0,
         "E": 1.06,
@@ -1507,8 +1507,8 @@
     {
       "id": 261,
       "prompt": "Are you more open or guarded?",
-      "left": "open",
-      "right": "guarded",
+      "left": "Open",
+      "right": "Guarded",
       "weights": {
         "I": 1.41,
         "E": 0,
@@ -1522,9 +1522,9 @@
     },
     {
       "id": 263,
-      "prompt": "Which feels more like you: leads from the front or manipulates things behind the scenes?",
-      "left": "leads from the front",
-      "right": "manipulates things behind the scenes",
+      "prompt": "Do you lead from the front or work behind the scenes?",
+      "left": "Lead from the front",
+      "right": "Work behind the scenes",
       "weights": {
         "I": 1.16,
         "E": 0,
@@ -1538,9 +1538,9 @@
     },
     {
       "id": 266,
-      "prompt": "Which feels more like you: reads the instructions first or jumps right into it?",
-      "left": "reads the instructions first",
-      "right": "jumps right into it",
+      "prompt": "Are you more reads the instructions first or jumps right into it?",
+      "left": "Reads the instructions first",
+      "right": "Jumps right into it",
       "weights": {
         "I": 0,
         "E": 0.57,
@@ -1554,9 +1554,9 @@
     },
     {
       "id": 268,
-      "prompt": "Which feels more like you: feels most content at the start of the day or feels most content at the end of the day?",
-      "left": "feels most content at the start of the day",
-      "right": "feels most content at the end of the day",
+      "prompt": "Do you feels most content at the start of the day or feels most content at the end of the day?",
+      "left": "Feels most content at the start of the day",
+      "right": "Feels most content at the end of the day",
       "weights": {
         "I": 0.23,
         "E": 0,
@@ -1570,9 +1570,9 @@
     },
     {
       "id": 269,
-      "prompt": "Which feels more like you: would enjoy being stranded on an island or would want to be rescued as quickly as possible?",
-      "left": "would enjoy being stranded on an island",
-      "right": "would want to be rescued as quickly as possible",
+      "prompt": "Are you more would enjoy being stranded on an island or would want to be rescued as quickly as possible?",
+      "left": "Would enjoy being stranded on an island",
+      "right": "Would want to be rescued as quickly as possible",
       "weights": {
         "I": 0,
         "E": 0.81,
@@ -1586,9 +1586,9 @@
     },
     {
       "id": 270,
-      "prompt": "When people describe you, are you more reflective or active?",
-      "left": "reflective",
-      "right": "active",
+      "prompt": "Are you more reflective or active?",
+      "left": "Reflective",
+      "right": "Active",
       "weights": {
         "I": 0,
         "E": 1,
@@ -1602,9 +1602,9 @@
     },
     {
       "id": 273,
-      "prompt": "Which feels more like you: still in contact with first friends or loses touch with old friends?",
-      "left": "still in contact with first friends",
-      "right": "loses touch with old friends",
+      "prompt": "Are you more still in contact with first friends or loses touch with old friends?",
+      "left": "Still in contact with first friends",
+      "right": "Loses touch with old friends",
       "weights": {
         "I": 0.57,
         "E": 0,
@@ -1618,9 +1618,9 @@
     },
     {
       "id": 276,
-      "prompt": "Which feels more like you: embarrassed by the things they daydream about or proud of the things they daydream about?",
-      "left": "embarrassed by the things they daydream about",
-      "right": "proud of the things they daydream about",
+      "prompt": "Are you more embarrassed by the things they daydream about or proud of the things they daydream about?",
+      "left": "Embarrassed by the things they daydream about",
+      "right": "Proud of the things they daydream about",
       "weights": {
         "I": 0,
         "E": 0.46,
@@ -1634,9 +1634,9 @@
     },
     {
       "id": 278,
-      "prompt": "Which feels more like you: has difficulty explaining their ideas or confident explaining their ideas?",
-      "left": "has difficulty explaining their ideas",
-      "right": "confident explaining their ideas",
+      "prompt": "Are you more has difficulty explaining their ideas or confident explaining their ideas?",
+      "left": "Has difficulty explaining their ideas",
+      "right": "Confident explaining their ideas",
       "weights": {
         "I": 0,
         "E": 1.02,
@@ -1650,9 +1650,9 @@
     },
     {
       "id": 279,
-      "prompt": "Which feels more like you: focuses on one thing at a time or multitasks?",
-      "left": "focuses on one thing at a time",
-      "right": "multitasks",
+      "prompt": "Are you more focuses on one thing at a time or multitasks?",
+      "left": "Focuses on one thing at a time",
+      "right": "Multitasks",
       "weights": {
         "I": 0,
         "E": 0.47,
@@ -1666,9 +1666,9 @@
     },
     {
       "id": 282,
-      "prompt": "Which feels more like you: obsessed with travelling or no need to see the world?",
-      "left": "obsessed with travelling",
-      "right": "no need to see the world",
+      "prompt": "Are you more obsessed with travelling or no need to see the world?",
+      "left": "Obsessed with travelling",
+      "right": "No need to see the world",
       "weights": {
         "I": 0.35,
         "E": 0,
@@ -1682,9 +1682,9 @@
     },
     {
       "id": 284,
-      "prompt": "Which feels more like you: no need to see the world or obsessed with travelling?",
-      "left": "no need to see the world",
-      "right": "obsessed with travelling",
+      "prompt": "Are you more no need to see the world or obsessed with travelling?",
+      "left": "No need to see the world",
+      "right": "Obsessed with travelling",
       "weights": {
         "I": 0,
         "E": 0.47,
@@ -1698,9 +1698,9 @@
     },
     {
       "id": 288,
-      "prompt": "Which feels more like you: prefer to be wealthy or prefer to be famous?",
-      "left": "prefer to be wealthy",
-      "right": "prefer to be famous",
+      "prompt": "Do you prefer to be wealthy or prefer to be famous?",
+      "left": "Prefer to be wealthy",
+      "right": "Prefer to be famous",
       "weights": {
         "I": 0,
         "E": 0.41,
@@ -1715,8 +1715,8 @@
     {
       "id": 290,
       "prompt": "Are you more mellow or energetic?",
-      "left": "mellow",
-      "right": "energetic",
+      "left": "Mellow",
+      "right": "Energetic",
       "weights": {
         "I": 0,
         "E": 1.37,
@@ -1730,9 +1730,9 @@
     },
     {
       "id": 294,
-      "prompt": "Which feels more like you: happy at home or obsessed with travelling?",
-      "left": "happy at home",
-      "right": "obsessed with travelling",
+      "prompt": "Are you more happy at home or obsessed with travelling?",
+      "left": "Happy at home",
+      "right": "Obsessed with travelling",
       "weights": {
         "I": 0,
         "E": 0.78,
@@ -1746,9 +1746,9 @@
     },
     {
       "id": 296,
-      "prompt": "In everyday life, are you more okay or perfect?",
-      "left": "okay",
-      "right": "perfect",
+      "prompt": "Are you more okay or perfect?",
+      "left": "Okay",
+      "right": "Perfect",
       "weights": {
         "I": 0,
         "E": 0.46,
@@ -1762,9 +1762,9 @@
     },
     {
       "id": 298,
-      "prompt": "Which feels more like you: saves it or uses it?",
-      "left": "saves it",
-      "right": "uses it",
+      "prompt": "Are you more saves it or uses it?",
+      "left": "Saves it",
+      "right": "Uses it",
       "weights": {
         "I": 0,
         "E": 0.39,
@@ -1780,9 +1780,9 @@
   "SN": [
     {
       "id": 21,
-      "prompt": "Which feels more like you: interested in realities or interested in possibilities?",
-      "left": "interested in realities",
-      "right": "interested in possibilities",
+      "prompt": "Are you more interested in realities or interested in possibilities?",
+      "left": "Interested in realities",
+      "right": "Interested in possibilities",
       "weights": {
         "I": 0,
         "E": 0.14,
@@ -1796,9 +1796,9 @@
     },
     {
       "id": 23,
-      "prompt": "Which feels more like you: focused on the present or focused on the future?",
-      "left": "focused on the present",
-      "right": "focused on the future",
+      "prompt": "Are you more focused on the present or focused on the future?",
+      "left": "Focused on the present",
+      "right": "Focused on the future",
       "weights": {
         "I": 0.04,
         "E": 0,
@@ -1812,9 +1812,9 @@
     },
     {
       "id": 24,
-      "prompt": "Which feels more like you: focuses on the big picture or takes care of the little details?",
-      "left": "focuses on the big picture",
-      "right": "takes care of the little details",
+      "prompt": "Are you more focuses on the big picture or takes care of the little details?",
+      "left": "Focuses on the big picture",
+      "right": "Takes care of the little details",
       "weights": {
         "I": 0.3,
         "E": 0,
@@ -1828,9 +1828,9 @@
     },
     {
       "id": 32,
-      "prompt": "Which feels more like you: likes to know \"who?\", \"what?\", \"when?\" or likes to know \"why?\"?",
-      "left": "likes to know \"who?\", \"what?\", \"when?\"",
-      "right": "likes to know \"why?\"",
+      "prompt": "Do you likes to know \"who?\", \"what?\", \"when?\" or likes to know \"why?\"?",
+      "left": "Likes to know \"who?\", \"what?\", \"when?\"",
+      "right": "Likes to know \"why?\"",
       "weights": {
         "I": 0.18,
         "E": 0,
@@ -1844,9 +1844,9 @@
     },
     {
       "id": 50,
-      "prompt": "Which feels more like you: adapts to the world or wants the world to adapt to them?",
-      "left": "adapts to the world",
-      "right": "wants the world to adapt to them",
+      "prompt": "Are you more adapts to the world or wants the world to adapt to them?",
+      "left": "Adapts to the world",
+      "right": "Wants the world to adapt to them",
       "weights": {
         "I": 0.23,
         "E": 0,
@@ -1860,9 +1860,9 @@
     },
     {
       "id": 53,
-      "prompt": "Which feels more like you: will say \"these are the things I have made\" or will say \"these are the things I have designed\"?",
-      "left": "will say \"these are the things I have made\"",
-      "right": "will say \"these are the things I have designed\"",
+      "prompt": "Are you more will say \"these are the things i have made\" or will say \"these are the things i have designed\"?",
+      "left": "Will say \"these are the things i have made\"",
+      "right": "Will say \"these are the things i have designed\"",
       "weights": {
         "I": 0.05,
         "E": 0,
@@ -1876,9 +1876,9 @@
     },
     {
       "id": 54,
-      "prompt": "Which feels more like you: good with names or bad with names?",
-      "left": "good with names",
-      "right": "bad with names",
+      "prompt": "Are you more good with names or bad with names?",
+      "left": "Good with names",
+      "right": "Bad with names",
       "weights": {
         "I": 0.23,
         "E": 0,
@@ -1892,9 +1892,9 @@
     },
     {
       "id": 62,
-      "prompt": "Which feels more like you: wants to impress authority or rebels against authority?",
-      "left": "wants to impress authority",
-      "right": "rebels against authority",
+      "prompt": "Do you wants to impress authority or rebels against authority?",
+      "left": "Wants to impress authority",
+      "right": "Rebels against authority",
       "weights": {
         "I": 0.1,
         "E": 0,
@@ -1908,9 +1908,9 @@
     },
     {
       "id": 67,
-      "prompt": "Which feels more like you: when describing an event, will tell people what happened or when describing an event, will tell people what it meant?",
-      "left": "when describing an event, will tell people what happened",
-      "right": "when describing an event, will tell people what it meant",
+      "prompt": "Are you more when describing an event, will tell people what happened or when describing an event, will tell people what it meant?",
+      "left": "When describing an event, will tell people what happened",
+      "right": "When describing an event, will tell people what it meant",
       "weights": {
         "I": 0.03,
         "E": 0,
@@ -1924,9 +1924,9 @@
     },
     {
       "id": 76,
-      "prompt": "Which feels more like you: fits in or stands out?",
-      "left": "fits in",
-      "right": "stands out",
+      "prompt": "Are you more fits in or stands out?",
+      "left": "Fits in",
+      "right": "Stands out",
       "weights": {
         "I": 0.04,
         "E": 0,
@@ -1940,9 +1940,9 @@
     },
     {
       "id": 78,
-      "prompt": "Which feels more like you: would hate to be called weird or does not want to be thought of as normal?",
-      "left": "would hate to be called weird",
-      "right": "does not want to be thought of as normal",
+      "prompt": "Are you more would hate to be called weird or does not want to be thought of as normal?",
+      "left": "Would hate to be called weird",
+      "right": "Does not want to be thought of as normal",
       "weights": {
         "I": 0.1,
         "E": 0,
@@ -1956,9 +1956,9 @@
     },
     {
       "id": 80,
-      "prompt": "Which feels more like you: wants a normal lifespan or wants to live forever?",
-      "left": "wants a normal lifespan",
-      "right": "wants to live forever",
+      "prompt": "Do you wants a normal lifespan or wants to live forever?",
+      "left": "Wants a normal lifespan",
+      "right": "Wants to live forever",
       "weights": {
         "I": 0,
         "E": 0.34,
@@ -1972,9 +1972,9 @@
     },
     {
       "id": 82,
-      "prompt": "Which feels more like you: tries to be different or tries to be normal?",
-      "left": "tries to be different",
-      "right": "tries to be normal",
+      "prompt": "Are you more tries to be different or tries to be normal?",
+      "left": "Tries to be different",
+      "right": "Tries to be normal",
       "weights": {
         "I": 0.18,
         "E": 0,
@@ -1988,9 +1988,9 @@
     },
     {
       "id": 104,
-      "prompt": "Which feels more like you: accepts things as they are or unsatisfied with the ways things are?",
-      "left": "accepts things as they are",
-      "right": "unsatisfied with the ways things are",
+      "prompt": "Do you accepts things as they are or unsatisfied with the ways things are?",
+      "left": "Accepts things as they are",
+      "right": "Unsatisfied with the ways things are",
       "weights": {
         "I": 0.06,
         "E": 0,
@@ -2004,9 +2004,9 @@
     },
     {
       "id": 111,
-      "prompt": "Which feels more like you: respects the letter of the law or follows the spirit of the law?",
-      "left": "respects the letter of the law",
-      "right": "follows the spirit of the law",
+      "prompt": "Are you more respects the letter of the law or follows the spirit of the law?",
+      "left": "Respects the letter of the law",
+      "right": "Follows the spirit of the law",
       "weights": {
         "I": 0,
         "E": 0.06,
@@ -2020,9 +2020,9 @@
     },
     {
       "id": 118,
-      "prompt": "When people describe you, are you more complicated or uncomplicated?",
-      "left": "complicated",
-      "right": "uncomplicated",
+      "prompt": "Are you more complicated or uncomplicated?",
+      "left": "Complicated",
+      "right": "Uncomplicated",
       "weights": {
         "I": 0,
         "E": 0.27,
@@ -2036,9 +2036,9 @@
     },
     {
       "id": 120,
-      "prompt": "Which feels more like you: wants the big picture or wants the details?",
-      "left": "wants the big picture",
-      "right": "wants the details",
+      "prompt": "Do you wants the big picture or wants the details?",
+      "left": "Wants the big picture",
+      "right": "Wants the details",
       "weights": {
         "I": 0.28,
         "E": 0,
@@ -2053,8 +2053,8 @@
     {
       "id": 127,
       "prompt": "Are you more relaxes or daydreams?",
-      "left": "relaxes",
-      "right": "daydreams",
+      "left": "Relaxes",
+      "right": "Daydreams",
       "weights": {
         "I": 0.26,
         "E": 0,
@@ -2068,9 +2068,9 @@
     },
     {
       "id": 136,
-      "prompt": "Which feels more like you: likes pop music or hates pop music?",
-      "left": "likes pop music",
-      "right": "hates pop music",
+      "prompt": "Do you likes pop music or hates pop music?",
+      "left": "Likes pop music",
+      "right": "Hates pop music",
       "weights": {
         "I": 0.3,
         "E": 0,
@@ -2084,9 +2084,9 @@
     },
     {
       "id": 148,
-      "prompt": "Which feels more like you: likes popular music or likes music that is not well known?",
-      "left": "likes popular music",
-      "right": "likes music that is not well known",
+      "prompt": "Do you likes popular music or likes music that is not well known?",
+      "left": "Likes popular music",
+      "right": "Likes music that is not well known",
       "weights": {
         "I": 0.42,
         "E": 0,
@@ -2100,9 +2100,9 @@
     },
     {
       "id": 153,
-      "prompt": "Which feels more like you: judges a painting on how realistic it is or judges a painting by deeper criteria?",
-      "left": "judges a painting on how realistic it is",
-      "right": "judges a painting by deeper criteria",
+      "prompt": "Do you judges a painting on how realistic it is or judges a painting by deeper criteria?",
+      "left": "Judges a painting on how realistic it is",
+      "right": "Judges a painting by deeper criteria",
       "weights": {
         "I": 0.02,
         "E": 0,
@@ -2116,9 +2116,9 @@
     },
     {
       "id": 157,
-      "prompt": "Which feels more like you: will say \"these are the things I have made\" or will say \"these are the things I have designed\"?",
-      "left": "will say \"these are the things I have made\"",
-      "right": "will say \"these are the things I have designed\"",
+      "prompt": "Are you more will say \"these are the things i have made\" or will say \"these are the things i have designed\"?",
+      "left": "Will say \"these are the things i have made\"",
+      "right": "Will say \"these are the things i have designed\"",
       "weights": {
         "I": 0.06,
         "E": 0,
@@ -2132,9 +2132,9 @@
     },
     {
       "id": 160,
-      "prompt": "Which feels more like you: prefers the old ways or tries new ways?",
-      "left": "prefers the old ways",
-      "right": "tries new ways",
+      "prompt": "Do you prefers the old ways or tries new ways?",
+      "left": "Prefers the old ways",
+      "right": "Tries new ways",
       "weights": {
         "I": 0,
         "E": 0.44,
@@ -2148,9 +2148,9 @@
     },
     {
       "id": 161,
-      "prompt": "Which feels more like you: wants aliens to exist or hopes that they do not?",
-      "left": "wants aliens to exist",
-      "right": "hopes that they do not",
+      "prompt": "Do you wants aliens to exist or hopes that they do not?",
+      "left": "Wants aliens to exist",
+      "right": "Hopes that they do not",
       "weights": {
         "I": 0,
         "E": 0.18,
@@ -2164,9 +2164,9 @@
     },
     {
       "id": 185,
-      "prompt": "Which feels more like you: wants the details or wants the big picture?",
-      "left": "wants the details",
-      "right": "wants the big picture",
+      "prompt": "Do you wants the details or wants the big picture?",
+      "left": "Wants the details",
+      "right": "Wants the big picture",
       "weights": {
         "I": 0,
         "E": 0.32,
@@ -2180,9 +2180,9 @@
     },
     {
       "id": 190,
-      "prompt": "Which feels more like you: wants to be normal or wants to be different?",
-      "left": "wants to be normal",
-      "right": "wants to be different",
+      "prompt": "Do you wants to be normal or wants to be different?",
+      "left": "Wants to be normal",
+      "right": "Wants to be different",
       "weights": {
         "I": 0,
         "E": 0.24,
@@ -2196,9 +2196,9 @@
     },
     {
       "id": 201,
-      "prompt": "Which feels more like you: remembers dreams or does not?",
-      "left": "remembers dreams",
-      "right": "does not",
+      "prompt": "Are you more remembers dreams or does not?",
+      "left": "Remembers dreams",
+      "right": "Does not",
       "weights": {
         "I": 0.08,
         "E": 0,
@@ -2212,9 +2212,9 @@
     },
     {
       "id": 205,
-      "prompt": "Which feels more like you: likes stories with lots of action or likes stories with lots of twists?",
-      "left": "likes stories with lots of action",
-      "right": "likes stories with lots of twists",
+      "prompt": "Do you likes stories with lots of action or likes stories with lots of twists?",
+      "left": "Likes stories with lots of action",
+      "right": "Likes stories with lots of twists",
       "weights": {
         "I": 0.26,
         "E": 0,
@@ -2228,9 +2228,9 @@
     },
     {
       "id": 211,
-      "prompt": "Which feels more like you: enjoys mental competition or enjoys physical competition?",
-      "left": "enjoys mental competition",
-      "right": "enjoys physical competition",
+      "prompt": "Are you more enjoys mental competition or enjoys physical competition?",
+      "left": "Enjoys mental competition",
+      "right": "Enjoys physical competition",
       "weights": {
         "I": 0,
         "E": 0.42,
@@ -2244,9 +2244,9 @@
     },
     {
       "id": 219,
-      "prompt": "Which feels more like you: has an average taste in music or has superior taste in music?",
-      "left": "has an average taste in music",
-      "right": "has superior taste in music",
+      "prompt": "Are you more has an average taste in music or has superior taste in music?",
+      "left": "Has an average taste in music",
+      "right": "Has superior taste in music",
       "weights": {
         "I": 0,
         "E": 0.02,
@@ -2260,9 +2260,9 @@
     },
     {
       "id": 222,
-      "prompt": "Which feels more like you: prefer to take multiple choice test or prefer essay answers?",
-      "left": "prefer to take multiple choice test",
-      "right": "prefer essay answers",
+      "prompt": "Do you prefer to take multiple choice test or prefer essay answers?",
+      "left": "Prefer to take multiple choice test",
+      "right": "Prefer essay answers",
       "weights": {
         "I": 0,
         "E": 0.16,
@@ -2276,9 +2276,9 @@
     },
     {
       "id": 233,
-      "prompt": "Deep down, are you more empirical or theoretical?",
-      "left": "empirical",
-      "right": "theoretical",
+      "prompt": "Are you more empirical or theoretical?",
+      "left": "Empirical",
+      "right": "Theoretical",
       "weights": {
         "I": 0.16,
         "E": 0,
@@ -2292,9 +2292,9 @@
     },
     {
       "id": 234,
-      "prompt": "Which feels more like you: envious of what other people have or envious of what other people are?",
-      "left": "envious of what other people have",
-      "right": "envious of what other people are",
+      "prompt": "Are you more envious of what other people have or envious of what other people are?",
+      "left": "Envious of what other people have",
+      "right": "Envious of what other people are",
       "weights": {
         "I": 0.12,
         "E": 0,
@@ -2308,9 +2308,9 @@
     },
     {
       "id": 240,
-      "prompt": "Which feels more like you: must be special or content to be normal?",
-      "left": "must be special",
-      "right": "content to be normal",
+      "prompt": "Are you more must be special or content to be normal?",
+      "left": "Must be special",
+      "right": "Content to be normal",
       "weights": {
         "I": 0.32,
         "E": 0,
@@ -2324,9 +2324,9 @@
     },
     {
       "id": 253,
-      "prompt": "Which feels more like you: starts over when they fail or tries something new when they fail?",
-      "left": "starts over when they fail",
-      "right": "tries something new when they fail",
+      "prompt": "Are you more starts over when they fail or tries something new when they fail?",
+      "left": "Starts over when they fail",
+      "right": "Tries something new when they fail",
       "weights": {
         "I": 0,
         "E": 0.3,
@@ -2340,9 +2340,9 @@
     },
     {
       "id": 262,
-      "prompt": "Which feels more like you: tries a sensible solution or tries a clever solution?",
-      "left": "tries a sensible solution",
-      "right": "tries a clever solution",
+      "prompt": "Are you more tries a sensible solution or tries a clever solution?",
+      "left": "Tries a sensible solution",
+      "right": "Tries a clever solution",
       "weights": {
         "I": 0,
         "E": 0.32,
@@ -2356,9 +2356,9 @@
     },
     {
       "id": 264,
-      "prompt": "Deep down, are you more normal or alternative?",
-      "left": "normal",
-      "right": "alternative",
+      "prompt": "Are you more normal or alternative?",
+      "left": "Normal",
+      "right": "Alternative",
       "weights": {
         "I": 0.08,
         "E": 0,
@@ -2372,9 +2372,9 @@
     },
     {
       "id": 293,
-      "prompt": "Which feels more like you: likes music or likes the visual arts?",
-      "left": "likes music",
-      "right": "likes the visual arts",
+      "prompt": "Do you likes music or likes the visual arts?",
+      "left": "Likes music",
+      "right": "Likes the visual arts",
       "weights": {
         "I": 0.01,
         "E": 0,
@@ -2391,8 +2391,8 @@
     {
       "id": 1,
       "prompt": "Do you get more energized by fast-paced action or drawn into emotional drama?",
-      "left": "gets energized by fast-paced action",
-      "right": "gets drawn into emotional drama",
+      "left": "Gets energized by fast-paced action",
+      "right": "Gets drawn into emotional drama",
       "weights": {
         "I": 0.14,
         "E": 0,
@@ -2407,8 +2407,8 @@
     {
       "id": 2,
       "prompt": "Are you more realistic or imaginative?",
-      "left": "realistic",
-      "right": "imaginative",
+      "left": "Realistic",
+      "right": "Imaginative",
       "weights": {
         "I": 0,
         "E": 0.12,
@@ -2422,9 +2422,9 @@
     },
     {
       "id": 3,
-      "prompt": "Which feels more like you: criticism leads to feelings of guilt or criticism leads to feelings of anger?",
-      "left": "criticism leads to feelings of guilt",
-      "right": "criticism leads to feelings of anger",
+      "prompt": "Are you more criticism leads to feelings of guilt or criticism leads to feelings of anger?",
+      "left": "Criticism leads to feelings of guilt",
+      "right": "Criticism leads to feelings of anger",
       "weights": {
         "I": 0,
         "E": 0.16,
@@ -2438,9 +2438,9 @@
     },
     {
       "id": 8,
-      "prompt": "Which feels more like you: when judging others, considers intent or only considers outcome?",
-      "left": "when judging others, considers intent",
-      "right": "only considers outcome",
+      "prompt": "Are you more when judging others, considers intent or only considers outcome?",
+      "left": "When judging others, considers intent",
+      "right": "Only considers outcome",
       "weights": {
         "I": 0,
         "E": 0.02,
@@ -2454,9 +2454,9 @@
     },
     {
       "id": 13,
-      "prompt": "Which feels more like you: uses reason or uses instinct?",
-      "left": "uses reason",
-      "right": "uses instinct",
+      "prompt": "Are you more uses reason or uses instinct?",
+      "left": "Uses reason",
+      "right": "Uses instinct",
       "weights": {
         "I": 0,
         "E": 0.37,
@@ -2470,9 +2470,9 @@
     },
     {
       "id": 15,
-      "prompt": "Which feels more like you: trusts personal experience or trusts theory?",
-      "left": "trusts personal experience",
-      "right": "trusts theory",
+      "prompt": "Are you more trusts personal experience or trusts theory?",
+      "left": "Trusts personal experience",
+      "right": "Trusts theory",
       "weights": {
         "I": 0.26,
         "E": 0,
@@ -2486,9 +2486,9 @@
     },
     {
       "id": 20,
-      "prompt": "Which feels more like you: thinks role models are important or thinks the importance of role models is exaggerated?",
-      "left": "thinks role models are important",
-      "right": "thinks the importance of role models is exaggerated",
+      "prompt": "Do you thinks role models are important or thinks the importance of role models is exaggerated?",
+      "left": "Thinks role models are important",
+      "right": "Thinks the importance of role models is exaggerated",
       "weights": {
         "I": 0.45,
         "E": 0,
@@ -2502,9 +2502,9 @@
     },
     {
       "id": 22,
-      "prompt": "Which feels more like you: afraid of the dark or likes the dark?",
-      "left": "afraid of the dark",
-      "right": "likes the dark",
+      "prompt": "Are you more afraid of the dark or likes the dark?",
+      "left": "Afraid of the dark",
+      "right": "Likes the dark",
       "weights": {
         "I": 0.26,
         "E": 0,
@@ -2518,9 +2518,9 @@
     },
     {
       "id": 26,
-      "prompt": "Which feels more like you: humble or can be a bit arrogant?",
-      "left": "humble",
-      "right": "can be a bit arrogant",
+      "prompt": "Are you more humble or can be a bit arrogant?",
+      "left": "Humble",
+      "right": "Can be a bit arrogant",
       "weights": {
         "I": 0,
         "E": 0.37,
@@ -2534,9 +2534,9 @@
     },
     {
       "id": 28,
-      "prompt": "Which feels more like you: can be a bit arrogant or humble?",
-      "left": "can be a bit arrogant",
-      "right": "humble",
+      "prompt": "Are you more can be a bit arrogant or humble?",
+      "left": "Can be a bit arrogant",
+      "right": "Humble",
       "weights": {
         "I": 0.32,
         "E": 0,
@@ -2550,9 +2550,9 @@
     },
     {
       "id": 29,
-      "prompt": "Which feels more like you: wants people's respect or wants their love?",
-      "left": "wants people's respect",
-      "right": "wants their love",
+      "prompt": "Do you wants people's respect or wants their love?",
+      "left": "Wants people's respect",
+      "right": "Wants their love",
       "weights": {
         "I": 0,
         "E": 0.22,
@@ -2566,9 +2566,9 @@
     },
     {
       "id": 40,
-      "prompt": "Which feels more like you: cares if something is good or bad or cares if something is true or false?",
-      "left": "cares if something is good or bad",
-      "right": "cares if something is true or false",
+      "prompt": "Do you cares if something is good or bad or cares if something is true or false?",
+      "left": "Cares if something is good or bad",
+      "right": "Cares if something is true or false",
       "weights": {
         "I": 0.19,
         "E": 0,
@@ -2582,9 +2582,9 @@
     },
     {
       "id": 43,
-      "prompt": "Which feels more like you: likes nature or likes human industry?",
-      "left": "likes nature",
-      "right": "likes human industry",
+      "prompt": "Do you likes nature or likes human industry?",
+      "left": "Likes nature",
+      "right": "Likes human industry",
       "weights": {
         "I": 0,
         "E": 0.17,
@@ -2598,9 +2598,9 @@
     },
     {
       "id": 48,
-      "prompt": "Deep down, are you more sentimental or grim?",
-      "left": "sentimental",
-      "right": "grim",
+      "prompt": "Are you more sentimental or grim?",
+      "left": "Sentimental",
+      "right": "Grim",
       "weights": {
         "I": 0.4,
         "E": 0,
@@ -2614,9 +2614,9 @@
     },
     {
       "id": 52,
-      "prompt": "Which feels more like you: if a lawyer, would prefer to be a prosecutor or would prefer to be defense attorney?",
-      "left": "if a lawyer, would prefer to be a prosecutor",
-      "right": "would prefer to be defense attorney",
+      "prompt": "Are you more if a lawyer, would prefer to be a prosecutor or would prefer to be defense attorney?",
+      "left": "If a lawyer, would prefer to be a prosecutor",
+      "right": "Would prefer to be defense attorney",
       "weights": {
         "I": 0.11,
         "E": 0,
@@ -2630,9 +2630,9 @@
     },
     {
       "id": 55,
-      "prompt": "Which feels more like you: likes to eavesdrop or finds other people's conversations too boring?",
-      "left": "likes to eavesdrop",
-      "right": "finds other people's conversations too boring",
+      "prompt": "Do you likes to eavesdrop or finds other people's conversations too boring?",
+      "left": "Likes to eavesdrop",
+      "right": "Finds other people's conversations too boring",
       "weights": {
         "I": 0.21,
         "E": 0,
@@ -2646,9 +2646,9 @@
     },
     {
       "id": 57,
-      "prompt": "Which feels more like you: sceptical or wants to believe?",
-      "left": "sceptical",
-      "right": "wants to believe",
+      "prompt": "Are you more sceptical or wants to believe?",
+      "left": "Sceptical",
+      "right": "Wants to believe",
       "weights": {
         "I": 0,
         "E": 0.46,
@@ -2662,9 +2662,9 @@
     },
     {
       "id": 70,
-      "prompt": "Deep down, are you more sincere or sarcastic?",
-      "left": "sincere",
-      "right": "sarcastic",
+      "prompt": "Are you more sincere or sarcastic?",
+      "left": "Sincere",
+      "right": "Sarcastic",
       "weights": {
         "I": 0.06,
         "E": 0,
@@ -2678,9 +2678,9 @@
     },
     {
       "id": 72,
-      "prompt": "Which feels more like you: appreciates the scenery around them or too distracted to take a look?",
-      "left": "appreciates the scenery around them",
-      "right": "too distracted to take a look",
+      "prompt": "Are you more appreciates the scenery around them or too distracted to take a look?",
+      "left": "Appreciates the scenery around them",
+      "right": "Too distracted to take a look",
       "weights": {
         "I": 0.09,
         "E": 0,
@@ -2694,9 +2694,9 @@
     },
     {
       "id": 73,
-      "prompt": "Which feels more like you: worries most about tripping and falling in the dark or imagines monsters in the dark?",
-      "left": "worries most about tripping and falling in the dark",
-      "right": "imagines monsters in the dark",
+      "prompt": "Are you more worries most about tripping and falling in the dark or imagines monsters in the dark?",
+      "left": "Worries most about tripping and falling in the dark",
+      "right": "Imagines monsters in the dark",
       "weights": {
         "I": 0.02,
         "E": 0,
@@ -2710,9 +2710,9 @@
     },
     {
       "id": 75,
-      "prompt": "Which feels more like you: seeks clarity or seeks harmony?",
-      "left": "seeks clarity",
-      "right": "seeks harmony",
+      "prompt": "Are you more seeks clarity or seeks harmony?",
+      "left": "Seeks clarity",
+      "right": "Seeks harmony",
       "weights": {
         "I": 0,
         "E": 0.16,
@@ -2726,9 +2726,9 @@
     },
     {
       "id": 86,
-      "prompt": "Deep down, are you more literal or poetic?",
-      "left": "literal",
-      "right": "poetic",
+      "prompt": "Are you more literal or poetic?",
+      "left": "Literal",
+      "right": "Poetic",
       "weights": {
         "I": 0.05,
         "E": 0,
@@ -2742,9 +2742,9 @@
     },
     {
       "id": 90,
-      "prompt": "Which feels more like you: looks on the bright side or finds faults?",
-      "left": "looks on the bright side",
-      "right": "finds faults",
+      "prompt": "Are you more looks on the bright side or finds faults?",
+      "left": "Looks on the bright side",
+      "right": "Finds faults",
       "weights": {
         "I": 0.64,
         "E": 0,
@@ -2758,9 +2758,9 @@
     },
     {
       "id": 91,
-      "prompt": "Which feels more like you: thinks it is better to be naive or thinks it is better to be paranoid?",
-      "left": "thinks it is better to be naive",
-      "right": "thinks it is better to be paranoid",
+      "prompt": "Do you thinks it is better to be naive or thinks it is better to be paranoid?",
+      "left": "Thinks it is better to be naive",
+      "right": "Thinks it is better to be paranoid",
       "weights": {
         "I": 0.38,
         "E": 0,
@@ -2774,9 +2774,9 @@
     },
     {
       "id": 92,
-      "prompt": "Which feels more like you: worries about getting scammed all the time or too trusting?",
-      "left": "worries about getting scammed all the time",
-      "right": "too trusting",
+      "prompt": "Are you more worries about getting scammed all the time or too trusting?",
+      "left": "Worries about getting scammed all the time",
+      "right": "Too trusting",
       "weights": {
         "I": 0,
         "E": 0.37,
@@ -2790,9 +2790,9 @@
     },
     {
       "id": 93,
-      "prompt": "In everyday life, are you more jealous or greedy?",
-      "left": "jealous",
-      "right": "greedy",
+      "prompt": "Are you more jealous or greedy?",
+      "left": "Jealous",
+      "right": "Greedy",
       "weights": {
         "I": 0,
         "E": 0.14,
@@ -2806,9 +2806,9 @@
     },
     {
       "id": 94,
-      "prompt": "Which feels more like you: worried about the dangers of technology or thinks technology is always good?",
-      "left": "worried about the dangers of technology",
-      "right": "thinks technology is always good",
+      "prompt": "Are you more worried about the dangers of technology or thinks technology is always good?",
+      "left": "Worried about the dangers of technology",
+      "right": "Thinks technology is always good",
       "weights": {
         "I": 0,
         "E": 0.05,
@@ -2822,9 +2822,9 @@
     },
     {
       "id": 96,
-      "prompt": "Which feels more like you: wants to believe or sceptical?",
-      "left": "wants to believe",
-      "right": "sceptical",
+      "prompt": "Do you wants to believe or sceptical?",
+      "left": "Wants to believe",
+      "right": "Sceptical",
       "weights": {
         "I": 0.39,
         "E": 0,
@@ -2838,9 +2838,9 @@
     },
     {
       "id": 100,
-      "prompt": "Day to day, are you more idealistic or cynical?",
-      "left": "idealistic",
-      "right": "cynical",
+      "prompt": "Are you more idealistic or cynical?",
+      "left": "Idealistic",
+      "right": "Cynical",
       "weights": {
         "I": 0.45,
         "E": 0,
@@ -2855,8 +2855,8 @@
     {
       "id": 101,
       "prompt": "Are you more artistic or scientific?",
-      "left": "artistic",
-      "right": "scientific",
+      "left": "Artistic",
+      "right": "Scientific",
       "weights": {
         "I": 0.21,
         "E": 0,
@@ -2870,9 +2870,9 @@
     },
     {
       "id": 103,
-      "prompt": "Which feels more like you: finds natural disasters exciting or finds natural disasters tragic?",
-      "left": "finds natural disasters exciting",
-      "right": "finds natural disasters tragic",
+      "prompt": "Are you more finds natural disasters exciting or finds natural disasters tragic?",
+      "left": "Finds natural disasters exciting",
+      "right": "Finds natural disasters tragic",
       "weights": {
         "I": 0,
         "E": 0.05,
@@ -2886,9 +2886,9 @@
     },
     {
       "id": 109,
-      "prompt": "Which feels more like you: wants to know what others think or decides on their own?",
-      "left": "wants to know what others think",
-      "right": "decides on their own",
+      "prompt": "Do you wants to know what others think or decides on their own?",
+      "left": "Wants to know what others think",
+      "right": "Decides on their own",
       "weights": {
         "I": 0.19,
         "E": 0,
@@ -2902,9 +2902,9 @@
     },
     {
       "id": 113,
-      "prompt": "Which feels more like you: sounds and smells often bring back childhood memories or childhood memories never come unintentionally?",
-      "left": "sounds and smells often bring back childhood memories",
-      "right": "childhood memories never come unintentionally",
+      "prompt": "Are you more sounds and smells often bring back childhood memories or childhood memories never come unintentionally?",
+      "left": "Sounds and smells often bring back childhood memories",
+      "right": "Childhood memories never come unintentionally",
       "weights": {
         "I": 0.14,
         "E": 0,
@@ -2918,9 +2918,9 @@
     },
     {
       "id": 115,
-      "prompt": "Which feels more like you: likes words or likes numbers?",
-      "left": "likes words",
-      "right": "likes numbers",
+      "prompt": "Do you likes words or likes numbers?",
+      "left": "Likes words",
+      "right": "Likes numbers",
       "weights": {
         "I": 0.1,
         "E": 0,
@@ -2934,9 +2934,9 @@
     },
     {
       "id": 116,
-      "prompt": "Which feels more like you: argues for ideas or argues against ideas?",
-      "left": "argues for ideas",
-      "right": "argues against ideas",
+      "prompt": "Are you more argues for ideas or argues against ideas?",
+      "left": "Argues for ideas",
+      "right": "Argues against ideas",
       "weights": {
         "I": 0.04,
         "E": 0,
@@ -2950,9 +2950,9 @@
     },
     {
       "id": 121,
-      "prompt": "Which feels more like you: if a lawyer, would prefer to be a defense attorney or would prefer to be prosecutor?",
-      "left": "if a lawyer, would prefer to be a defense attorney",
-      "right": "would prefer to be prosecutor",
+      "prompt": "Are you more if a lawyer, would prefer to be a defense attorney or would prefer to be prosecutor?",
+      "left": "If a lawyer, would prefer to be a defense attorney",
+      "right": "Would prefer to be prosecutor",
       "weights": {
         "I": 0,
         "E": 0.13,
@@ -2966,9 +2966,9 @@
     },
     {
       "id": 122,
-      "prompt": "Which feels more like you: gives hints or tell it straight up?",
-      "left": "gives hints",
-      "right": "tell it straight up",
+      "prompt": "Are you more gives hints or tell it straight up?",
+      "left": "Gives hints",
+      "right": "Tell it straight up",
       "weights": {
         "I": 0,
         "E": 0.35,
@@ -2982,9 +2982,9 @@
     },
     {
       "id": 125,
-      "prompt": "Which feels more like you: judges music based on melody or judges music based on lyrics?",
-      "left": "judges music based on melody",
-      "right": "judges music based on lyrics",
+      "prompt": "Do you judges music based on melody or judges music based on lyrics?",
+      "left": "Judges music based on melody",
+      "right": "Judges music based on lyrics",
       "weights": {
         "I": 0.01,
         "E": 0,
@@ -2998,9 +2998,9 @@
     },
     {
       "id": 129,
-      "prompt": "Which feels more like you: keeps pets or has no interest in pets?",
-      "left": "keeps pets",
-      "right": "has no interest in pets",
+      "prompt": "Do you keeps pets or has no interest in pets?",
+      "left": "Keeps pets",
+      "right": "Has no interest in pets",
       "weights": {
         "I": 0.15,
         "E": 0,
@@ -3014,9 +3014,9 @@
     },
     {
       "id": 130,
-      "prompt": "Which feels more like you: easy to gross out or fascinated by disgusting things?",
-      "left": "easy to gross out",
-      "right": "fascinated by disgusting things",
+      "prompt": "Are you more easy to gross out or fascinated by disgusting things?",
+      "left": "Easy to gross out",
+      "right": "Fascinated by disgusting things",
       "weights": {
         "I": 0.09,
         "E": 0,
@@ -3030,9 +3030,9 @@
     },
     {
       "id": 133,
-      "prompt": "Which feels more like you: shares deepest secrets or has no secrets worth sharing?",
-      "left": "shares deepest secrets",
-      "right": "has no secrets worth sharing",
+      "prompt": "Are you more shares deepest secrets or has no secrets worth sharing?",
+      "left": "Shares deepest secrets",
+      "right": "Has no secrets worth sharing",
       "weights": {
         "I": 0.58,
         "E": 0,
@@ -3046,9 +3046,9 @@
     },
     {
       "id": 140,
-      "prompt": "Which feels more like you: interested in family history or wants to leave that all behind?",
-      "left": "interested in family history",
-      "right": "wants to leave that all behind",
+      "prompt": "Are you more interested in family history or wants to leave that all behind?",
+      "left": "Interested in family history",
+      "right": "Wants to leave that all behind",
       "weights": {
         "I": 0.07,
         "E": 0,
@@ -3062,9 +3062,9 @@
     },
     {
       "id": 141,
-      "prompt": "Which feels more like you: how it is done matters or only the end results matters?",
-      "left": "how it is done matters",
-      "right": "only the end results matters",
+      "prompt": "Are you more how it is done matters or only the end results matters?",
+      "left": "How it is done matters",
+      "right": "Only the end results matters",
       "weights": {
         "I": 0,
         "E": 0.04,
@@ -3078,9 +3078,9 @@
     },
     {
       "id": 155,
-      "prompt": "Which feels more like you: tries to give convincing speeches or tries to give inspiring speeches?",
-      "left": "tries to give convincing speeches",
-      "right": "tries to give inspiring speeches",
+      "prompt": "Are you more tries to give convincing speeches or tries to give inspiring speeches?",
+      "left": "Tries to give convincing speeches",
+      "right": "Tries to give inspiring speeches",
       "weights": {
         "I": 0,
         "E": 0.39,
@@ -3094,9 +3094,9 @@
     },
     {
       "id": 158,
-      "prompt": "Which feels more like you: likes getting gifts or has no need for gifts?",
-      "left": "likes getting gifts",
-      "right": "has no need for gifts",
+      "prompt": "Do you likes getting gifts or has no need for gifts?",
+      "left": "Likes getting gifts",
+      "right": "Has no need for gifts",
       "weights": {
         "I": 0.3,
         "E": 0,
@@ -3111,8 +3111,8 @@
     {
       "id": 163,
       "prompt": "Are you more impatient or tolerant?",
-      "left": "impatient",
-      "right": "tolerant",
+      "left": "Impatient",
+      "right": "Tolerant",
       "weights": {
         "I": 0.19,
         "E": 0,
@@ -3126,9 +3126,9 @@
     },
     {
       "id": 164,
-      "prompt": "Deep down, are you more jittery or smooth?",
-      "left": "jittery",
-      "right": "smooth",
+      "prompt": "Are you more jittery or smooth?",
+      "left": "Jittery",
+      "right": "Smooth",
       "weights": {
         "I": 0,
         "E": 0.23,
@@ -3142,9 +3142,9 @@
     },
     {
       "id": 169,
-      "prompt": "Which feels more like you: people are basically good or people are basically evil?",
-      "left": "people are basically good",
-      "right": "people are basically evil",
+      "prompt": "Are you more people are basically good or people are basically evil?",
+      "left": "People are basically good",
+      "right": "People are basically evil",
       "weights": {
         "I": 0.34,
         "E": 0,
@@ -3158,9 +3158,9 @@
     },
     {
       "id": 171,
-      "prompt": "Which feels more like you: thinks people can change or thinks people will only stay the same?",
-      "left": "thinks people can change",
-      "right": "thinks people will only stay the same",
+      "prompt": "Do you thinks people can change or thinks people will only stay the same?",
+      "left": "Thinks people can change",
+      "right": "Thinks people will only stay the same",
       "weights": {
         "I": 0.24,
         "E": 0,
@@ -3174,9 +3174,9 @@
     },
     {
       "id": 173,
-      "prompt": "Which feels more like you: tries to behave intelligently or tries to show their creativity?",
-      "left": "tries to behave intelligently",
-      "right": "tries to show their creativity",
+      "prompt": "Are you more tries to behave intelligently or tries to show their creativity?",
+      "left": "Tries to behave intelligently",
+      "right": "Tries to show their creativity",
       "weights": {
         "I": 0,
         "E": 0.27,
@@ -3190,9 +3190,9 @@
     },
     {
       "id": 177,
-      "prompt": "Which feels more like you: aware of surroundings or easy to sneak up on?",
-      "left": "aware of surroundings",
-      "right": "easy to sneak up on",
+      "prompt": "Are you more aware of surroundings or easy to sneak up on?",
+      "left": "Aware of surroundings",
+      "right": "Easy to sneak up on",
       "weights": {
         "I": 0,
         "E": 0.02,
@@ -3206,9 +3206,9 @@
     },
     {
       "id": 180,
-      "prompt": "Which feels more like you: tries to give inspiring speeches or tries to give convincing speeches?",
-      "left": "tries to give inspiring speeches",
-      "right": "tries to give convincing speeches",
+      "prompt": "Are you more tries to give inspiring speeches or tries to give convincing speeches?",
+      "left": "Tries to give inspiring speeches",
+      "right": "Tries to give convincing speeches",
       "weights": {
         "I": 0.38,
         "E": 0,
@@ -3222,9 +3222,9 @@
     },
     {
       "id": 181,
-      "prompt": "Which feels more like you: identifies with characters in stories or never really seems to like any fictional characters?",
-      "left": "identifies with characters in stories",
-      "right": "never really seems to like any fictional characters",
+      "prompt": "Are you more identifies with characters in stories or never really seems to like any fictional characters?",
+      "left": "Identifies with characters in stories",
+      "right": "Never really seems to like any fictional characters",
       "weights": {
         "I": 0,
         "E": 0.06,
@@ -3238,9 +3238,9 @@
     },
     {
       "id": 182,
-      "prompt": "Which feels more like you: wants to be tough or wants to be classy?",
-      "left": "wants to be tough",
-      "right": "wants to be classy",
+      "prompt": "Do you wants to be tough or wants to be classy?",
+      "left": "Wants to be tough",
+      "right": "Wants to be classy",
       "weights": {
         "I": 0,
         "E": 0.13,
@@ -3254,9 +3254,9 @@
     },
     {
       "id": 186,
-      "prompt": "Which feels more like you: has meaningful dreams or has dreams that make no sense, about things that do not matter?",
-      "left": "has meaningful dreams",
-      "right": "has dreams that make no sense, about things that do not matter",
+      "prompt": "Are you more has meaningful dreams or has dreams that make no sense, about things that do not matter?",
+      "left": "Has meaningful dreams",
+      "right": "Has dreams that make no sense, about things that do not matter",
       "weights": {
         "I": 0.03,
         "E": 0,
@@ -3270,9 +3270,9 @@
     },
     {
       "id": 189,
-      "prompt": "Which feels more like you: wants honest friends or wants impressive friends?",
-      "left": "wants honest friends",
-      "right": "wants impressive friends",
+      "prompt": "Do you wants honest friends or wants impressive friends?",
+      "left": "Wants honest friends",
+      "right": "Wants impressive friends",
       "weights": {
         "I": 0,
         "E": 0.2,
@@ -3286,9 +3286,9 @@
     },
     {
       "id": 194,
-      "prompt": "Which feels more like you: values emotions or uncomfortable with emotions?",
-      "left": "values emotions",
-      "right": "uncomfortable with emotions",
+      "prompt": "Are you more values emotions or uncomfortable with emotions?",
+      "left": "Values emotions",
+      "right": "Uncomfortable with emotions",
       "weights": {
         "I": 0.55,
         "E": 0,
@@ -3302,9 +3302,9 @@
     },
     {
       "id": 196,
-      "prompt": "Which feels more like you: worries about who they are or accepts who they are?",
-      "left": "worries about who they are",
-      "right": "accepts who they are",
+      "prompt": "Are you more worries about who they are or accepts who they are?",
+      "left": "Worries about who they are",
+      "right": "Accepts who they are",
       "weights": {
         "I": 0,
         "E": 0.33,
@@ -3318,9 +3318,9 @@
     },
     {
       "id": 203,
-      "prompt": "Day to day, are you more trendy or hardcore?",
-      "left": "trendy",
-      "right": "hardcore",
+      "prompt": "Are you more trendy or hardcore?",
+      "left": "Trendy",
+      "right": "Hardcore",
       "weights": {
         "I": 0.12,
         "E": 0,
@@ -3334,9 +3334,9 @@
     },
     {
       "id": 206,
-      "prompt": "Which feels more like you: thinks some people are all bad or knows everyone has a little bit of good in them?",
-      "left": "thinks some people are all bad",
-      "right": "knows everyone has a little bit of good in them",
+      "prompt": "Do you thinks some people are all bad or knows everyone has a little bit of good in them?",
+      "left": "Thinks some people are all bad",
+      "right": "Knows everyone has a little bit of good in them",
       "weights": {
         "I": 0,
         "E": 0.43,
@@ -3350,9 +3350,9 @@
     },
     {
       "id": 207,
-      "prompt": "Which feels more like you: likes certain types of music or likes all types?",
-      "left": "likes certain types of music",
-      "right": "likes all types",
+      "prompt": "Do you likes certain types of music or likes all types?",
+      "left": "Likes certain types of music",
+      "right": "Likes all types",
       "weights": {
         "I": 0,
         "E": 0.29,
@@ -3366,9 +3366,9 @@
     },
     {
       "id": 208,
-      "prompt": "Which feels more like you: worries about getting let down or worries about letting other people down?",
-      "left": "worries about getting let down",
-      "right": "worries about letting other people down",
+      "prompt": "Are you more worries about getting let down or worries about letting other people down?",
+      "left": "Worries about getting let down",
+      "right": "Worries about letting other people down",
       "weights": {
         "I": 0,
         "E": 0.09,
@@ -3382,9 +3382,9 @@
     },
     {
       "id": 213,
-      "prompt": "Which feels more like you: often mistaken as being angry or anger often goes unnoticed by others?",
-      "left": "often mistaken as being angry",
-      "right": "anger often goes unnoticed by others",
+      "prompt": "Are you more often mistaken as being angry or anger often goes unnoticed by others?",
+      "left": "Often mistaken as being angry",
+      "right": "Anger often goes unnoticed by others",
       "weights": {
         "I": 0,
         "E": 0.09,
@@ -3398,9 +3398,9 @@
     },
     {
       "id": 214,
-      "prompt": "Deep down, are you more cooperative or competitive?",
-      "left": "cooperative",
-      "right": "competitive",
+      "prompt": "Are you more cooperative or competitive?",
+      "left": "Cooperative",
+      "right": "Competitive",
       "weights": {
         "I": 0,
         "E": 0.28,
@@ -3414,9 +3414,9 @@
     },
     {
       "id": 215,
-      "prompt": "Which feels more like you: fears death or accepts death?",
-      "left": "fears death",
-      "right": "accepts death",
+      "prompt": "Are you more fears death or accepts death?",
+      "left": "Fears death",
+      "right": "Accepts death",
       "weights": {
         "I": 0.03,
         "E": 0,
@@ -3430,9 +3430,9 @@
     },
     {
       "id": 228,
-      "prompt": "Day to day, are you more passionate or jaded?",
-      "left": "passionate",
-      "right": "jaded",
+      "prompt": "Are you more passionate or jaded?",
+      "left": "Passionate",
+      "right": "Jaded",
       "weights": {
         "I": 0.56,
         "E": 0,
@@ -3446,9 +3446,9 @@
     },
     {
       "id": 230,
-      "prompt": "Which feels more like you: easily hurt or thick-skinned?",
-      "left": "easily hurt",
-      "right": "thick-skinned",
+      "prompt": "Are you more easily hurt or thick-skinned?",
+      "left": "Easily hurt",
+      "right": "Thick-skinned",
       "weights": {
         "I": 0,
         "E": 0.22,
@@ -3463,8 +3463,8 @@
     {
       "id": 231,
       "prompt": "Are you more arrogant or insecure?",
-      "left": "arrogant",
-      "right": "insecure",
+      "left": "Arrogant",
+      "right": "Insecure",
       "weights": {
         "I": 0.54,
         "E": 0,
@@ -3478,9 +3478,9 @@
     },
     {
       "id": 237,
-      "prompt": "Which feels more like you: gets bored of songs quickly or never gets tired of a good song?",
-      "left": "gets bored of songs quickly",
-      "right": "never gets tired of a good song",
+      "prompt": "Are you more gets bored of songs quickly or never gets tired of a good song?",
+      "left": "Gets bored of songs quickly",
+      "right": "Never gets tired of a good song",
       "weights": {
         "I": 0.15,
         "E": 0,
@@ -3494,9 +3494,9 @@
     },
     {
       "id": 239,
-      "prompt": "In everyday life, are you more practical or dreamy?",
-      "left": "practical",
-      "right": "dreamy",
+      "prompt": "Are you more practical or dreamy?",
+      "left": "Practical",
+      "right": "Dreamy",
       "weights": {
         "I": 0.01,
         "E": 0,
@@ -3510,9 +3510,9 @@
     },
     {
       "id": 244,
-      "prompt": "Which feels more like you: gives complements or receives compliments?",
-      "left": "gives complements",
-      "right": "receives compliments",
+      "prompt": "Are you more gives complements or receives compliments?",
+      "left": "Gives complements",
+      "right": "Receives compliments",
       "weights": {
         "I": 0.13,
         "E": 0,
@@ -3526,9 +3526,9 @@
     },
     {
       "id": 246,
-      "prompt": "Which feels more like you: thinks about what they would do as a criminal or does not like the idea of crime?",
-      "left": "thinks about what they would do as a criminal",
-      "right": "does not like the idea of crime",
+      "prompt": "Do you thinks about what they would do as a criminal or does not like the idea of crime?",
+      "left": "Thinks about what they would do as a criminal",
+      "right": "Does not like the idea of crime",
       "weights": {
         "I": 0.03,
         "E": 0,
@@ -3542,9 +3542,9 @@
     },
     {
       "id": 252,
-      "prompt": "Which feels more like you: bothered by disgusting things or fails to notice how gross things are?",
-      "left": "bothered by disgusting things",
-      "right": "fails to notice how gross things are",
+      "prompt": "Are you more bothered by disgusting things or fails to notice how gross things are?",
+      "left": "Bothered by disgusting things",
+      "right": "Fails to notice how gross things are",
       "weights": {
         "I": 0,
         "E": 0.11,
@@ -3558,9 +3558,9 @@
     },
     {
       "id": 254,
-      "prompt": "Which feels more like you: prefer to read the news or prefer to read a story?",
-      "left": "prefer to read the news",
-      "right": "prefer to read a story",
+      "prompt": "Do you prefer to read the news or prefer to read a story?",
+      "left": "Prefer to read the news",
+      "right": "Prefer to read a story",
       "weights": {
         "I": 0.19,
         "E": 0,
@@ -3574,9 +3574,9 @@
     },
     {
       "id": 259,
-      "prompt": "Which feels more like you: wants to be good at fixing things or wants to be good at fixing people?",
-      "left": "wants to be good at fixing things",
-      "right": "wants to be good at fixing people",
+      "prompt": "Do you wants to be good at fixing things or wants to be good at fixing people?",
+      "left": "Wants to be good at fixing things",
+      "right": "Wants to be good at fixing people",
       "weights": {
         "I": 0,
         "E": 0.4,
@@ -3590,9 +3590,9 @@
     },
     {
       "id": 265,
-      "prompt": "Which feels more like you: likes looking at pictures of them as a baby or hates that?",
-      "left": "likes looking at pictures of them as a baby",
-      "right": "hates that",
+      "prompt": "Do you likes looking at pictures of them as a baby or hates that?",
+      "left": "Likes looking at pictures of them as a baby",
+      "right": "Hates that",
       "weights": {
         "I": 0.52,
         "E": 0,
@@ -3606,9 +3606,9 @@
     },
     {
       "id": 275,
-      "prompt": "Which feels more like you: thinks \"robotic\" is an insult or strives to have a mechanical mind?",
-      "left": "thinks \"robotic\" is an insult",
-      "right": "strives to have a mechanical mind",
+      "prompt": "Do you thinks \"robotic\" is an insult or strives to have a mechanical mind?",
+      "left": "Thinks \"robotic\" is an insult",
+      "right": "Strives to have a mechanical mind",
       "weights": {
         "I": 0.45,
         "E": 0,
@@ -3622,9 +3622,9 @@
     },
     {
       "id": 281,
-      "prompt": "Which feels more like you: buys things they like or only buys things they really need?",
-      "left": "buys things they like",
-      "right": "only buys things they really need",
+      "prompt": "Are you more buys things they like or only buys things they really need?",
+      "left": "Buys things they like",
+      "right": "Only buys things they really need",
       "weights": {
         "I": 0.32,
         "E": 0,
@@ -3638,9 +3638,9 @@
     },
     {
       "id": 283,
-      "prompt": "Which feels more like you: trusts personal experience or trusts theoretical knowledge?",
-      "left": "trusts personal experience",
-      "right": "trusts theoretical knowledge",
+      "prompt": "Are you more trusts personal experience or trusts theoretical knowledge?",
+      "left": "Trusts personal experience",
+      "right": "Trusts theoretical knowledge",
       "weights": {
         "I": 0.3,
         "E": 0,
@@ -3654,9 +3654,9 @@
     },
     {
       "id": 285,
-      "prompt": "Which feels more like you: follows the heart or follows the head?",
-      "left": "follows the heart",
-      "right": "follows the head",
+      "prompt": "Do you follows the heart or follows the head?",
+      "left": "Follows the heart",
+      "right": "Follows the head",
       "weights": {
         "I": 0.36,
         "E": 0,
@@ -3670,9 +3670,9 @@
     },
     {
       "id": 291,
-      "prompt": "Which feels more like you: tactful with others or blunt with others?",
-      "left": "tactful with others",
-      "right": "blunt with others",
+      "prompt": "Are you more tactful with others or blunt with others?",
+      "left": "Tactful with others",
+      "right": "Blunt with others",
       "weights": {
         "I": 0,
         "E": 0.02,
@@ -3686,9 +3686,9 @@
     },
     {
       "id": 292,
-      "prompt": "Deep down, are you more nervous or calm?",
-      "left": "nervous",
-      "right": "calm",
+      "prompt": "Are you more nervous or calm?",
+      "left": "Nervous",
+      "right": "Calm",
       "weights": {
         "I": 0,
         "E": 0.28,
@@ -3702,9 +3702,9 @@
     },
     {
       "id": 295,
-      "prompt": "Which feels more like you: bases morality on compassion or bases morality on justice?",
-      "left": "bases morality on compassion",
-      "right": "bases morality on justice",
+      "prompt": "Are you more bases morality on compassion or bases morality on justice?",
+      "left": "Bases morality on compassion",
+      "right": "Bases morality on justice",
       "weights": {
         "I": 0.16,
         "E": 0,
@@ -3718,9 +3718,9 @@
     },
     {
       "id": 297,
-      "prompt": "Which feels more like you: judges a painting on how realistic it is or judges a painting on the feeling it conveys?",
-      "left": "judges a painting on how realistic it is",
-      "right": "judges a painting on the feeling it conveys",
+      "prompt": "Do you judges a painting on how realistic it is or judges a painting on the feeling it conveys?",
+      "left": "Judges a painting on how realistic it is",
+      "right": "Judges a painting on the feeling it conveys",
       "weights": {
         "I": 0,
         "E": 0.07,
@@ -3736,9 +3736,9 @@
   "JP": [
     {
       "id": 4,
-      "prompt": "Which feels more like you: loses track of time or good sense of time?",
-      "left": "loses track of time",
-      "right": "good sense of time",
+      "prompt": "Are you more loses track of time or good sense of time?",
+      "left": "Loses track of time",
+      "right": "Good sense of time",
       "weights": {
         "I": 0,
         "E": 0.19,
@@ -3752,9 +3752,9 @@
     },
     {
       "id": 6,
-      "prompt": "Which feels more like you: wishes their life was more interesting or finds their life interesting enough?",
-      "left": "wishes their life was more interesting",
-      "right": "finds their life interesting enough",
+      "prompt": "Are you more wishes their life was more interesting or finds their life interesting enough?",
+      "left": "Wishes their life was more interesting",
+      "right": "Finds their life interesting enough",
       "weights": {
         "I": 0,
         "E": 0.18,
@@ -3768,9 +3768,9 @@
     },
     {
       "id": 9,
-      "prompt": "Which feels more like you: makes things or breaks things?",
-      "left": "makes things",
-      "right": "breaks things",
+      "prompt": "Are you more makes things or breaks things?",
+      "left": "Makes things",
+      "right": "Breaks things",
       "weights": {
         "I": 0,
         "E": 0.19,
@@ -3784,9 +3784,9 @@
     },
     {
       "id": 10,
-      "prompt": "Which feels more like you: likes knowing all the facts or likes filling in the blanks?",
-      "left": "likes knowing all the facts",
-      "right": "likes filling in the blanks",
+      "prompt": "Do you likes knowing all the facts or likes filling in the blanks?",
+      "left": "Likes knowing all the facts",
+      "right": "Likes filling in the blanks",
       "weights": {
         "I": 0,
         "E": 0.13,
@@ -3800,9 +3800,9 @@
     },
     {
       "id": 16,
-      "prompt": "When people describe you, are you more prepares or improvises?",
-      "left": "prepares",
-      "right": "improvises",
+      "prompt": "Are you more prepares or improvises?",
+      "left": "Prepares",
+      "right": "Improvises",
       "weights": {
         "I": 0,
         "E": 0.43,
@@ -3816,9 +3816,9 @@
     },
     {
       "id": 19,
-      "prompt": "Day to day, are you more organized or chaotic?",
-      "left": "organized",
-      "right": "chaotic",
+      "prompt": "Are you more organized or chaotic?",
+      "left": "Organized",
+      "right": "Chaotic",
       "weights": {
         "I": 0,
         "E": 0.16,
@@ -3832,9 +3832,9 @@
     },
     {
       "id": 31,
-      "prompt": "Which feels more like you: commits or keeps options open?",
-      "left": "commits",
-      "right": "keeps options open",
+      "prompt": "Are you more commits or keeps options open?",
+      "left": "Commits",
+      "right": "Keeps options open",
       "weights": {
         "I": 0,
         "E": 0.04,
@@ -3848,9 +3848,9 @@
     },
     {
       "id": 35,
-      "prompt": "In everyday life, are you more tricky or steady?",
-      "left": "tricky",
-      "right": "steady",
+      "prompt": "Are you more tricky or steady?",
+      "left": "Tricky",
+      "right": "Steady",
       "weights": {
         "I": 0.2,
         "E": 0,
@@ -3864,9 +3864,9 @@
     },
     {
       "id": 36,
-      "prompt": "Which feels more like you: assured by routine or bored by routine?",
-      "left": "assured by routine",
-      "right": "bored by routine",
+      "prompt": "Are you more assured by routine or bored by routine?",
+      "left": "Assured by routine",
+      "right": "Bored by routine",
       "weights": {
         "I": 0,
         "E": 0.6,
@@ -3880,9 +3880,9 @@
     },
     {
       "id": 37,
-      "prompt": "Which feels more like you: needs certainty or needs flexibility?",
-      "left": "needs certainty",
-      "right": "needs flexibility",
+      "prompt": "Are you more needs certainty or needs flexibility?",
+      "left": "Needs certainty",
+      "right": "Needs flexibility",
       "weights": {
         "I": 0,
         "E": 0.44,
@@ -3896,9 +3896,9 @@
     },
     {
       "id": 38,
-      "prompt": "Which feels more like you: gets work done right away or procrastinates?",
-      "left": "gets work done right away",
-      "right": "procrastinates",
+      "prompt": "Are you more gets work done right away or procrastinates?",
+      "left": "Gets work done right away",
+      "right": "Procrastinates",
       "weights": {
         "I": 0.1,
         "E": 0,
@@ -3912,9 +3912,9 @@
     },
     {
       "id": 41,
-      "prompt": "When people describe you, are you more methodical or astonishing?",
-      "left": "methodical",
-      "right": "astonishing",
+      "prompt": "Are you more methodical or astonishing?",
+      "left": "Methodical",
+      "right": "Astonishing",
       "weights": {
         "I": 0,
         "E": 0.45,
@@ -3928,9 +3928,9 @@
     },
     {
       "id": 51,
-      "prompt": "Which feels more like you: double checks their work or hopes for the best?",
-      "left": "double checks their work",
-      "right": "hopes for the best",
+      "prompt": "Are you more double checks their work or hopes for the best?",
+      "left": "Double checks their work",
+      "right": "Hopes for the best",
       "weights": {
         "I": 0,
         "E": 0.44,
@@ -3944,9 +3944,9 @@
     },
     {
       "id": 56,
-      "prompt": "In everyday life, are you more decides or guesses?",
-      "left": "decides",
-      "right": "guesses",
+      "prompt": "Are you more decides or guesses?",
+      "left": "Decides",
+      "right": "Guesses",
       "weights": {
         "I": 0.02,
         "E": 0,
@@ -3960,9 +3960,9 @@
     },
     {
       "id": 58,
-      "prompt": "Which feels more like you: has been through a lot of tough times or has had an easy life?",
-      "left": "has been through a lot of tough times",
-      "right": "has had an easy life",
+      "prompt": "Are you more has been through a lot of tough times or has had an easy life?",
+      "left": "Has been through a lot of tough times",
+      "right": "Has had an easy life",
       "weights": {
         "I": 0,
         "E": 0.17,
@@ -3976,9 +3976,9 @@
     },
     {
       "id": 60,
-      "prompt": "Which feels more like you: answers mail right away or gets behind on answering mail?",
-      "left": "answers mail right away",
-      "right": "gets behind on answering mail",
+      "prompt": "Are you more answers mail right away or gets behind on answering mail?",
+      "left": "Answers mail right away",
+      "right": "Gets behind on answering mail",
       "weights": {
         "I": 0.16,
         "E": 0,
@@ -3992,9 +3992,9 @@
     },
     {
       "id": 65,
-      "prompt": "Which feels more like you: always finishes sentences or can trail off in the middle of a sentences?",
-      "left": "always finishes sentences",
-      "right": "can trail off in the middle of a sentences",
+      "prompt": "Are you more always finishes sentences or can trail off in the middle of a sentences?",
+      "left": "Always finishes sentences",
+      "right": "Can trail off in the middle of a sentences",
       "weights": {
         "I": 0.19,
         "E": 0,
@@ -4008,9 +4008,9 @@
     },
     {
       "id": 71,
-      "prompt": "Which feels more like you: always has a backup plan or never needs a backup plan?",
-      "left": "always has a backup plan",
-      "right": "never needs a backup plan",
+      "prompt": "Are you more always has a backup plan or never needs a backup plan?",
+      "left": "Always has a backup plan",
+      "right": "Never needs a backup plan",
       "weights": {
         "I": 0,
         "E": 0.21,
@@ -4024,9 +4024,9 @@
     },
     {
       "id": 85,
-      "prompt": "Which feels more like you: makes rules or breaks rules?",
-      "left": "makes rules",
-      "right": "breaks rules",
+      "prompt": "Are you more makes rules or breaks rules?",
+      "left": "Makes rules",
+      "right": "Breaks rules",
       "weights": {
         "I": 0,
         "E": 0.44,
@@ -4040,9 +4040,9 @@
     },
     {
       "id": 87,
-      "prompt": "Which feels more like you: needs to work or only works because they must?",
-      "left": "needs to work",
-      "right": "only works because they must",
+      "prompt": "Are you more needs to work or only works because they must?",
+      "left": "Needs to work",
+      "right": "Only works because they must",
       "weights": {
         "I": 0.07,
         "E": 0,
@@ -4056,9 +4056,9 @@
     },
     {
       "id": 99,
-      "prompt": "Which feels more like you: sticks to the plan or adapts the plan on the fly?",
-      "left": "sticks to the plan",
-      "right": "adapts the plan on the fly",
+      "prompt": "Are you more sticks to the plan or adapts the plan on the fly?",
+      "left": "Sticks to the plan",
+      "right": "Adapts the plan on the fly",
       "weights": {
         "I": 0,
         "E": 0.49,
@@ -4072,9 +4072,9 @@
     },
     {
       "id": 106,
-      "prompt": "Which feels more like you: everyone breaks the law now and then or only bad people break the law?",
-      "left": "everyone breaks the law now and then",
-      "right": "only bad people break the law",
+      "prompt": "Are you more everyone breaks the law now and then or only bad people break the law?",
+      "left": "Everyone breaks the law now and then",
+      "right": "Only bad people break the law",
       "weights": {
         "I": 0.15,
         "E": 0,
@@ -4088,9 +4088,9 @@
     },
     {
       "id": 124,
-      "prompt": "Which feels more like you: thinks only the lucky succeed or knows only the hard-working get lucky?",
-      "left": "thinks only the lucky succeed",
-      "right": "knows only the hard-working get lucky",
+      "prompt": "Do you thinks only the lucky succeed or knows only the hard-working get lucky?",
+      "left": "Thinks only the lucky succeed",
+      "right": "Knows only the hard-working get lucky",
       "weights": {
         "I": 0,
         "E": 0.02,
@@ -4104,9 +4104,9 @@
     },
     {
       "id": 128,
-      "prompt": "Which feels more like you: views things as many shades of grey or views things as black and white?",
-      "left": "views things as many shades of grey",
-      "right": "views things as black and white",
+      "prompt": "Are you more views things as many shades of grey or views things as black and white?",
+      "left": "Views things as many shades of grey",
+      "right": "Views things as black and white",
       "weights": {
         "I": 0,
         "E": 0.14,
@@ -4120,9 +4120,9 @@
     },
     {
       "id": 131,
-      "prompt": "Deep down, are you more fumbling or graceful?",
-      "left": "fumbling",
-      "right": "graceful",
+      "prompt": "Are you more fumbling or graceful?",
+      "left": "Fumbling",
+      "right": "Graceful",
       "weights": {
         "I": 0,
         "E": 0.24,
@@ -4136,9 +4136,9 @@
     },
     {
       "id": 134,
-      "prompt": "Which feels more like you: light sleeper or deep sleeper?",
-      "left": "light sleeper",
-      "right": "deep sleeper",
+      "prompt": "Are you more light sleeper or deep sleeper?",
+      "left": "Light sleeper",
+      "right": "Deep sleeper",
       "weights": {
         "I": 0,
         "E": 0.08,
@@ -4152,9 +4152,9 @@
     },
     {
       "id": 137,
-      "prompt": "Which feels more like you: get a task done in one go or does a task a little at a time?",
-      "left": "get a task done in one go",
-      "right": "does a task a little at a time",
+      "prompt": "Are you more get a task done in one go or does a task a little at a time?",
+      "left": "Get a task done in one go",
+      "right": "Does a task a little at a time",
       "weights": {
         "I": 0.23,
         "E": 0,
@@ -4168,9 +4168,9 @@
     },
     {
       "id": 143,
-      "prompt": "Which feels more like you: plans far ahead or plans at the last minute?",
-      "left": "plans far ahead",
-      "right": "plans at the last minute",
+      "prompt": "Are you more plans far ahead or plans at the last minute?",
+      "left": "Plans far ahead",
+      "right": "Plans at the last minute",
       "weights": {
         "I": 0,
         "E": 0.3,
@@ -4184,9 +4184,9 @@
     },
     {
       "id": 150,
-      "prompt": "Which feels more like you: careful with money or a high roller?",
-      "left": "careful with money",
-      "right": "a high roller",
+      "prompt": "Are you more careful with money or a high roller?",
+      "left": "Careful with money",
+      "right": "A high roller",
       "weights": {
         "I": 0,
         "E": 0.42,
@@ -4200,9 +4200,9 @@
     },
     {
       "id": 151,
-      "prompt": "Which feels more like you: has an accurate internal clock or often has no idea what time it is?",
-      "left": "has an accurate internal clock",
-      "right": "often has no idea what time it is",
+      "prompt": "Are you more has an accurate internal clock or often has no idea what time it is?",
+      "left": "Has an accurate internal clock",
+      "right": "Often has no idea what time it is",
       "weights": {
         "I": 0.03,
         "E": 0,
@@ -4216,9 +4216,9 @@
     },
     {
       "id": 152,
-      "prompt": "Which feels more like you: supports a strong government or supports strong personal freedoms?",
-      "left": "supports a strong government",
-      "right": "supports strong personal freedoms",
+      "prompt": "Are you more supports a strong government or supports strong personal freedoms?",
+      "left": "Supports a strong government",
+      "right": "Supports strong personal freedoms",
       "weights": {
         "I": 0.08,
         "E": 0,
@@ -4232,9 +4232,9 @@
     },
     {
       "id": 156,
-      "prompt": "Which feels more like you: loyal to friends or loyal to family?",
-      "left": "loyal to friends",
-      "right": "loyal to family",
+      "prompt": "Are you more loyal to friends or loyal to family?",
+      "left": "Loyal to friends",
+      "right": "Loyal to family",
       "weights": {
         "I": 0.04,
         "E": 0,
@@ -4248,9 +4248,9 @@
     },
     {
       "id": 162,
-      "prompt": "Which feels more like you: wishes they could read minds or wishes they could fly?",
-      "left": "wishes they could read minds",
-      "right": "wishes they could fly",
+      "prompt": "Are you more wishes they could read minds or wishes they could fly?",
+      "left": "Wishes they could read minds",
+      "right": "Wishes they could fly",
       "weights": {
         "I": 0,
         "E": 0.09,
@@ -4264,9 +4264,9 @@
     },
     {
       "id": 165,
-      "prompt": "Which feels more like you: well dressed or scruffy?",
-      "left": "well dressed",
-      "right": "scruffy",
+      "prompt": "Are you more well dressed or scruffy?",
+      "left": "Well dressed",
+      "right": "Scruffy",
       "weights": {
         "I": 0.31,
         "E": 0,
@@ -4280,9 +4280,9 @@
     },
     {
       "id": 166,
-      "prompt": "Which feels more like you: never wants to make a mistake or accepts mistakes as inevitable?",
-      "left": "never wants to make a mistake",
-      "right": "accepts mistakes as inevitable",
+      "prompt": "Are you more never wants to make a mistake or accepts mistakes as inevitable?",
+      "left": "Never wants to make a mistake",
+      "right": "Accepts mistakes as inevitable",
       "weights": {
         "I": 0,
         "E": 0.41,
@@ -4296,9 +4296,9 @@
     },
     {
       "id": 167,
-      "prompt": "Which feels more like you: chooses carefully or chooses randomly?",
-      "left": "chooses carefully",
-      "right": "chooses randomly",
+      "prompt": "Are you more chooses carefully or chooses randomly?",
+      "left": "Chooses carefully",
+      "right": "Chooses randomly",
       "weights": {
         "I": 0,
         "E": 0.39,
@@ -4312,9 +4312,9 @@
     },
     {
       "id": 170,
-      "prompt": "Which feels more like you: interests often change or has stable interests?",
-      "left": "interests often change",
-      "right": "has stable interests",
+      "prompt": "Are you more interests often change or has stable interests?",
+      "left": "Interests often change",
+      "right": "Has stable interests",
       "weights": {
         "I": 0.35,
         "E": 0,
@@ -4328,9 +4328,9 @@
     },
     {
       "id": 175,
-      "prompt": "Which feels more like you: works hard or plays hard?",
-      "left": "works hard",
-      "right": "plays hard",
+      "prompt": "Do you works hard or plays hard?",
+      "left": "Works hard",
+      "right": "Plays hard",
       "weights": {
         "I": 0,
         "E": 0.31,
@@ -4344,9 +4344,9 @@
     },
     {
       "id": 176,
-      "prompt": "Which feels more like you: feels that time passes to slowly or feels that time passes to quickly?",
-      "left": "feels that time passes to slowly",
-      "right": "feels that time passes to quickly",
+      "prompt": "Do you feels that time passes to slowly or feels that time passes to quickly?",
+      "left": "Feels that time passes to slowly",
+      "right": "Feels that time passes to quickly",
       "weights": {
         "I": 0,
         "E": 0.06,
@@ -4360,9 +4360,9 @@
     },
     {
       "id": 179,
-      "prompt": "Which feels more like you: enjoys cracking joints or cracking joints is gross?",
-      "left": "enjoys cracking joints",
-      "right": "cracking joints is gross",
+      "prompt": "Are you more enjoys cracking joints or cracking joints is gross?",
+      "left": "Enjoys cracking joints",
+      "right": "Cracking joints is gross",
       "weights": {
         "I": 0.19,
         "E": 0,
@@ -4376,9 +4376,9 @@
     },
     {
       "id": 187,
-      "prompt": "Which feels more like you: always looks for the best price or takes the first price?",
-      "left": "always looks for the best price",
-      "right": "takes the first price",
+      "prompt": "Are you more always looks for the best price or takes the first price?",
+      "left": "Always looks for the best price",
+      "right": "Takes the first price",
       "weights": {
         "I": 0,
         "E": 0.08,
@@ -4392,9 +4392,9 @@
     },
     {
       "id": 200,
-      "prompt": "When people describe you, are you more ambitious or rebellious?",
-      "left": "ambitious",
-      "right": "rebellious",
+      "prompt": "Are you more ambitious or rebellious?",
+      "left": "Ambitious",
+      "right": "Rebellious",
       "weights": {
         "I": 0.09,
         "E": 0,
@@ -4408,9 +4408,9 @@
     },
     {
       "id": 212,
-      "prompt": "Which feels more like you: stays up late or rises early?",
-      "left": "stays up late",
-      "right": "rises early",
+      "prompt": "Are you more stays up late or rises early?",
+      "left": "Stays up late",
+      "right": "Rises early",
       "weights": {
         "I": 0,
         "E": 0.06,
@@ -4424,9 +4424,9 @@
     },
     {
       "id": 217,
-      "prompt": "When people describe you, are you more creative or wise?",
-      "left": "creative",
-      "right": "wise",
+      "prompt": "Are you more creative or wise?",
+      "left": "Creative",
+      "right": "Wise",
       "weights": {
         "I": 0.14,
         "E": 0,
@@ -4440,9 +4440,9 @@
     },
     {
       "id": 223,
-      "prompt": "Which feels more like you: has neat handwriting or has messy handwriting?",
-      "left": "has neat handwriting",
-      "right": "has messy handwriting",
+      "prompt": "Are you more has neat handwriting or has messy handwriting?",
+      "left": "Has neat handwriting",
+      "right": "Has messy handwriting",
       "weights": {
         "I": 0.02,
         "E": 0,
@@ -4456,9 +4456,9 @@
     },
     {
       "id": 224,
-      "prompt": "Which feels more like you: likes being on solid ground or dreams of the sea?",
-      "left": "likes being on solid ground",
-      "right": "dreams of the sea",
+      "prompt": "Do you likes being on solid ground or dreams of the sea?",
+      "left": "Likes being on solid ground",
+      "right": "Dreams of the sea",
       "weights": {
         "I": 0,
         "E": 0.09,
@@ -4472,9 +4472,9 @@
     },
     {
       "id": 225,
-      "prompt": "Which feels more like you: bothered by spelling mistakes or is fine with spelling mistakes, as long as the meaning comes through?",
-      "left": "bothered by spelling mistakes",
-      "right": "is fine with spelling mistakes, as long as the meaning comes through",
+      "prompt": "Are you more bothered by spelling mistakes or is fine with spelling mistakes, as long as the meaning comes through?",
+      "left": "Bothered by spelling mistakes",
+      "right": "Is fine with spelling mistakes, as long as the meaning comes through",
       "weights": {
         "I": 0,
         "E": 0.26,
@@ -4488,9 +4488,9 @@
     },
     {
       "id": 227,
-      "prompt": "Which feels more like you: forever young or all grown up?",
-      "left": "forever young",
-      "right": "all grown up",
+      "prompt": "Are you more forever young or all grown up?",
+      "left": "Forever young",
+      "right": "All grown up",
       "weights": {
         "I": 0.45,
         "E": 0,
@@ -4504,9 +4504,9 @@
     },
     {
       "id": 235,
-      "prompt": "Which feels more like you: often misplaces their keys or has a system so that does not happen?",
-      "left": "often misplaces their keys",
-      "right": "has a system so that does not happen",
+      "prompt": "Are you more often misplaces their keys or has a system so that does not happen?",
+      "left": "Often misplaces their keys",
+      "right": "Has a system so that does not happen",
       "weights": {
         "I": 0.2,
         "E": 0,
@@ -4520,9 +4520,9 @@
     },
     {
       "id": 236,
-      "prompt": "Which feels more like you: keeps a clean room or just puts stuff where ever?",
-      "left": "keeps a clean room",
-      "right": "just puts stuff where ever",
+      "prompt": "Do you keeps a clean room or just puts stuff where ever?",
+      "left": "Keeps a clean room",
+      "right": "Just puts stuff where ever",
       "weights": {
         "I": 0,
         "E": 0.05,
@@ -4536,9 +4536,9 @@
     },
     {
       "id": 243,
-      "prompt": "Which feels more like you: knows what they want or still trying to figure it all out?",
-      "left": "knows what they want",
-      "right": "still trying to figure it all out",
+      "prompt": "Are you more knows what they want or still trying to figure it all out?",
+      "left": "Knows what they want",
+      "right": "Still trying to figure it all out",
       "weights": {
         "I": 0.39,
         "E": 0,
@@ -4552,9 +4552,9 @@
     },
     {
       "id": 245,
-      "prompt": "Which feels more like you: likes to \"just drive\" or would never drive without a purpose?",
-      "left": "likes to \"just drive\"",
-      "right": "would never drive without a purpose",
+      "prompt": "Do you likes to \"just drive\" or would never drive without a purpose?",
+      "left": "Likes to \"just drive\"",
+      "right": "Would never drive without a purpose",
       "weights": {
         "I": 0.31,
         "E": 0,
@@ -4568,9 +4568,9 @@
     },
     {
       "id": 248,
-      "prompt": "When people describe you, are you more scheduled or spontaneous?",
-      "left": "scheduled",
-      "right": "spontaneous",
+      "prompt": "Are you more scheduled or spontaneous?",
+      "left": "Scheduled",
+      "right": "Spontaneous",
       "weights": {
         "I": 0,
         "E": 0.57,
@@ -4584,9 +4584,9 @@
     },
     {
       "id": 249,
-      "prompt": "Day to day, are you more steady or unstable?",
-      "left": "steady",
-      "right": "unstable",
+      "prompt": "Are you more steady or unstable?",
+      "left": "Steady",
+      "right": "Unstable",
       "weights": {
         "I": 0.19,
         "E": 0,
@@ -4600,9 +4600,9 @@
     },
     {
       "id": 251,
-      "prompt": "Which feels more like you: rises early or sleeps late?",
-      "left": "rises early",
-      "right": "sleeps late",
+      "prompt": "Are you more rises early or sleeps late?",
+      "left": "Rises early",
+      "right": "Sleeps late",
       "weights": {
         "I": 0.1,
         "E": 0,
@@ -4616,9 +4616,9 @@
     },
     {
       "id": 260,
-      "prompt": "Which feels more like you: works in fits and bursts or works through it steadily?",
-      "left": "works in fits and bursts",
-      "right": "works through it steadily",
+      "prompt": "Do you works in fits and bursts or works through it steadily?",
+      "left": "Works in fits and bursts",
+      "right": "Works through it steadily",
       "weights": {
         "I": 0.23,
         "E": 0,
@@ -4632,9 +4632,9 @@
     },
     {
       "id": 267,
-      "prompt": "In everyday life, are you more reckless or solid?",
-      "left": "reckless",
-      "right": "solid",
+      "prompt": "Are you more reckless or solid?",
+      "left": "Reckless",
+      "right": "Solid",
       "weights": {
         "I": 0.4,
         "E": 0,
@@ -4648,9 +4648,9 @@
     },
     {
       "id": 271,
-      "prompt": "Which feels more like you: does a good job handling the preparation or does a good job handling the fallout?",
-      "left": "does a good job handling the preparation",
-      "right": "does a good job handling the fallout",
+      "prompt": "Are you more does a good job handling the preparation or does a good job handling the fallout?",
+      "left": "Does a good job handling the preparation",
+      "right": "Does a good job handling the fallout",
       "weights": {
         "I": 0,
         "E": 0.3,
@@ -4664,9 +4664,9 @@
     },
     {
       "id": 272,
-      "prompt": "Day to day, are you more mysterious or reliable?",
-      "left": "mysterious",
-      "right": "reliable",
+      "prompt": "Are you more mysterious or reliable?",
+      "left": "Mysterious",
+      "right": "Reliable",
       "weights": {
         "I": 0,
         "E": 0.3,
@@ -4680,9 +4680,9 @@
     },
     {
       "id": 274,
-      "prompt": "Which feels more like you: follows rules or breaks rules?",
-      "left": "follows rules",
-      "right": "breaks rules",
+      "prompt": "Do you follows rules or breaks rules?",
+      "left": "Follows rules",
+      "right": "Breaks rules",
       "weights": {
         "I": 0,
         "E": 0.37,
@@ -4696,9 +4696,9 @@
     },
     {
       "id": 277,
-      "prompt": "Which feels more like you: puts time into choosing/preparing food or goes for whatever is simplest?",
-      "left": "puts time into choosing/preparing food",
-      "right": "goes for whatever is simplest",
+      "prompt": "Are you more puts time into choosing/preparing food or goes for whatever is simplest?",
+      "left": "Puts time into choosing/preparing food",
+      "right": "Goes for whatever is simplest",
       "weights": {
         "I": 0.1,
         "E": 0,
@@ -4712,9 +4712,9 @@
     },
     {
       "id": 280,
-      "prompt": "Which feels more like you: does their best or does what they need to get by?",
-      "left": "does their best",
-      "right": "does what they need to get by",
+      "prompt": "Are you more does their best or does what they need to get by?",
+      "left": "Does their best",
+      "right": "Does what they need to get by",
       "weights": {
         "I": 0.15,
         "E": 0,
@@ -4728,9 +4728,9 @@
     },
     {
       "id": 286,
-      "prompt": "Which feels more like you: demands precision or satisfied with good enough?",
-      "left": "demands precision",
-      "right": "satisfied with good enough",
+      "prompt": "Are you more demands precision or satisfied with good enough?",
+      "left": "Demands precision",
+      "right": "Satisfied with good enough",
       "weights": {
         "I": 0,
         "E": 0.25,
@@ -4744,9 +4744,9 @@
     },
     {
       "id": 287,
-      "prompt": "Which feels more like you: makes lists or relies on memory?",
-      "left": "makes lists",
-      "right": "relies on memory",
+      "prompt": "Are you more makes lists or relies on memory?",
+      "left": "Makes lists",
+      "right": "Relies on memory",
       "weights": {
         "I": 0,
         "E": 0.06,
@@ -4760,9 +4760,9 @@
     },
     {
       "id": 289,
-      "prompt": "Which feels more like you: never edits their writing once they are done or always goes back and makes many revisions?",
-      "left": "never edits their writing once they are done",
-      "right": "always goes back and makes many revisions",
+      "prompt": "Are you more never edits their writing once they are done or always goes back and makes many revisions?",
+      "left": "Never edits their writing once they are done",
+      "right": "Always goes back and makes many revisions",
       "weights": {
         "I": 0.16,
         "E": 0,
