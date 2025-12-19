@@ -423,6 +423,7 @@ export default function TestPage() {
           <p>
             ©2025 MBTI Senpai · Open-source · made with{" "}
             <span className="text-pink-500">♥</span> by{" "}
+            <br />
             <Link
               href="https://www.linkedin.com/in/khaing-myel-khant-457b69146/"
               className="underline underline-offset-2 hover:text-pink-500"

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | MBTI Senpai",
@@ -410,18 +411,7 @@ export default function PrivacyPolicyPage() {
           </section>
         </div>
 
-        <footer className="mt-10 border-t border-zinc-100 pt-4 text-center text-[10px] text-zinc-400 md:text-[11px]">
-          <p>
-            ©2025 MBTI Senpai · Open-source · made with{" "}
-            <span className="text-pink-500">♥</span> by{" "}
-            <Link
-              href="https://www.linkedin.com/in/khaing-myel-khant-457b69146/"
-              className="underline underline-offset-2 hover:text-pink-500"
-            >
-              Khaing Myel Khant
-            </Link>
-          </p>
-        </footer>
+        <Footer />
       </main>
     </div>
   );
