@@ -1,12 +1,6 @@
-import { ImageResponse } from "@vercel/og";
+import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 import { getResultFromRedis } from "../../result-storage/redis";
-
-// Use Node.js runtime to support Redis for id parameter
-export const runtime = "nodejs";
-
-// Increase max duration for OG image generation (Vercel Pro plan allows up to 300s)
-export const maxDuration = 30; // 30 seconds should be enough
 
 type MbtiResult = {
   type: string;
@@ -44,24 +38,6 @@ const DIMENSION_DESCRIPTIONS: Record<string, string> = {
   P: "Flexible & Adaptable",
 };
 
-function decodeResult(encoded: string): MbtiResult | null {
-  try {
-    const json = decodeURIComponent(atob(encoded));
-    const parsed = JSON.parse(json) as MbtiResult;
-    if (
-      !parsed.type ||
-      !parsed.scores ||
-      !parsed.percentages ||
-      typeof parsed.type !== "string"
-    ) {
-      return null;
-    }
-    return parsed;
-  } catch {
-    return null;
-  }
-}
-
 // Helper to add timeout to promises
 function withTimeout<T>(
   promise: Promise<T>,
@@ -75,6 +51,14 @@ function withTimeout<T>(
     ),
   ]);
 }
+
+// Image metadata
+export const alt = "MBTI Result";
+export const size = {
+  width: 1200,
+  height: 630,
+};
+export const contentType = "image/png";
 
 export async function GET(request: NextRequest) {
   const startTime = Date.now();
@@ -96,7 +80,6 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
-    const data = searchParams.get("data");
 
     console.log(
       JSON.stringify({
@@ -104,143 +87,105 @@ export async function GET(request: NextRequest) {
         message: "[OG] Request parameters",
         requestId,
         hasId: !!id,
-        hasData: !!data,
         id: id?.substring(0, 10) + "...", // Log partial ID for debugging
       })
     );
 
-    if (!id && !data) {
+    if (!id) {
       console.error(
         JSON.stringify({
           level: "error",
-          message: "[OG] Missing parameters",
+          message: "[OG] Missing id parameter",
           requestId,
         })
       );
-      return new Response("Missing id or data parameter", {
+      return new Response("Missing id parameter", {
         status: 400,
       });
     }
 
+    // Fetch result from Redis (with timeout)
+    const redisStartTime = Date.now();
     let result: MbtiResult | null = null;
 
-    // Try to fetch from Redis if id is provided (with timeout)
-    if (id) {
-      const redisStartTime = Date.now();
-      try {
+    try {
+      console.log(
+        JSON.stringify({
+          level: "info",
+          message: "[OG] Fetching from Redis",
+          requestId,
+          id: id.substring(0, 10) + "...",
+        })
+      );
+
+      result = await withTimeout(
+        getResultFromRedis(id),
+        5000, // 5 second timeout
+        "Redis fetch timeout"
+      );
+
+      const redisTime = Date.now() - redisStartTime;
+
+      if (result) {
         console.log(
           JSON.stringify({
             level: "info",
-            message: "[OG] Fetching from Redis",
-            requestId,
-            id: id.substring(0, 10) + "...",
-          })
-        );
-
-        result = await withTimeout(
-          getResultFromRedis(id),
-          5000, // 5 second timeout
-          "Redis fetch timeout"
-        );
-
-        const redisTime = Date.now() - redisStartTime;
-
-        if (result) {
-          console.log(
-            JSON.stringify({
-              level: "info",
-              message: "[OG] Redis fetch successful",
-              requestId,
-              redisTime,
-              hasType: !!result.type,
-              type: result.type,
-              hasPercentages: !!result.percentages,
-              hasScores: !!result.scores,
-              percentagesKeys: result.percentages
-                ? Object.keys(result.percentages)
-                : [],
-              percentagesValues: result.percentages
-                ? Object.values(result.percentages).slice(0, 4)
-                : [],
-            })
-          );
-        } else {
-          console.warn(
-            JSON.stringify({
-              level: "warn",
-              message: "[OG] Result not found in Redis",
-              requestId,
-              redisTime,
-            })
-          );
-        }
-      } catch (error) {
-        const redisTime = Date.now() - redisStartTime;
-        console.error(
-          JSON.stringify({
-            level: "error",
-            message: "[OG] Redis fetch failed",
+            message: "[OG] Redis fetch successful",
             requestId,
             redisTime,
-            error:
-              error instanceof Error
-                ? {
-                    message: error.message,
-                    name: error.name,
-                    stack: error.stack,
-                  }
-                : String(error),
+            hasType: !!result.type,
+            type: result.type,
+            hasPercentages: !!result.percentages,
+            hasScores: !!result.scores,
+            percentagesKeys: result.percentages
+              ? Object.keys(result.percentages)
+              : [],
+            percentagesValues: result.percentages
+              ? Object.values(result.percentages).slice(0, 4)
+              : [],
           })
         );
-        // Don't return error here, try fallback to data parameter
-      }
-    }
-
-    // Fallback to decoding data parameter if id didn't work
-    if (!result && data) {
-      try {
-        console.log(
+      } else {
+        console.warn(
           JSON.stringify({
-            level: "info",
-            message: "[OG] Attempting to decode data parameter",
+            level: "warn",
+            message: "[OG] Result not found in Redis",
             requestId,
-          })
-        );
-        result = decodeResult(data);
-        if (result) {
-          console.log(
-            JSON.stringify({
-              level: "info",
-              message: "[OG] Successfully decoded data parameter",
-              requestId,
-              hasType: !!result.type,
-              hasPercentages: !!result.percentages,
-            })
-          );
-        }
-      } catch (error) {
-        console.error(
-          JSON.stringify({
-            level: "error",
-            message: "[OG] Failed to decode data parameter",
-            requestId,
-            error: error instanceof Error ? error.message : String(error),
+            redisTime,
           })
         );
       }
+    } catch (error) {
+      const redisTime = Date.now() - redisStartTime;
+      console.error(
+        JSON.stringify({
+          level: "error",
+          message: "[OG] Redis fetch failed",
+          requestId,
+          redisTime,
+          error:
+            error instanceof Error
+              ? {
+                  message: error.message,
+                  name: error.name,
+                  stack: error.stack,
+                }
+              : String(error),
+        })
+      );
     }
 
     if (!result) {
       console.error(
         JSON.stringify({
           level: "error",
-          message: "[OG] No result available",
+          message: "[OG] No result available from Redis",
           requestId,
           totalTime: Date.now() - startTime,
         })
       );
-      return new Response("Missing or invalid id/data parameter", {
-        status: 400,
+      return new Response("Result not found or expired", {
+        status: 404,
       });
     }
 
@@ -384,7 +329,7 @@ export async function GET(request: NextRequest) {
           requestId,
         })
       );
-      const imageResponse = new ImageResponse(
+      return new ImageResponse(
         (
           <div
             style={{
@@ -533,26 +478,17 @@ export async function GET(request: NextRequest) {
           </div>
         ),
         {
-          width: 1200,
-          height: 630,
-          // Add explicit format and quality settings for better compatibility
+          ...size,
         }
       );
-      const imageTime = Date.now() - imageStartTime;
-      const totalTime = Date.now() - startTime;
-      console.log(
-        JSON.stringify({
-          level: "info",
-          message: "[OG] ImageResponse created successfully",
-          requestId,
-          imageTime,
-          totalTime,
-        })
-      );
-      return imageResponse;
     } catch (imageError: unknown) {
       const imageTime = Date.now() - imageStartTime;
       const totalTime = Date.now() - startTime;
+      const errorMessage =
+        imageError instanceof Error
+          ? imageError.message
+          : "Unknown error occurred";
+
       console.error(
         JSON.stringify({
           level: "error",
@@ -560,46 +496,31 @@ export async function GET(request: NextRequest) {
           requestId,
           imageTime,
           totalTime,
-          error:
-            imageError instanceof Error
-              ? {
-                  message: imageError.message,
-                  stack: imageError.stack,
-                  name: imageError.name,
-                }
-              : String(imageError),
+          error: errorMessage,
         })
       );
-      throw imageError; // Re-throw to be caught by outer catch
+
+      return new Response(`Failed to generate image: ${errorMessage}`, {
+        status: 500,
+      });
     }
   } catch (e: unknown) {
     const totalTime = Date.now() - startTime;
+    const errorMessage =
+      e instanceof Error ? e.message : "Unknown error occurred";
+
     console.error(
       JSON.stringify({
         level: "error",
         message: "[OG] OG image generation error",
         requestId,
         totalTime,
-        error:
-          e instanceof Error
-            ? {
-                message: e.message,
-                stack: e.stack,
-                name: e.name,
-              }
-            : String(e),
+        error: errorMessage,
       })
     );
-    return new Response(
-      `Failed to generate image: ${
-        e instanceof Error ? e.message : "Unknown error"
-      }`,
-      {
-        status: 500,
-        headers: {
-          "Content-Type": "text/plain",
-        },
-      }
-    );
+
+    return new Response(`Failed to generate image: ${errorMessage}`, {
+      status: 500,
+    });
   }
 }
