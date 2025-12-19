@@ -342,6 +342,21 @@ export async function POST(req: NextRequest) {
       response.warning = `Only ${validAnswers.length} out of ${EXPECTED_QUESTIONS_COUNT} questions were answered. Results may be less accurate.`;
     }
 
+    // Save result to Redis and get nanoid (asynchronously, don't block response)
+    let resultId: string | null = null;
+    try {
+      const { saveResultToRedis } = await import("../../result-storage/redis");
+      resultId = await saveResultToRedis(response);
+      if (resultId && DEBUG_LOGGING) {
+        console.log(`[SCORE] Result saved to Redis with ID: ${resultId}`);
+      }
+    } catch (err) {
+      // Silently fail - don't block the response if Redis save fails
+      if (DEBUG_LOGGING) {
+        console.warn("[SCORE] Failed to save result to Redis:", err);
+      }
+    }
+
     // Increment test count asynchronously (don't block response)
     // Only count if we have valid results (not all neutral or invalid)
     if (type !== "XXXX" && validAnswers.length > 0) {
@@ -356,7 +371,11 @@ export async function POST(req: NextRequest) {
         });
     }
 
-    return NextResponse.json(response, { status: 200 });
+    // Return response with result ID if available
+    return NextResponse.json(
+      { ...response, id: resultId || undefined },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("[POST /api/mbti/score] failed", error);
     return NextResponse.json(

@@ -69,19 +69,49 @@ const DetailedScoreAnalysisSection = dynamic(
   { ssr: false }
 );
 
-function ResultPageContent() {
+function ResultPageContent({ resultId }: { resultId?: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [copied, setCopied] = useState(false);
   const [result, setResult] = useState<MbtiResult | null>(null);
   const [isHydrated, setIsHydrated] = useState(false);
 
-  // Hydrate from URL params or sessionStorage after mount
+  // Hydrate from Redis (if resultId provided), URL params, or sessionStorage after mount
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     let loadedResult: MbtiResult | null = null;
 
+    // First, try to fetch from Redis if resultId is provided
+    if (resultId) {
+      fetch(`/api/result/${resultId}`)
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          return null;
+        })
+        .then((data) => {
+          if (data && data.type && data.scores && data.percentages) {
+            loadedResult = data;
+            window.sessionStorage.setItem("mbtiResult", JSON.stringify(data));
+            setResult(loadedResult);
+            setIsHydrated(true);
+          } else {
+            // Result not found or invalid
+            setResult(null);
+            setIsHydrated(true);
+          }
+        })
+        .catch((err) => {
+          console.error("Failed to fetch result from Redis:", err);
+          setResult(null);
+          setIsHydrated(true);
+        });
+      return; // Early return, will set result in promise handler
+    }
+
+    // Fallback to old method: URL params or sessionStorage
     const urlData = searchParams.get("data");
     if (urlData) {
       const decoded = decodeResult(urlData);
@@ -122,12 +152,16 @@ function ResultPageContent() {
 
     setResult(loadedResult);
     setIsHydrated(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [resultId, router, searchParams]);
 
   // Generate shareable URL (same as copy link handler)
   const shareableUrl = (() => {
     if (!result || typeof window === "undefined") return "";
+    // If we have resultId, use the new format
+    if (resultId) {
+      return `${window.location.origin}/result/${resultId}`;
+    }
+    // Otherwise, fallback to old format
     const encoded = encodeResult(result);
     if (!encoded) return "";
     return `${window.location.origin}/result?data=${encoded}`;
@@ -248,12 +282,19 @@ function ResultPageContent() {
         "..." ||
       `Your MBTI type is ${type}. Discover your personality insights.`;
 
-    const encoded = encodeResult(result);
-    if (!encoded) return;
-
-    const ogImageUrl = `${
-      window.location.origin
-    }/api/og/result?data=${encodeURIComponent(encoded)}`;
+    // Use id-based URL if available, otherwise fallback to data param
+    let ogImageUrl: string;
+    if (resultId) {
+      ogImageUrl = `${
+        window.location.origin
+      }/api/og/result?id=${encodeURIComponent(resultId)}`;
+    } else {
+      const encoded = encodeResult(result);
+      if (!encoded) return;
+      ogImageUrl = `${
+        window.location.origin
+      }/api/og/result?data=${encodeURIComponent(encoded)}`;
+    }
 
     const updateMetaTag = (property: string, content: string) => {
       let element = document.querySelector(`meta[property="${property}"]`);

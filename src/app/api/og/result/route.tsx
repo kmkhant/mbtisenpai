@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
+import { getResultFromRedis } from "../../result-storage/redis";
 
-export const runtime = "edge";
+// Use Node.js runtime to support Redis for id parameter
+export const runtime = "nodejs";
 
 type MbtiResult = {
   type: string;
@@ -61,15 +63,29 @@ function decodeResult(encoded: string): MbtiResult | null {
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
+    const id = searchParams.get("id");
     const data = searchParams.get("data");
 
-    if (!data) {
-      return new Response("Missing data parameter", { status: 400 });
+    let result: MbtiResult | null = null;
+
+    // Try to fetch from Redis if id is provided
+    if (id) {
+      try {
+        result = await getResultFromRedis(id);
+      } catch (error) {
+        console.error("Failed to fetch result from Redis:", error);
+      }
     }
 
-    const result = decodeResult(data);
+    // Fallback to decoding data parameter if id didn't work
+    if (!result && data) {
+      result = decodeResult(data);
+    }
+
     if (!result) {
-      return new Response("Invalid data", { status: 400 });
+      return new Response("Missing or invalid id/data parameter", {
+        status: 400,
+      });
     }
 
     const type = result.type === "XXXX" ? "Unable to Determine" : result.type;

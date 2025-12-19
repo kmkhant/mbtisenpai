@@ -163,14 +163,19 @@ export default function TestPage() {
       if (typeof window !== "undefined") {
         window.sessionStorage.setItem("mbtiResult", JSON.stringify(result));
 
-        // Encode result in URL for sharing
-        try {
-          const json = JSON.stringify(result);
-          const encoded = btoa(encodeURIComponent(json));
-          router.push(`/result?data=${encoded}`);
-        } catch {
-          // Fallback to regular navigation if encoding fails
-          router.push("/result");
+        // Use nanoid-based URL if available, otherwise fallback to old method
+        if (result.id) {
+          router.push(`/result/${result.id}`);
+        } else {
+          // Fallback: encode result in URL for sharing (backward compatibility)
+          try {
+            const json = JSON.stringify(result);
+            const encoded = btoa(encodeURIComponent(json));
+            router.push(`/result?data=${encoded}`);
+          } catch {
+            // Final fallback to regular navigation
+            router.push("/result");
+          }
         }
       } else {
         router.push("/result");
