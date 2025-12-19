@@ -1,10 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 import { getResultFromRedis } from "../../result-storage/redis";
 
 // Use Node.js runtime to support Redis for id parameter
 export const runtime = "nodejs";
+
+// Increase max duration for OG image generation (Vercel Pro plan allows up to 300s)
+export const maxDuration = 30; // 30 seconds should be enough
 
 type MbtiResult = {
   type: string;
@@ -60,13 +62,61 @@ function decodeResult(encoded: string): MbtiResult | null {
   }
 }
 
+// Helper to add timeout to promises
+function withTimeout<T>(
+  promise: Promise<T>,
+  timeoutMs: number,
+  errorMessage: string
+): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<T>((_, reject) =>
+      setTimeout(() => reject(new Error(errorMessage)), timeoutMs)
+    ),
+  ]);
+}
+
 export async function GET(request: NextRequest) {
+  const startTime = Date.now();
+  // Generate a simple request ID for tracking
+  const requestId = `${Date.now()}-${Math.random()
+    .toString(36)
+    .substring(2, 9)}`;
+
+  // Log function start - Vercel will capture this
+  console.log(
+    JSON.stringify({
+      level: "info",
+      message: "[OG] Request started",
+      requestId,
+      timestamp: new Date().toISOString(),
+    })
+  );
+
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
     const data = searchParams.get("data");
 
+    console.log(
+      JSON.stringify({
+        level: "info",
+        message: "[OG] Request parameters",
+        requestId,
+        hasId: !!id,
+        hasData: !!data,
+        id: id?.substring(0, 10) + "...", // Log partial ID for debugging
+      })
+    );
+
     if (!id && !data) {
+      console.error(
+        JSON.stringify({
+          level: "error",
+          message: "[OG] Missing parameters",
+          requestId,
+        })
+      );
       return new Response("Missing id or data parameter", {
         status: 400,
       });
@@ -74,24 +124,74 @@ export async function GET(request: NextRequest) {
 
     let result: MbtiResult | null = null;
 
-    // Try to fetch from Redis if id is provided
+    // Try to fetch from Redis if id is provided (with timeout)
     if (id) {
+      const redisStartTime = Date.now();
       try {
-        result = await getResultFromRedis(id);
+        console.log(
+          JSON.stringify({
+            level: "info",
+            message: "[OG] Fetching from Redis",
+            requestId,
+            id: id.substring(0, 10) + "...",
+          })
+        );
+
+        result = await withTimeout(
+          getResultFromRedis(id),
+          5000, // 5 second timeout
+          "Redis fetch timeout"
+        );
+
+        const redisTime = Date.now() - redisStartTime;
+
         if (result) {
-          console.log(`Successfully fetched result from Redis for id: ${id}`);
+          console.log(
+            JSON.stringify({
+              level: "info",
+              message: "[OG] Redis fetch successful",
+              requestId,
+              redisTime,
+              hasType: !!result.type,
+              type: result.type,
+              hasPercentages: !!result.percentages,
+              hasScores: !!result.scores,
+              percentagesKeys: result.percentages
+                ? Object.keys(result.percentages)
+                : [],
+              percentagesValues: result.percentages
+                ? Object.values(result.percentages).slice(0, 4)
+                : [],
+            })
+          );
         } else {
-          console.log(`Result not found in Redis for id: ${id}`);
+          console.warn(
+            JSON.stringify({
+              level: "warn",
+              message: "[OG] Result not found in Redis",
+              requestId,
+              redisTime,
+            })
+          );
         }
       } catch (error) {
-        console.error("Failed to fetch result from Redis:", error);
-        if (error instanceof Error) {
-          console.error("Redis error details:", {
-            message: error.message,
-            stack: error.stack,
-            name: error.name,
-          });
-        }
+        const redisTime = Date.now() - redisStartTime;
+        console.error(
+          JSON.stringify({
+            level: "error",
+            message: "[OG] Redis fetch failed",
+            requestId,
+            redisTime,
+            error:
+              error instanceof Error
+                ? {
+                    message: error.message,
+                    name: error.name,
+                    stack: error.stack,
+                  }
+                : String(error),
+          })
+        );
         // Don't return error here, try fallback to data parameter
       }
     }
@@ -99,29 +199,81 @@ export async function GET(request: NextRequest) {
     // Fallback to decoding data parameter if id didn't work
     if (!result && data) {
       try {
+        console.log(
+          JSON.stringify({
+            level: "info",
+            message: "[OG] Attempting to decode data parameter",
+            requestId,
+          })
+        );
         result = decodeResult(data);
         if (result) {
-          console.log("Successfully decoded result from data parameter");
+          console.log(
+            JSON.stringify({
+              level: "info",
+              message: "[OG] Successfully decoded data parameter",
+              requestId,
+              hasType: !!result.type,
+              hasPercentages: !!result.percentages,
+            })
+          );
         }
       } catch (error) {
-        console.error("Failed to decode data parameter:", error);
+        console.error(
+          JSON.stringify({
+            level: "error",
+            message: "[OG] Failed to decode data parameter",
+            requestId,
+            error: error instanceof Error ? error.message : String(error),
+          })
+        );
       }
     }
 
     if (!result) {
+      console.error(
+        JSON.stringify({
+          level: "error",
+          message: "[OG] No result available",
+          requestId,
+          totalTime: Date.now() - startTime,
+        })
+      );
       return new Response("Missing or invalid id/data parameter", {
         status: 400,
       });
     }
 
     // Validate result structure
-    if (!result.type || !result.percentages) {
-      console.error("Invalid result structure:", {
+    console.log(
+      JSON.stringify({
+        level: "info",
+        message: "[OG] Validating result structure",
+        requestId,
+        hasType: !!result.type,
         type: result.type,
         hasPercentages: !!result.percentages,
         hasScores: !!result.scores,
-        result: JSON.stringify(result).substring(0, 200),
-      });
+        percentagesType: typeof result.percentages,
+        percentagesIsArray: Array.isArray(result.percentages),
+        percentagesKeys: result.percentages
+          ? Object.keys(result.percentages)
+          : null,
+      })
+    );
+
+    if (!result.type || !result.percentages) {
+      console.error(
+        JSON.stringify({
+          level: "error",
+          message: "[OG] Invalid result structure",
+          requestId,
+          hasType: !!result.type,
+          hasPercentages: !!result.percentages,
+          hasScores: !!result.scores,
+          resultPreview: JSON.stringify(result).substring(0, 500),
+        })
+      );
       return new Response("Invalid result data: missing type or percentages", {
         status: 400,
       });
@@ -132,14 +284,42 @@ export async function GET(request: NextRequest) {
       ["E", "I", "S", "N", "T", "F", "J", "P"];
 
     // Create a safe copy of percentages to avoid mutating the original
+    console.log(
+      JSON.stringify({
+        level: "info",
+        message: "[OG] Processing percentages",
+        requestId,
+        originalPercentages: result.percentages,
+        originalPercentagesType: typeof result.percentages,
+      })
+    );
+
     const safePercentages: Record<string, number> = { ...result.percentages };
     const missingFields = requiredFields.filter(
       (field) =>
         safePercentages[field] === undefined || safePercentages[field] === null
     );
 
+    console.log(
+      JSON.stringify({
+        level: "info",
+        message: "[OG] Percentage fields check",
+        requestId,
+        safePercentages,
+        missingFields,
+        requiredFields,
+      })
+    );
+
     if (missingFields.length > 0) {
-      console.warn("Missing percentage fields, filling with 0:", missingFields);
+      console.warn(
+        JSON.stringify({
+          level: "warn",
+          message: "[OG] Missing percentage fields",
+          requestId,
+          missingFields,
+        })
+      );
       // Fill in missing fields with 0
       missingFields.forEach((field) => {
         safePercentages[field] = 0;
@@ -148,6 +328,15 @@ export async function GET(request: NextRequest) {
 
     // Use safe percentages for calculations
     const p = safePercentages;
+
+    console.log(
+      JSON.stringify({
+        level: "info",
+        message: "[OG] Percentages processed",
+        requestId,
+        finalPercentages: p,
+      })
+    );
 
     const type = result.type === "XXXX" ? "Unable to Determine" : result.type;
     const title =
@@ -169,8 +358,33 @@ export async function GET(request: NextRequest) {
       jp = (p.J ?? 0) >= (p.P ?? 0) ? "J" : "P";
     }
 
+    const dataFetchTime = Date.now() - startTime;
+    const imageStartTime = Date.now();
+
+    console.log(
+      JSON.stringify({
+        level: "info",
+        message: "[OG] Starting ImageResponse generation",
+        requestId,
+        dataFetchTime,
+        type: result.type,
+        title,
+        ei,
+        sn,
+        tf,
+        jp,
+      })
+    );
+
     try {
-      return new ImageResponse(
+      console.log(
+        JSON.stringify({
+          level: "info",
+          message: "[OG] Creating ImageResponse",
+          requestId,
+        })
+      );
+      const imageResponse = new ImageResponse(
         (
           <div
             style={{
@@ -324,24 +538,58 @@ export async function GET(request: NextRequest) {
           // Add explicit format and quality settings for better compatibility
         }
       );
+      const imageTime = Date.now() - imageStartTime;
+      const totalTime = Date.now() - startTime;
+      console.log(
+        JSON.stringify({
+          level: "info",
+          message: "[OG] ImageResponse created successfully",
+          requestId,
+          imageTime,
+          totalTime,
+        })
+      );
+      return imageResponse;
     } catch (imageError: unknown) {
-      console.error("ImageResponse creation error:", imageError);
-      if (imageError instanceof Error) {
-        console.error("ImageResponse error details:", {
-          message: imageError.message,
-          stack: imageError.stack,
-          name: imageError.name,
-        });
-      }
+      const imageTime = Date.now() - imageStartTime;
+      const totalTime = Date.now() - startTime;
+      console.error(
+        JSON.stringify({
+          level: "error",
+          message: "[OG] ImageResponse creation error",
+          requestId,
+          imageTime,
+          totalTime,
+          error:
+            imageError instanceof Error
+              ? {
+                  message: imageError.message,
+                  stack: imageError.stack,
+                  name: imageError.name,
+                }
+              : String(imageError),
+        })
+      );
       throw imageError; // Re-throw to be caught by outer catch
     }
   } catch (e: unknown) {
-    console.error("OG image generation error:", e);
-    // Log more details for debugging
-    if (e instanceof Error) {
-      console.error("Error message:", e.message);
-      console.error("Error stack:", e.stack);
-    }
+    const totalTime = Date.now() - startTime;
+    console.error(
+      JSON.stringify({
+        level: "error",
+        message: "[OG] OG image generation error",
+        requestId,
+        totalTime,
+        error:
+          e instanceof Error
+            ? {
+                message: e.message,
+                stack: e.stack,
+                name: e.name,
+              }
+            : String(e),
+      })
+    );
     return new Response(
       `Failed to generate image: ${
         e instanceof Error ? e.message : "Unknown error"
