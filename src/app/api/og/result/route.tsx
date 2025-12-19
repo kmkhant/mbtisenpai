@@ -66,26 +66,46 @@ export async function GET(request: NextRequest) {
     const id = searchParams.get("id");
     const data = searchParams.get("data");
 
+    if (!id && !data) {
+      return new Response("Missing id or data parameter", {
+        status: 400,
+      });
+    }
+
     let result: MbtiResult | null = null;
 
     // Try to fetch from Redis if id is provided
     if (id) {
       try {
         result = await getResultFromRedis(id);
-        if (!result) {
+        if (result) {
+          console.log(`Successfully fetched result from Redis for id: ${id}`);
+        } else {
           console.log(`Result not found in Redis for id: ${id}`);
         }
       } catch (error) {
         console.error("Failed to fetch result from Redis:", error);
         if (error instanceof Error) {
-          console.error("Redis error details:", error.message, error.stack);
+          console.error("Redis error details:", {
+            message: error.message,
+            stack: error.stack,
+            name: error.name,
+          });
         }
+        // Don't return error here, try fallback to data parameter
       }
     }
 
     // Fallback to decoding data parameter if id didn't work
     if (!result && data) {
-      result = decodeResult(data);
+      try {
+        result = decodeResult(data);
+        if (result) {
+          console.log("Successfully decoded result from data parameter");
+        }
+      } catch (error) {
+        console.error("Failed to decode data parameter:", error);
+      }
     }
 
     if (!result) {
@@ -99,24 +119,35 @@ export async function GET(request: NextRequest) {
       console.error("Invalid result structure:", {
         type: result.type,
         hasPercentages: !!result.percentages,
+        hasScores: !!result.scores,
         result: JSON.stringify(result).substring(0, 200),
       });
-      return new Response("Invalid result data", { status: 400 });
-    }
-
-    // Ensure all required percentage fields exist
-    const requiredFields: Array<"E" | "I" | "S" | "N" | "T" | "F" | "J" | "P"> =
-      ["E", "I", "S", "N", "T", "F", "J", "P"];
-    const missingFields = requiredFields.filter(
-      (field) => result.percentages[field] === undefined
-    );
-    if (missingFields.length > 0) {
-      console.error("Missing percentage fields:", missingFields);
-      // Fill in missing fields with 0
-      missingFields.forEach((field) => {
-        result.percentages[field] = 0;
+      return new Response("Invalid result data: missing type or percentages", {
+        status: 400,
       });
     }
+
+    // Ensure all required percentage fields exist with safe defaults
+    const requiredFields: Array<"E" | "I" | "S" | "N" | "T" | "F" | "J" | "P"> =
+      ["E", "I", "S", "N", "T", "F", "J", "P"];
+
+    // Create a safe copy of percentages to avoid mutating the original
+    const safePercentages: Record<string, number> = { ...result.percentages };
+    const missingFields = requiredFields.filter(
+      (field) =>
+        safePercentages[field] === undefined || safePercentages[field] === null
+    );
+
+    if (missingFields.length > 0) {
+      console.warn("Missing percentage fields, filling with 0:", missingFields);
+      // Fill in missing fields with 0
+      missingFields.forEach((field) => {
+        safePercentages[field] = 0;
+      });
+    }
+
+    // Use safe percentages for calculations
+    const p = safePercentages;
 
     const type = result.type === "XXXX" ? "Unable to Determine" : result.type;
     const title =
@@ -130,31 +161,13 @@ export async function GET(request: NextRequest) {
     let tf = "T";
     let jp = "J";
 
-    if (result.type !== "XXXX" && result.percentages) {
-      const p = result.percentages;
+    if (result.type !== "XXXX") {
       // Safely access percentages with fallbacks
       ei = (p.E ?? 0) >= (p.I ?? 0) ? "E" : "I";
       sn = (p.S ?? 0) >= (p.N ?? 0) ? "S" : "N";
       tf = (p.T ?? 0) >= (p.F ?? 0) ? "T" : "F";
       jp = (p.J ?? 0) >= (p.P ?? 0) ? "J" : "P";
     }
-
-    // Get the base URL for the logo - normalize to use www
-    let baseUrl = request.nextUrl.origin;
-    // Normalize mbtisenpai.xyz to always use www
-    try {
-      const urlObj = new URL(baseUrl);
-      if (
-        urlObj.hostname === "mbtisenpai.xyz" &&
-        !urlObj.hostname.startsWith("www.")
-      ) {
-        urlObj.hostname = "www.mbtisenpai.xyz";
-        baseUrl = urlObj.origin;
-      }
-    } catch {
-      // If URL parsing fails, use the original baseUrl
-    }
-    const logoUrl = `${baseUrl}/logo.png`;
 
     try {
       return new ImageResponse(
@@ -181,15 +194,22 @@ export async function GET(request: NextRequest) {
                 marginBottom: "40px",
               }}
             >
-              <img
-                src={logoUrl}
-                alt="MBTI Senpai Logo"
-                width="48"
-                height="48"
+              <div
                 style={{
+                  width: "48px",
+                  height: "48px",
                   borderRadius: "100%",
+                  background: "linear-gradient(to bottom, #d946ef, #ec4899)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  color: "white",
                 }}
-              />
+              >
+                M
+              </div>
               <div
                 style={{
                   fontSize: "32px",
@@ -301,10 +321,18 @@ export async function GET(request: NextRequest) {
         {
           width: 1200,
           height: 630,
+          // Add explicit format and quality settings for better compatibility
         }
       );
     } catch (imageError: unknown) {
       console.error("ImageResponse creation error:", imageError);
+      if (imageError instanceof Error) {
+        console.error("ImageResponse error details:", {
+          message: imageError.message,
+          stack: imageError.stack,
+          name: imageError.name,
+        });
+      }
       throw imageError; // Re-throw to be caught by outer catch
     }
   } catch (e: unknown) {
