@@ -9,10 +9,32 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
 });
 
+function normalizeUrl(url: string): string {
+  // Normalize mbtisenpai.xyz to always use www
+  const urlObj = new URL(url);
+  if (
+    urlObj.hostname === "mbtisenpai.xyz" &&
+    !urlObj.hostname.startsWith("www.")
+  ) {
+    urlObj.hostname = "www.mbtisenpai.xyz";
+  }
+  return urlObj.toString().replace(/\/$/, ""); // Remove trailing slash
+}
+
+function getMetadataBase(): string {
+  const envUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
+
+  if (envUrl) {
+    return normalizeUrl(envUrl);
+  }
+
+  return "https://www.mbtisenpai.xyz";
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
-  ),
+  metadataBase: new URL(getMetadataBase()),
   title: {
     default: "MBTI Senpai - Free MBTI Personality Test",
     template: "%s | MBTI Senpai",

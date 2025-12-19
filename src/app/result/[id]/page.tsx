@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { headers } from "next/headers";
 import { TYPE_EXPLANATIONS } from "../data/type-explanations";
 import { ResultPageContent } from "../page-content";
 import { ResultSkeleton } from "../components/ResultSkeleton";
@@ -8,13 +9,46 @@ import { getResultFromRedis } from "@/app/api/result-storage/redis";
 // Mark this route as dynamic since it depends on params
 export const dynamic = "force-dynamic";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://mbtisenpai.com");
+function normalizeUrl(url: string): string {
+  // Normalize mbtisenpai.xyz to always use www
+  const urlObj = new URL(url);
+  if (
+    urlObj.hostname === "mbtisenpai.xyz" &&
+    !urlObj.hostname.startsWith("www.")
+  ) {
+    urlObj.hostname = "www.mbtisenpai.xyz";
+  }
+  return urlObj.toString().replace(/\/$/, ""); // Remove trailing slash
+}
 
-function getDefaultMetadata(): Metadata {
+async function getSiteUrl(): Promise<string> {
+  // Try to get from request headers first (most accurate)
+  try {
+    const headersList = await headers();
+    const host = headersList.get("host");
+    const protocol = headersList.get("x-forwarded-proto") || "https";
+    if (host) {
+      const url = `${protocol}://${host}`;
+      return normalizeUrl(url);
+    }
+  } catch {
+    // Headers not available, fall back to env vars
+  }
+
+  // Fall back to environment variables
+  const envUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
+
+  if (envUrl) {
+    return normalizeUrl(envUrl);
+  }
+
+  return "https://www.mbtisenpai.xyz";
+}
+
+async function getDefaultMetadata(): Promise<Metadata> {
+  const siteUrl = await getSiteUrl();
   return {
     title: "MBTI Result | MBTI Senpai",
     description: "View your MBTI personality test results",
@@ -25,7 +59,7 @@ function getDefaultMetadata(): Metadata {
       url: `${siteUrl}/result`,
       images: [
         {
-          url: `${siteUrl}/api/og/result`,
+          url: `/api/og/result`,
           width: 1200,
           height: 630,
           alt: "MBTI Result",
@@ -36,7 +70,7 @@ function getDefaultMetadata(): Metadata {
       card: "summary_large_image",
       title: "MBTI Result | MBTI Senpai",
       description: "View your MBTI personality test results",
-      images: [`${siteUrl}/api/og/result`],
+      images: [`/api/og/result`],
     },
   };
 }
@@ -50,12 +84,12 @@ export async function generateMetadata({
     const { id } = await params;
 
     if (!id) {
-      return getDefaultMetadata();
+      return await getDefaultMetadata();
     }
 
     const result = await getResultFromRedis(id);
     if (!result || !result.type) {
-      return getDefaultMetadata();
+      return await getDefaultMetadata();
     }
 
     const type = result.type === "XXXX" ? "Unable to Determine" : result.type;
@@ -66,7 +100,8 @@ export async function generateMetadata({
         "..." ||
       `Your MBTI type is ${type}. Discover your personality insights.`;
 
-    const ogImageUrl = `${siteUrl}/api/og/result?id=${encodeURIComponent(id)}`;
+    const siteUrl = await getSiteUrl();
+    const ogImageUrl = `/api/og/result?id=${encodeURIComponent(id)}`;
     const pageUrl = `${siteUrl}/result/${id}`;
 
     return {
@@ -98,7 +133,7 @@ export async function generateMetadata({
     };
   } catch (error) {
     console.error("Error generating metadata:", error);
-    return getDefaultMetadata();
+    return await getDefaultMetadata();
   }
 }
 
