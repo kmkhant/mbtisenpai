@@ -150,8 +150,11 @@ function ResultPageContent({ resultId }: { resultId?: string }) {
       }
     }
 
-    setResult(loadedResult);
-    setIsHydrated(true);
+    // Use queueMicrotask to avoid synchronous setState in effect
+    queueMicrotask(() => {
+      setResult(loadedResult);
+      setIsHydrated(true);
+    });
   }, [resultId, router, searchParams]);
 
   // Generate shareable URL (same as copy link handler)
@@ -327,7 +330,7 @@ function ResultPageContent({ resultId }: { resultId?: string }) {
     updateNameTag("twitter:description", description);
     updateNameTag("twitter:image", ogImageUrl);
     updateNameTag("description", description);
-  }, [result, isHydrated]);
+  }, [result, isHydrated, resultId]);
 
   const mbtiType =
     result?.type === "XXXX"
