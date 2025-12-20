@@ -18,17 +18,7 @@ const questionsByDichotomy = JSON.parse(
   )
 );
 
-// Import the test functions
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-
 // We'll need to replicate the key logic here
-const DICHOTOMY_LETTERS = {
-  EI: ["E", "I"],
-  SN: ["S", "N"],
-  TF: ["T", "F"],
-  JP: ["J", "P"],
-};
 
 // Build question index
 const QUESTION_INDEX = new Map();
@@ -53,7 +43,6 @@ function analyzeFailingCase() {
 
   // Generate answers for INTJ Variation 1
   const type = "INTJ";
-  const variation = 1;
   const letters = {
     first: type[0], // I
     second: type[1], // N

@@ -581,4 +581,4 @@ function runTests() {
 }
 
 // Run the tests
-const results = runTests();
+runTests();

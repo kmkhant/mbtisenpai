@@ -17,12 +17,6 @@ const questionsByDichotomy = JSON.parse(
   )
 );
 
-// Load scoring reference
-const scoringText = fs.readFileSync(
-  path.join(__dirname, "../../src/mbti/mbti-scoring.txt"),
-  "utf8"
-);
-
 console.log("=".repeat(80));
 console.log("MBTI QUIZ ASSESSMENT ANALYSIS");
 console.log("=".repeat(80));
@@ -74,7 +68,7 @@ const examples = [];
 for (const [dichotomy, questions] of Object.entries(questionsByDichotomy)) {
   for (const q of questions) {
     const nonZeroWeights = Object.entries(q.weights || {}).filter(
-      ([_, val]) => val > 0
+      ([, val]) => val > 0
     );
 
     if (nonZeroWeights.length > 2) {
@@ -102,7 +96,7 @@ examples.forEach((ex) => {
     `  Q${ex.id} (${ex.dichotomy}): ${ex.prompt.substring(0, 60)}...`
   );
   const activeWeights = Object.entries(ex.weights)
-    .filter(([_, v]) => v > 0)
+    .filter(([, v]) => v > 0)
     .map(([k, v]) => `${k}:${v.toFixed(2)}`)
     .join(", ");
   console.log(`    Active weights: ${activeWeights}`);
@@ -175,7 +169,7 @@ if (zeroPrimaryCount > 0) {
       `  Q${ex.id} (${ex.dichotomy}): ${ex.prompt.substring(0, 60)}...`
     );
     const activeWeights = Object.entries(ex.weights)
-      .filter(([_, v]) => v > 0)
+      .filter(([, v]) => v > 0)
       .map(([k, v]) => `${k}:${v.toFixed(2)}`)
       .join(", ");
     console.log(`    Active weights: ${activeWeights}`);

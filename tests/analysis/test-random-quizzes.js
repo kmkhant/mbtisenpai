@@ -43,8 +43,6 @@ for (const [dichotomyKey, list] of Object.entries(questionsByDichotomy)) {
   }
 }
 
-const EXPECTED_QUESTIONS_COUNT = allQuestionIds.length;
-
 // Scoring logic (same as API)
 const dichotomyPairs = {
   E: "I",
@@ -274,7 +272,7 @@ async function runSingleTest(testNumber) {
         body: JSON.stringify({ answers }),
         cache: "no-store", // Disable caching
       });
-    } catch (fetchError) {
+    } catch {
       // API not available, use direct scoring
       return runDirectScoringTest(testNumber, answers);
     }
@@ -301,7 +299,7 @@ async function runSingleTest(testNumber) {
       errors: validation.errors,
       answersCount: answers.length,
     };
-  } catch (error) {
+  } catch {
     // If API is not available, use direct scoring logic
     return runDirectScoringTest(testNumber, answers);
   }
@@ -471,7 +469,7 @@ async function runTests() {
 }
 
 // Run the tests
-const results = runTests().catch((error) => {
+runTests().catch((error) => {
   console.error("❌ Test execution failed:", error);
   process.exit(1);
 });
