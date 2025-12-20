@@ -87,20 +87,25 @@ Comprehensive documentation is available in the [`docs/`](./docs/) directory:
 
 ## 🧪 Testing
 
-The project includes comprehensive test suites:
+The project includes comprehensive test suites organized in the [`tests/`](./tests/) directory:
 
 ```bash
-# Run personality validation tests
-bun test-personality-validation.js
+# Run validation tests
+node tests/validation/test-100-cases.js
+node tests/validation/test-all-personalities.js
+node tests/validation/test-personality-validation.js
+node tests/validation/test-intended-answers.js
 
-# Run 100 test cases
-bun test-100-cases.js
+# Run mode-specific tests
+node tests/mode/test-comprehensive-mode.js
 
-# Run random quiz tests
-bun test-random-quizzes.js
+# Run analysis tests
+node tests/analysis/test-random-quizzes.js
+node tests/analysis/test-quiz-analysis.js
+node tests/analysis/test-scoring-fix.js
 ```
 
-See [docs/testing/](./docs/testing/) for test results.
+See [tests/README.md](./tests/README.md) for detailed test documentation and [docs/testing/](./docs/testing/) for test results.
 
 ## 🚀 Deployment
 

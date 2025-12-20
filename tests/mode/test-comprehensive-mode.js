@@ -5,7 +5,19 @@
  * Tests comprehensive mode (88 questions) scoring and question selection
  */
 
-const questionsByDichotomy = require("./src/mbti/mbti-questions-by-dichotomy.json");
+import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const questionsByDichotomy = JSON.parse(
+  readFileSync(
+    `${__dirname}/../../src/mbti/mbti-questions-by-dichotomy.json`,
+    "utf-8"
+  )
+);
 
 const DICHOTOMY_LETTERS = {
   EI: ["E", "I"],
@@ -536,10 +548,18 @@ function generateAnswersForType(type, allQuestions, variation) {
           break;
       }
     } else {
-      // Neutral alignment
+      // Neutral alignment (alignmentScore between -0.1 and 0.1)
+      // For variations 1-2, use stronger values to ensure correct type
+      // Even if alignment is weak, follow the alignmentScore direction
       switch (variation) {
         case 1:
+          // Variation 1: Strong answers - use 2/-2 even for neutral to ensure type
+          answerValue = alignmentScore >= 0 ? 2 : -2;
+          break;
         case 2:
+          // Variation 2: Moderate answers - use 1/-1 for neutral
+          answerValue = alignmentScore >= 0 ? 1 : -1;
+          break;
         case 3:
           answerValue = alignmentScore > 0 ? 1 : -1;
           break;

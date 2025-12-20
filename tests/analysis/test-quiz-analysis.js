@@ -2,20 +2,24 @@
  * Comprehensive test script to analyze MBTI quiz assessment issues
  */
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load question data
 const questionsByDichotomy = JSON.parse(
   fs.readFileSync(
-    path.join(__dirname, "src/mbti/mbti-questions-by-dichotomy.json"),
+    path.join(__dirname, "../../src/mbti/mbti-questions-by-dichotomy.json"),
     "utf8"
   )
 );
 
 // Load scoring reference
 const scoringText = fs.readFileSync(
-  path.join(__dirname, "src/mbti/mbti-scoring.txt"),
+  path.join(__dirname, "../../src/mbti/mbti-scoring.txt"),
   "utf8"
 );
 

@@ -12,7 +12,7 @@ const __dirname = dirname(__filename);
 
 const questionsByDichotomy = JSON.parse(
   readFileSync(
-    join(__dirname, "src/mbti/mbti-questions-by-dichotomy.json"),
+    join(__dirname, "../../src/mbti/mbti-questions-by-dichotomy.json"),
     "utf-8"
   )
 );

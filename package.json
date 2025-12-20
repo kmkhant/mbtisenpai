@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:validation": "node tests/validation/test-100-cases.js",
+    "test:all-personalities": "node tests/validation/test-all-personalities.js",
+    "test:personality": "node tests/validation/test-personality-validation.js",
+    "test:comprehensive": "node tests/mode/test-comprehensive-mode.js",
+    "test:random": "node tests/analysis/test-random-quizzes.js"
   },
   "dependencies": {
     "@base-ui-components/react": "^1.0.0-rc.0",

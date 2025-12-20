@@ -26,8 +26,11 @@ Issue tracking, fixes, and resolution documentation.
 
 Test results and validation documentation.
 
+- **[README.md](./testing/README.md)** - Testing documentation and quick start guide
 - **[PERSONALITY-VALIDATION-TEST-RESULTS.md](./testing/PERSONALITY-VALIDATION-TEST-RESULTS.md)** - Results from personality type validation tests
 - **[TEST-100-CASES-RESULTS.md](./testing/TEST-100-CASES-RESULTS.md)** - Results from 100 test case validation
+
+**Test Files:** All test files are located in [`../tests/`](../tests/) - see [tests/README.md](../tests/README.md) for details.
 
 ### 🚀 [Deployment](./deployment/)
 

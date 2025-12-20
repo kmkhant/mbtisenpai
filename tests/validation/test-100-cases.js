@@ -5,7 +5,19 @@
  * Tests quiz scoring algorithm with various answer patterns
  */
 
-const questionsByDichotomy = require("./src/mbti/mbti-questions-by-dichotomy.json");
+import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const questionsByDichotomy = JSON.parse(
+  readFileSync(
+    `${__dirname}/../../src/mbti/mbti-questions-by-dichotomy.json`,
+    "utf-8"
+  )
+);
 
 const DICHOTOMY_LETTERS = {
   EI: ["E", "I"],
