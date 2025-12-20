@@ -70,6 +70,30 @@ const DetailedScoreAnalysisSection = dynamic(
   { ssr: false }
 );
 
+const DatingCompatibilitySection = dynamic(
+  () =>
+    import("./components/DatingCompatibilitySection").then((mod) => ({
+      default: mod.DatingCompatibilitySection,
+    })),
+  { ssr: false }
+);
+
+const CareerPathSection = dynamic(
+  () =>
+    import("./components/CareerPathSection").then((mod) => ({
+      default: mod.CareerPathSection,
+    })),
+  { ssr: false }
+);
+
+const AnimeCharacterSection = dynamic(
+  () =>
+    import("./components/AnimeCharacterSection").then((mod) => ({
+      default: mod.AnimeCharacterSection,
+    })),
+  { ssr: false }
+);
+
 function ResultPageContent({ resultId }: { resultId?: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -467,6 +491,24 @@ function ResultPageContent({ resultId }: { resultId?: string }) {
         {result && result.type !== "XXXX" && (
           <Suspense fallback={null}>
             <DeepAnalysisSection type={result.type} />
+          </Suspense>
+        )}
+
+        {result && result.type !== "XXXX" && (
+          <Suspense fallback={null}>
+            <DatingCompatibilitySection type={result.type} />
+          </Suspense>
+        )}
+
+        {result && result.type !== "XXXX" && (
+          <Suspense fallback={null}>
+            <CareerPathSection type={result.type} />
+          </Suspense>
+        )}
+
+        {result && result.type !== "XXXX" && (
+          <Suspense fallback={null}>
+            <AnimeCharacterSection type={result.type} />
           </Suspense>
         )}
 

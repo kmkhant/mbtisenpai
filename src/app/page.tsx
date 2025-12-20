@@ -23,7 +23,7 @@ export default function Home() {
     "@type": "WebApplication",
     name: "MBTI Senpai",
     description:
-      "Free MBTI personality test - Take a quick, accurate personality assessment in just 10 minutes",
+      "Free MBTI personality test - Take a quick, accurate personality assessment in just 10 minutes. Perfect for dating compatibility, career path guidance, and discovering which anime character matches your personality type.",
     url: siteUrl,
     applicationCategory: "PersonalityTest",
     operatingSystem: "Web",
@@ -41,6 +41,9 @@ export default function Home() {
       "Free MBTI personality test",
       "Detailed personality insights",
       "Compatibility analysis",
+      "Dating compatibility insights",
+      "Career path guidance",
+      "Anime character matching",
       "Comprehensive results",
       "Quick 10-minute assessment",
     ],
@@ -81,7 +84,9 @@ export default function Home() {
                 </h1>
                 <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                   just give 10 minutes to accurately understand more about
-                  yourself.
+                  yourself. Perfect for dating compatibility, career path
+                  guidance, and discovering which anime character matches your
+                  MBTI type.
                 </p>
                 <Button className="mt-3 md:justify-start group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-linear-to-r from-fuchsia-500 to-pink-500 px-8 py-3 text-sm font-semibold text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white group-hover:text-base">
                   <Link href="/test">Take the Test</Link>
@@ -99,7 +104,9 @@ export default function Home() {
                 </h2>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   Master your strengths and navigate your growth with expert
-                  personality insights.
+                  personality insights. Use your MBTI results for dating
+                  compatibility, career path decisions, and finding which anime
+                  character matches your personality type.
                 </p>
               </section>
 
@@ -234,6 +241,56 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-10 space-y-6 md:mt-12">
+            <div className="text-center md:text-left">
+              <h2 className="text-xl font-semibold capitalize text-pink-500 sm:text-2xl">
+                Use Your MBTI Results For
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                Discover how your personality type can help you in different
+                areas of life
+              </p>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {[
+                {
+                  title: "MBTI Test for Dating Compatibility",
+                  description:
+                    "Understand relationship dynamics and find compatible partners based on personality types. Learn how different MBTI types interact and communicate in relationships.",
+                  keywords:
+                    "dating compatibility, relationship compatibility, MBTI relationships",
+                },
+                {
+                  title: "MBTI Test for Career Path",
+                  description:
+                    "Discover which careers align with your personality type. Get insights into work styles, ideal work environments, and career paths that match your strengths.",
+                  keywords:
+                    "career path, MBTI career, personality career match",
+                },
+                {
+                  title: "Which Anime Character Am I MBTI",
+                  description:
+                    "Find out which anime character matches your MBTI personality type. Explore character archetypes and see which fictional personalities align with yours.",
+                  keywords:
+                    "anime character MBTI, which anime character am I, MBTI anime",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="rounded-xl border border-pink-50 bg-fuchsia-50/40 p-5 shadow-sm transition-all hover:shadow-md"
+                >
+                  <h3 className="text-sm font-semibold text-foreground mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -381,8 +438,7 @@ export default function Home() {
             <div className="md:flex md:items-center md:justify-between">
               <p>
                 ©2025 MBTI Senpai · Open-source · made with{" "}
-                <span className="text-pink-500">♥</span> by{" "}
-                <br />
+                <span className="text-pink-500">♥</span> by <br />
                 <Link
                   href="https://www.linkedin.com/in/khaing-myel-khant-457b69146/"
                   target="_blank"

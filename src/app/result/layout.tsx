@@ -13,6 +13,17 @@ function getDefaultMetadata(): Metadata {
   return {
     title: "MBTI Result | MBTI Senpai",
     description: "View your MBTI personality test results",
+    keywords: [
+      "MBTI test for dating compatibility",
+      "MBTI test for career path",
+      "which anime character am I MBTI",
+      "MBTI dating compatibility",
+      "MBTI career test",
+      "anime character MBTI",
+      "MBTI result",
+      "personality test result",
+      "MBTI type",
+    ],
     openGraph: {
       title: "MBTI Result | MBTI Senpai",
       description: "View your MBTI personality test results",
@@ -73,6 +84,18 @@ export async function generateMetadata({
     return {
       title: `${type} - ${typeTitle} | MBTI Senpai`,
       description,
+      keywords: [
+        "MBTI test for dating compatibility",
+        "MBTI test for career path",
+        "which anime character am I MBTI",
+        "MBTI dating compatibility",
+        "MBTI career test",
+        "anime character MBTI",
+        `${type} personality type`,
+        `${type} dating compatibility`,
+        `${type} career path`,
+        `${type} anime character`,
+      ],
       openGraph: {
         title: `${type} - ${typeTitle}`,
         description,

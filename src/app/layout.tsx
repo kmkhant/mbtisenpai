@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: "%s | MBTI Senpai",
   },
   description:
-    "Take a free, accurate MBTI personality test in just 10 minutes. Discover your personality type with detailed insights, compatibility analysis, and comprehensive results. Quick, easy, and completely free.",
+    "Take a free, accurate MBTI personality test in just 10 minutes. Discover your personality type for dating compatibility, career path guidance, and find which anime character matches your MBTI. Get detailed insights, compatibility analysis, and comprehensive results. Quick, easy, and completely free.",
   keywords: [
     "MBTI test",
     "personality test",
@@ -52,6 +52,16 @@ export const metadata: Metadata = {
     "MBTI free online",
     "16 personalities",
     "personality insights",
+    "MBTI test for dating compatibility",
+    "MBTI test for career path",
+    "which anime character am I MBTI",
+    "MBTI dating compatibility",
+    "MBTI career test",
+    "anime character MBTI",
+    "MBTI relationship compatibility",
+    "MBTI career guidance",
+    "personality test for relationships",
+    "personality test for career",
   ],
   authors: [
     {
@@ -79,7 +89,7 @@ export const metadata: Metadata = {
     siteName: "MBTI Senpai",
     title: "MBTI Senpai - Free MBTI Personality Test",
     description:
-      "Take a free, accurate MBTI personality test in just 10 minutes. Discover your personality type with detailed insights and compatibility analysis.",
+      "Take a free, accurate MBTI personality test in just 10 minutes. Discover your personality type for dating compatibility, career path guidance, and find which anime character matches your MBTI. Get detailed insights and compatibility analysis.",
     images: [
       {
         url: "/logo.png",
