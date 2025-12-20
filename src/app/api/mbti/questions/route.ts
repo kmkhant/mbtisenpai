@@ -59,10 +59,19 @@ function getRotationSeed(): number {
   return Math.floor(now.getTime() / (1000 * 60));
 }
 
-const QUESTIONS_PER_DICHOTOMY = 11;
+const QUESTIONS_PER_DICHOTOMY_FAST = 11;
+const QUESTIONS_PER_DICHOTOMY_COMPREHENSIVE = 22;
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    // Parse mode from query parameters
+    const url = new URL(request.url);
+    const mode = url.searchParams.get("mode") || "fast";
+    const isComprehensive = mode === "comprehensive";
+    const QUESTIONS_PER_DICHOTOMY = isComprehensive
+      ? QUESTIONS_PER_DICHOTOMY_COMPREHENSIVE
+      : QUESTIONS_PER_DICHOTOMY_FAST;
+
     // Get rotation seed for balanced coverage
     const rotationSeed = getRotationSeed();
     const allQuestions: MbtiQuestion[] = [];
@@ -126,17 +135,26 @@ export async function GET() {
           }
         }
 
-        // Determine target split: 5-6 or 6-5 (use seed to make it deterministic)
-        // Use dichotomy seed to determine which side gets 6
-        const leftGetsSix = dichotomySeed % 2 === 0;
-        const targetLeft = leftGetsSix ? 6 : 5;
-        const targetRight = leftGetsSix ? 5 : 6;
+        // Determine target split based on mode
+        // Fast mode: 5-6 or 6-5 split (11 total)
+        // Comprehensive mode: 11-11 split (22 total)
+        let targetLeft: number;
+        let targetRight: number;
+        if (isComprehensive) {
+          // For comprehensive mode, aim for balanced 11-11 split
+          targetLeft = 11;
+          targetRight = 11;
+        } else {
+          // For fast mode, use 5-6 or 6-5 split (use seed to make it deterministic)
+          const leftGetsSix = dichotomySeed % 2 === 0;
+          targetLeft = leftGetsSix ? 6 : 5;
+          targetRight = leftGetsSix ? 5 : 6;
+        }
 
         // Select questions maintaining fair balance
         const selected: MbtiQuestion[] = [];
         let leftCount = 0;
         let rightCount = 0;
-        let neutralCount = 0;
 
         // First, try to fill from biased questions
         for (const q of leftBiased) {
@@ -191,7 +209,6 @@ export async function GET() {
               rightLetter,
             });
             usedQuestionIds.add(q.id);
-            neutralCount++;
           }
 
           // If still need more, fill from whichever side has fewer
@@ -227,7 +244,156 @@ export async function GET() {
               usedQuestionIds.add(q.id);
               if (leftWeight > rightWeight) leftCount++;
               else if (rightWeight > leftWeight) rightCount++;
-              else neutralCount++;
+            }
+          }
+
+          // If still not enough, fill from other dichotomies in a balanced way
+          if (selected.length < QUESTIONS_PER_DICHOTOMY) {
+            // Collect all unused questions from other dichotomies
+            const otherDichotomies = (
+              Object.keys(DICHOTOMY_LETTERS) as DichotomyKey[]
+            ).filter((key) => key !== dichotomyKey);
+
+            const otherLeftBiased: RawQuestion[] = [];
+            const otherRightBiased: RawQuestion[] = [];
+            const otherNeutral: RawQuestion[] = [];
+
+            for (const otherKey of otherDichotomies) {
+              const otherRaw = (
+                questionsByDichotomy as Record<DichotomyKey, RawQuestion[]>
+              )[otherKey];
+
+              if (!otherRaw) continue;
+
+              for (const q of otherRaw) {
+                if (usedQuestionIds.has(q.id)) continue;
+
+                const weights = q.weights || {};
+                const leftWeight =
+                  weights[leftLetter as keyof typeof weights] || 0;
+                const rightWeight =
+                  weights[rightLetter as keyof typeof weights] || 0;
+
+                if (leftWeight > rightWeight) {
+                  otherLeftBiased.push(q);
+                } else if (rightWeight > leftWeight) {
+                  otherRightBiased.push(q);
+                } else {
+                  otherNeutral.push(q);
+                }
+              }
+            }
+
+            // Shuffle other questions to ensure fair selection
+            const otherLeftShuffled = seededShuffle(
+              otherLeftBiased,
+              dichotomySeed + 1000
+            );
+            const otherRightShuffled = seededShuffle(
+              otherRightBiased,
+              dichotomySeed + 2000
+            );
+            const otherNeutralShuffled = seededShuffle(
+              otherNeutral,
+              dichotomySeed + 3000
+            );
+
+            // Fill from other dichotomies maintaining balance
+            while (selected.length < QUESTIONS_PER_DICHOTOMY) {
+              // Determine which side needs more
+              const needsLeft = leftCount < targetLeft;
+              const needsRight = rightCount < targetRight;
+              const canTakeLeft = otherLeftShuffled.length > 0;
+              const canTakeRight = otherRightShuffled.length > 0;
+
+              let added = false;
+
+              // Prefer filling the side that's more behind, or alternate if both need
+              // Note: Questions are already filtered to exclude used ones at line 272
+              if (
+                needsLeft &&
+                canTakeLeft &&
+                (!needsRight || leftCount <= rightCount)
+              ) {
+                const q = otherLeftShuffled.shift();
+                if (q) {
+                  selected.push({
+                    id: q.id,
+                    prompt: q.prompt,
+                    left: q.left,
+                    right: q.right,
+                    dichotomy: dichotomyKey,
+                    leftLetter,
+                    rightLetter,
+                  });
+                  usedQuestionIds.add(q.id);
+                  leftCount++;
+                  added = true;
+                }
+              } else if (
+                needsRight &&
+                canTakeRight &&
+                (!needsLeft || rightCount <= leftCount)
+              ) {
+                const q = otherRightShuffled.shift();
+                if (q) {
+                  selected.push({
+                    id: q.id,
+                    prompt: q.prompt,
+                    left: q.left,
+                    right: q.right,
+                    dichotomy: dichotomyKey,
+                    leftLetter,
+                    rightLetter,
+                  });
+                  usedQuestionIds.add(q.id);
+                  rightCount++;
+                  added = true;
+                }
+              } else if (otherNeutralShuffled.length > 0) {
+                // Fill from neutral if available
+                const q = otherNeutralShuffled.shift();
+                if (q) {
+                  selected.push({
+                    id: q.id,
+                    prompt: q.prompt,
+                    left: q.left,
+                    right: q.right,
+                    dichotomy: dichotomyKey,
+                    leftLetter,
+                    rightLetter,
+                  });
+                  usedQuestionIds.add(q.id);
+                  added = true;
+                }
+              } else if (canTakeLeft || canTakeRight) {
+                // Take from whichever is available
+                const q = canTakeLeft
+                  ? otherLeftShuffled.shift()
+                  : otherRightShuffled.shift();
+                if (q) {
+                  selected.push({
+                    id: q.id,
+                    prompt: q.prompt,
+                    left: q.left,
+                    right: q.right,
+                    dichotomy: dichotomyKey,
+                    leftLetter,
+                    rightLetter,
+                  });
+                  usedQuestionIds.add(q.id);
+                  const weights = q.weights || {};
+                  const leftWeight =
+                    weights[leftLetter as keyof typeof weights] || 0;
+                  const rightWeight =
+                    weights[rightLetter as keyof typeof weights] || 0;
+                  if (leftWeight > rightWeight) leftCount++;
+                  else if (rightWeight > leftWeight) rightCount++;
+                  added = true;
+                }
+              }
+
+              if (!added) break; // No more questions available
             }
           }
         }
@@ -239,18 +405,27 @@ export async function GET() {
           );
         }
 
-        // Validate fair bias distribution (should be 5-6 or 6-5 split)
+        // Validate fair bias distribution
         const actualLeft = leftCount;
         const actualRight = rightCount;
-        const isBalanced =
-          (actualLeft === 5 && actualRight === 6) ||
-          (actualLeft === 6 && actualRight === 5) ||
-          (actualLeft + actualRight === QUESTIONS_PER_DICHOTOMY &&
-            Math.abs(actualLeft - actualRight) <= 1);
+        let isBalanced: boolean;
+        if (isComprehensive) {
+          // Comprehensive mode: should be close to 11-11 split
+          isBalanced =
+            actualLeft + actualRight === QUESTIONS_PER_DICHOTOMY &&
+            Math.abs(actualLeft - actualRight) <= 2;
+        } else {
+          // Fast mode: should be 5-6 or 6-5 split
+          isBalanced =
+            (actualLeft === 5 && actualRight === 6) ||
+            (actualLeft === 6 && actualRight === 5) ||
+            (actualLeft + actualRight === QUESTIONS_PER_DICHOTOMY &&
+              Math.abs(actualLeft - actualRight) <= 1);
+        }
 
         if (!isBalanced) {
           console.warn(
-            `[Questions] Dichotomy ${dichotomyKey} bias may be unbalanced: ${actualLeft} ${leftLetter}-biased, ${actualRight} ${rightLetter}-biased, ${neutralCount} neutral. Target was ${targetLeft}-${targetRight}.`
+            `[Questions] Dichotomy ${dichotomyKey} bias may be unbalanced: ${actualLeft} ${leftLetter}-biased, ${actualRight} ${rightLetter}-biased. Target was ${targetLeft}-${targetRight}.`
           );
         }
 

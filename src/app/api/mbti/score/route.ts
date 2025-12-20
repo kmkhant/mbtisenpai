@@ -82,7 +82,8 @@ function computeType(scores: Scores): string {
   return `${ei}${sn}${tf}${jp}`;
 }
 
-const EXPECTED_QUESTIONS_COUNT = 44; // 11 questions per dichotomy × 4 dichotomies
+const EXPECTED_QUESTIONS_COUNT_FAST = 44; // 11 questions per dichotomy × 4 dichotomies
+const EXPECTED_QUESTIONS_COUNT_COMPREHENSIVE = 88; // 22 questions per dichotomy × 4 dichotomies
 
 /**
  * Enable debug logging for troubleshooting.
@@ -149,6 +150,14 @@ export async function POST(req: NextRequest) {
 
       validAnswers.push(answer);
     }
+
+    // Determine expected count based on answer count
+    // If we have more than 44 answers, assume comprehensive mode (88 questions)
+    // Otherwise, assume fast mode (44 questions)
+    const isComprehensive = validAnswers.length > EXPECTED_QUESTIONS_COUNT_FAST;
+    const EXPECTED_QUESTIONS_COUNT = isComprehensive
+      ? EXPECTED_QUESTIONS_COUNT_COMPREHENSIVE
+      : EXPECTED_QUESTIONS_COUNT_FAST;
 
     // Validate answer completeness
     if (validAnswers.length < EXPECTED_QUESTIONS_COUNT) {

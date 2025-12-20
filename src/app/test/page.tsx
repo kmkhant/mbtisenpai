@@ -20,17 +20,22 @@ type AnswerState = Record<number, AnswerValue | null>;
 
 const QUESTIONS_PER_PAGE = 10;
 
+type TestMode = "fast" | "comprehensive";
+
 export default function TestPage() {
   const router = useRouter();
 
+  const [mode, setMode] = useState<TestMode | null>(null);
   const [questions, setQuestions] = useState<MbtiQuestion[]>([]);
   const [answers, setAnswers] = useState<AnswerState>({});
-  const [isLoadingQuestions, setIsLoadingQuestions] = useState(true);
+  const [isLoadingQuestions, setIsLoadingQuestions] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
+    if (!mode) return;
+
     let cancelled = false;
 
     async function loadQuestions() {
@@ -38,7 +43,7 @@ export default function TestPage() {
         setIsLoadingQuestions(true);
         setError(null);
 
-        const res = await fetch("/api/mbti/questions");
+        const res = await fetch(`/api/mbti/questions?mode=${mode}`);
 
         if (!res.ok) {
           throw new Error("Failed to fetch questions.");
@@ -78,7 +83,7 @@ export default function TestPage() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [mode]);
 
   const totalPages =
     questions.length > 0 ? Math.ceil(questions.length / QUESTIONS_PER_PAGE) : 1;
@@ -193,6 +198,77 @@ export default function TestPage() {
     }
   }
 
+  // Mode selection screen
+  if (!mode) {
+    return (
+      <div className="flex min-h-screen justify-center bg-linear-to-b from-fuchsia-50 via-white to-white px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10">
+        <main className="flex w-full max-w-md flex-col rounded-[32px] bg-white px-6 py-7 shadow-[0_18px_45px_rgba(199,110,255,0.18)] sm:max-w-lg sm:px-8 sm:py-8 md:max-w-2xl md:px-10 md:py-10">
+          <header className="flex items-center justify-center">
+            <div className="flex items-center gap-2">
+              <div className="inline-flex items-center gap-2 rounded-full border border-pink-300 bg-white/80 px-5 py-2 text-xs font-semibold tracking-wide text-fuchsia-600 shadow-sm sm:text-sm">
+                <ProfileImage size="w-10 h-10" thickness={0} />
+                <div>MBTI Senpai Test</div>
+              </div>
+            </div>
+          </header>
+
+          <section className="mt-8 space-y-6 sm:mt-10">
+            <div className="text-center">
+              <h2 className="text-xl font-semibold text-zinc-900 sm:text-2xl">
+                Choose Your Test Mode
+              </h2>
+              <p className="mt-2 text-sm text-zinc-600 sm:text-base">
+                Select the mode that best fits your time and needs
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <button
+                type="button"
+                onClick={() => setMode("fast")}
+                className="group rounded-xl border-2 border-pink-200 bg-white p-6 text-left transition-all hover:border-fuchsia-400 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400"
+              >
+                <div className="mb-3 flex items-center gap-2">
+                  <div className="rounded-full bg-fuchsia-100 p-2">
+                    <ChevronRightCircle className="h-5 w-5 text-fuchsia-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-zinc-900">
+                    Fast Mode
+                  </h3>
+                </div>
+                <p className="text-sm text-zinc-600">
+                  <strong className="text-zinc-900">44 questions</strong> -
+                  Quick assessment in about 10 minutes. Perfect for a fast
+                  personality check.
+                </p>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setMode("comprehensive")}
+                className="group rounded-xl border-2 border-fuchsia-400 bg-linear-to-br from-fuchsia-50 to-pink-50 p-6 text-left transition-all hover:border-fuchsia-500 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400"
+              >
+                <div className="mb-3 flex items-center gap-2">
+                  <div className="rounded-full bg-fuchsia-200 p-2">
+                    <ChevronRightCircle className="h-5 w-5 text-fuchsia-700" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-zinc-900">
+                    Comprehensive Mode
+                  </h3>
+                </div>
+                <p className="text-sm text-zinc-600">
+                  <strong className="text-zinc-900">88 questions</strong> -
+                  Detailed assessment with more questions for greater accuracy.
+                  Takes about 20 minutes.
+                </p>
+              </button>
+            </div>
+          </section>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="flex min-h-screen justify-center bg-linear-to-b from-fuchsia-50 via-white to-white px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10">
       <main className="flex w-full max-w-md flex-col rounded-[32px] bg-white px-6 py-7 shadow-[0_18px_45px_rgba(199,110,255,0.18)] sm:max-w-lg sm:px-8 sm:py-8 md:max-w-2xl md:px-10 md:py-10">
@@ -206,7 +282,8 @@ export default function TestPage() {
                 <div>
                   {questions.length > 0 ? (
                     <span className="text-xs mt-1 font-medium text-zinc-400">
-                      Page {currentPage + 1} of {totalPages}
+                      {mode === "comprehensive" ? "Comprehensive" : "Fast"} Mode
+                      · Page {currentPage + 1} of {totalPages}
                     </span>
                   ) : (
                     <Skeleton className="h-4 w-20 mt-1" />
@@ -422,8 +499,7 @@ export default function TestPage() {
           </div>
           <p>
             ©2025 MBTI Senpai · Open-source · made with{" "}
-            <span className="text-pink-500">♥</span> by{" "}
-            <br />
+            <span className="text-pink-500">♥</span> by <br />
             <Link
               href="https://www.linkedin.com/in/khaing-myel-khant-457b69146/"
               className="underline underline-offset-2 hover:text-pink-500"
