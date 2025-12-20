@@ -94,6 +94,14 @@ const AnimeCharacterSection = dynamic(
   { ssr: false }
 );
 
+const CelebritySection = dynamic(
+  () =>
+    import("./components/CelebritySection").then((mod) => ({
+      default: mod.CelebritySection,
+    })),
+  { ssr: false }
+);
+
 function ResultPageContent({ resultId }: { resultId?: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -509,6 +517,12 @@ function ResultPageContent({ resultId }: { resultId?: string }) {
         {result && result.type !== "XXXX" && (
           <Suspense fallback={null}>
             <AnimeCharacterSection type={result.type} />
+          </Suspense>
+        )}
+
+        {result && result.type !== "XXXX" && (
+          <Suspense fallback={null}>
+            <CelebritySection type={result.type} />
           </Suspense>
         )}
 
